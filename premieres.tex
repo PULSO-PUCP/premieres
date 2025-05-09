@@ -2,7 +2,7 @@
 \usepackage{authblk}
 \renewcommand{\Affilfont}{\footnotesize}
 \title{Cabinet under Pressure: Survival Analysis of Peru’s Prime Ministers Since 1980}
-\author[1,2]{ Jose Manuel Magallanes }
+\author[1,2]{ Jose Manuel Magallanes \thanks{The authors would like to thank the research assistants from PULSO-PUCP: Alexandra Porras, Alfredo Aro, Romina Loayza, and Ivana Delgado, for their support  and decication to this work.}}
 \affil[1]{PULSO -Institute of Social Analytics and Strategic Intelligence and Department of Social Sciences, Pontificia Universidad Catolica del Peru, San Miguel 15088, Lima, Peru}
 \affil[2]{University of Massachusetts-Amherst; University of Washington -Seattle; and Universidad Nacional Mayor de San Marcos-Lima}
 \affil[*]{Corresponding author: jmagallanes@pucp.edu.pe}
@@ -17,7 +17,7 @@
 \counterwithin{table}{section}\counterwithin{figure}{section}
 \usepackage{Sweave}
 \begin{document} % every "begin: needs and "end"
-\input{WorkInR_forPrinter-concordance}
+\input{premieres-concordance}
 \maketitle 
 \begin{abstract}
 This study examines the political durability of Peru’s Prime Ministers (Presidente del Consejo de Ministros, PCM) since the country’s democratic return in 1980. Using survival analysis, we explore how political context, institutional conditions, and crisis dynamics shape the tenure of these key presidential appointees. Through a Cox proportional hazards model, we test the influence of presidential popularity, legislative fragmentation, cabinet reshuffles, and regime instability on the risk of early dismissal or resignation. The results illuminate how informal power-sharing and institutional fragility influence executive coordination in a hyper-presidential regime.
@@ -96,3 +96,27 @@ D.before\_1980 & 167 & 262.43 & 1 & 1822 & 1821\\
 \hline
 \end{tabular}
 \end{table}\end{Schunk}
+
+
+\section{Literature Review}\label{letrev}
+
+How is the  survival of Prime ministers in semi-presidential or similar regimes? Empirical work shows that the strategic logic of coalition maintenance and partisan bargaining strongly shapes how long a prime‑minister‑type appointee lasts. \citet{amorim_neto_presidential_2006}, analysing more than 1,000 minister spells in ten semi‑presidential countries (1972–1999), finds that (i) prime ministers who belong to the president’s party or to pivotal coalition partners face significantly lower hazards of exit, and (ii) periods of cohabitation sharply increase replacement risk because presidents have incentives to reshuffle PMs allied with the rival camp. \citet{cheibub_government_2004} compare cabinet durability across regime types and show that survival is shortest under pure presidentialism, longest under parliamentarism, with semi‑presidential systems in between; within the latter, minority presidents and higher party fragmentation elevate the hazard of PM turnover. These results highlight three mechanisms—partisan alignment, coalition breadth, and executive – legislative congruence—that our Peruvian PCM analysis will explicitly test.
+
+Is there Cabinet instability in Peru? Research converges on three reinforcing explanations. 
+\citet{levitsky_latin_1999} shows that the collapse of the party system during the 1990s replaced partisan accountability with presidential patronage, turning ministers into expendable crisis‑management tools. Successive presidents have alternated between appointing party heavyweights and high-profile technocrats as Prime Minister in hopes of stabilising cabinet politics, yet neither strategy has reliably eased the post-Fujimori deadlock created by Peru’s fragmented Congress and wary executive—a pattern documented by Tanaka’s diagnosis of a “democracia sin partidos,” Valladares’s account of benign but paralysing legislative oversight, and Dargent’s portrait of technocrats who operate with limited political backing \citep{tanaka_democracia_2005,valladares_horror_2012, dargent_technocracy_2014}. Collectively, these studies depict cabinet instability as a product of weak party institutionalization, contentious executive–legislative relations, and recurrent political crises—mechanisms our survival analysis of PCM tenure will test.
+
+Is there a role from Informal institutions and the elite in Peru?\citet{helmke_informal_2004} define informal institutions as socially shared, unwritten rules that structure political behaviour and interact with formal rules in four distinct ways—complementary, accommodating, competing, and substitutive. In much of Latin America, competing and substitutive informal institutions are common and often undermine formal cabinet‑appointment procedures. Presidents rely on personalised patron‑client networks, strategic scapegoating norms, and informal blame‑shifting rituals to manage crises, which accelerates elite turnover. In Peru, where party institutionalisation is weak, an unwritten convention has emerged: when legislative censure or scandal threatens presidential standing, the Prime Minister is sacrificed as a cost‑containing signal of accountability, enabling the president to reset relations with Congress without relinquishing core power. This suggests that PCM survival hinges not only on formal constitutional design but also on the strength and interaction of informal institutions—a mechanism we incorporate by modelling the hazard of exit during periods of heightened informal bargaining (e.g., minority governments, non‑programmatic coalitions, corruption scandals). 
+
+Has survival analyses been used in contexts like these? 
+
+Previous applications of survival analysis to political elites reveal several patterns relevant to Peru. \citet{huber_replacing_2008} cross-national study of parliamentary democracies shows that ministerial stability depends on coalition bargaining rules rather than cabinet duration per se . In Latin America, \citet{gonzalez-bustamante_cambios_2016} find that critical events and individual traits shape minister survival during Chile’s Concertación era , while \citet{camerlo_minister_2015-1} demonstrate that cabinet reshuffles in presidential systems respond to mass protests, scandals, and the electoral calendar . Cabinet turnover also varies with executive style: \citet{carreras_presidentes_2013} shows that outsider presidents rely on inexperienced ministers, shortening tenures across Latin America . Within Chile, \citet{avendano_rotacion_2012} link high rotation to coalition bargaining costs , whereas \citet{martinez-gallardo_out_2012} identifies partisan incentives and agency risks that prompt ministers themselves to defect from presidential coalitions . Comparative surveys confirm structural drivers: \citet{fischer_duration_2012}  show that portfolio salience and regime type systematically affect ministerial durability across thirty countries. \citet{jara_iniguez_rotacion_2019} argue that high-level turnover in Ecuador stems less from managerial failures than from trust-based appointments , and \citet{mejia_es_2021} document how Colombia’s shift to coalition presidentialism lengthened cabinet survival over six decades . Together, these works highlight how institutional arrangements, critical events, and presidential strategies condition ministerial tenure—insights directly applicable to explaining Prime-Ministerial durability in Peru.
+
+
+
+% %%%%% adding bibliography
+\bibliographystyle{apacite} %%style
+\renewcommand{\refname}{Bibliography}
+\bibliography{Premieres} %% filename
+
+\end{document} %% nothing after here
+
