@@ -1,0 +1,262 @@
+---
+title: "This is my work in R" 
+author: "MyFirstName MyLastName<br>OrganizationName<br>username@the.rest"
+#date: '`r format(Sys.time(), "%B %d, %Y")`' #automatic
+date: "March 5, 2025" #manually
+abstract: "This is an example of an abstract in a paper. This is an example of an abstract in a paper.This is an example of an abstract in a paper. This is an example of an abstract in a paper.This is an example of an abstract in a paper."
+fontsize: 12pt
+#setup of webpage output
+output: bookdown::html_document2
+# for bibliography
+bibliography: eScienceWinterBib.bib
+biblio-style: apalike
+csl: apa.csl
+---
+
+<br> <!--this is a line break-->
+
+<!-- use "-" or ".unnumbered" to unnumber -->
+
+# Introduction {.unnumbered}
+
+This is just my intro to my nice paper. This is just my intro to my nice paper.This is just my intro to my nice paper. This is just my intro to my nice paper.This is just my intro to my nice paper. This is just my intro to my nice paper.This is just my intro to my nice paper. This is just my intro to my nice paper.This is just my intro to my nice paper. This is just my intro to my nice paper.This is just my intro to my nice paper. This is just my intro to my nice paper.
+
+This is just my intro to my nice paper. This is just my intro to my nice paper.This is just my intro to my nice paper. This is just my intro to my nice paper.This is just my intro to my nice paper. This is just my intro to my nice paper.This is just my intro to my nice paper. This is just my intro to my nice paper.
+
+<!--label for crossref-->
+
+# Exploring Tables {#explo-tables}
+
+<!--footnote coming-->
+
+Another section. I will use a footnot now [^1]. I will soon use cross-ref.I will soon use cross-ref.I will soon use cross-ref.I will soon use cross-ref. I will soon use cross-ref. I will soon use cross-ref.I will soon use cross-ref.I will soon use cross-ref.I will soon use cross-ref.I will soon use cross-ref. I will soon use cross-ref. I will soon use cross-ref.
+
+[^1]: This is a footnote.
+
+<!--cross-ref coming-->
+
+I will soon use cross-ref.I will soon use cross-ref: as we see in Section \@ref(catexplor).
+
+<!-- a chunk hidden (echo=FALSE) with some setup-->
+
+<!-- chunk has its own name -->
+
+```{r collecting-DataTable, echo=FALSE}
+# clean memory
+rm(list = ls())
+# paste the github link here (in two parts):
+linkOrg=""
+linkRepo=""
+file_Name1="hdidemiso_plus.RDS"
+link_file_Name1=paste0(linkOrg,linkRepo,file_Name1)
+#link_file_Name1=url(link_file_Name1)
+#opening data
+mergedData=readRDS(link_file_Name1)
+```
+
+## Exploring Categorical Data {#catexplor}
+
+Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
+
+I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
+
+You can see the statistics of categorical variables in Table \@ref(tab:catexploreTable).
+
+<!--the chunk name  IS USED in cross-ref for TABLES, SEE above-->
+
+<!-- Table is created and displayed. -->
+
+```{r catexploreTable,results='asis', warning=FALSE, echo=FALSE}
+## display frequency table of Regime type
+library(summarytools)
+library(tidyr)
+library(knitr)
+library(kableExtra)
+
+namesHeaders=c("Democracy Level","count","pct","pct_cumm")
+freq(mergedData$Regimetype, 
+     plain.ascii = FALSE,
+     report.nas=FALSE) %>%
+    ## changes, we need data frame
+    tb() %>% 
+     kable(format = "html", 
+           digits = 2,
+           caption = "This is a table",
+           col.names = namesHeaders)%>%
+     kable_styling(full_width = F)
+```
+
+You can see this variable plotted in Figure \@ref(fig:catBarplot) below.
+
+<!-- Object 'bar' will be created and plotted -->
+
+<!--the chunk name is used to cross-ref the figure in 'bar'-->
+
+<!--Figure caption (fig.cap) in chunk header is a MUST-->
+
+```{r catBarplot, fig.cap="Freedom of Press in the world",echo=FALSE}
+library(ggplot2)
+
+base=ggplot(data = mergedData)
+bar=base + geom_bar(aes(x=Regimetype),
+                    fill='orange',
+                    color='red')
+bar=bar + labs(title = "Democracy in the world (2021)",
+           x= "Levels",
+           y= "Count of countries",
+           caption = 'Source: The Economist')
+bar
+
+```
+
+## Exploring Numerical Data {#numexplo}
+
+Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
+
+Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.
+
+```{r summaryNumeric, results='asis', message=FALSE,echo=FALSE}
+## table of summary statistics for numerical columns
+AllNumericNames=names(Filter(is.numeric, mergedData))
+originalNumeric=AllNumericNames[!grepl('mM',AllNumericNames)]
+
+library(vtable)
+st(mergedData[,originalNumeric],
+   title ="Stats summary for numeric vars",
+   digits = 1) #decimal places
+```
+
+<!-- Use of R object inline -->
+
+In the Table \@ref(tab:summaryNumeric), you see that the mean of HDI is **`r mean(mergedData$HumanDevelopmentIndex)`**.
+
+It would be good to see a boxplot with the re scaled values, check Figure \@ref(fig:numBoxplot) below.
+
+```{r numBoxplot,fig.cap='The nice boxplots' ,echo=FALSE, message=FALSE}
+scaledNumeric=AllNumericNames[grepl('mM',AllNumericNames)]
+
+DataForBox=reshape2::melt(mergedData[,scaledNumeric])
+
+base=ggplot(data=DataForBox)
+box=base + geom_boxplot(aes(x=variable,y=value),
+                        fill='lightblue',
+                        color='red') + coord_flip()
+## plotting
+box
+```
+
+<!--- A citation: author(year) --->
+
+Boxplots were introduced by [@tukey_exploratory_1977].
+
+# My Regression
+
+Several times we need regression. This is a nice summary for two regressions, as shown in Table \@ref(tab:regsPrint):
+
+```{r regresPrep, echo=FALSE}
+## prepare regressions
+h1=formula(HumanDevelopmentIndex~Functioningofgovernment)
+regre1=glm(h1,data=mergedData,family = "gaussian")
+
+h2=formula(HumanDevelopmentIndex~Functioningofgovernment + Politicalparticipation)
+regre2=glm(h2,data=mergedData,family = "gaussian")
+```
+
+```{r regsPrint,results='asis', echo=FALSE}
+# prepare labels
+
+newCoefNames=c('(Intercept)' = 'Constant',
+               "Functioningofgovernment"="Bureaucracy",
+               "Politicalparticipation"="Participation")
+
+## show result of both
+library(modelsummary)
+models=list(regre1,regre2)
+modelsummary(models, 
+             title = "Models for HDI",
+             stars = TRUE,
+             output = "kableExtra",
+             coef_rename =newCoefNames)
+```
+
+I hope you like what you see in the Table \@ref(tab:regsPrint). 
+
+You can learn more on regression in other book [@petrie_introduction_2016,150-160].
+
+# Other plots {#otherPlots}
+
+## A map {#map}
+
+Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.
+
+Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.
+
+Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map.Let me show a nice map in Figure \@ref(fig:plot-cityMap).
+
+```{r collecting-DataMap, echo=FALSE,message=FALSE}
+
+# github link to data already saved!
+ 
+file_Name2="MapSeattle.geojson"
+file_Name3="calls911_geo.geojson"
+
+link_file_Name2=paste0(linkOrg,linkRepo,file_Name2)
+link_file_Name3=paste0(linkOrg,linkRepo,file_Name3)
+
+#opening data
+library(sf)
+cityMap=read_sf(link_file_Name2)
+eventsLocations=read_sf(link_file_Name3)
+```
+
+```{r plot-cityMap, echo=FALSE, fig.cap="Plot numeric colums",message=FALSE}
+
+library(ggplot2)
+ggplot(cityMap) +geom_sf(aes(fill=ACRES_TOTAL))
+```
+
+Figure \@ref(fig:plot-cityMap) uses only one layer. Let's add another layer in the next map. Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it.
+
+```{r plot-911Map, echo=FALSE, fig.cap="Calls to 911 by time of day",message=FALSE}
+library(ggplot2)
+base=ggplot(cityMap) + geom_sf() + theme_light()
+eventsByTime=base + geom_sf(data = eventsLocations,
+                         size=0.5,
+                         aes(color=nightTime)) 
+eventsByTime
+```
+
+You can see that Figure \@ref(fig:plot-911Map) actually uses one map on top of the other. Let me show you an interactive version:
+
+```{r plot-911Map-leaflet, echo=FALSE, fig.cap="A map using leaflet",message=FALSE}
+library(leaflet)
+# create palette for two colors
+pal <- colorFactor(c("navy", "red"), domain = c(T, F))
+
+
+leaflet(eventsLocations) %>% addTiles() %>%
+  addCircleMarkers(
+    radius = ~ifelse(nightTime == T, 3, 2),
+    color = ~pal(nightTime),
+    stroke = F, # border
+    fillOpacity = 0.5
+  )
+```
+
+Figure \@ref(fig:plot-911Map-leaflet) above looks nice. Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it. It has been a very hard work.Here, I continue doing this nice work, I hope you like it and read it.
+
+<!--- more than one author in a citation --->
+
+Review other authors [@camara_spatial_2004, 120-150; also, see @brunsdon_introduction_2015] to know more.
+
+<!--- adding bibliography --->
+
+# Bibliography {.unnumbered}
+
+<!--something after Bibliography --->
+
+```{=html}
+<!--
+<div id="refs"></div>
+-->
+```
