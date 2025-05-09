@@ -66,6 +66,21 @@ df %>%
 @
 
 
+<<>>=
+
+data=rio::import("primes.xlsx")
+summary_data <- data %>%
+  group_by(Grupo) %>%
+  summarise(
+    N = n(),
+    Mean_Var1 = mean(Variable1),
+    SD_Var1 = sd(Variable1),
+    Mean_Var2 = mean(Variable2),
+    SD_Var2 = sd(Variable2)
+  )
+@
+
+
 I will soon use cross-ref.I will soon use cross-ref.I will soon use cross-ref.I will soon use cross-ref. I will soon use cross-ref. I will soon use cross-ref.I will soon use cross-ref.I will soon use cross-ref.I will soon use cross-ref.I will soon use cross-ref. I will soon use cross-ref. I will soon use cross-ref.
 %cross-ref coming
 
