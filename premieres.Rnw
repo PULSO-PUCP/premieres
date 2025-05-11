@@ -7,7 +7,8 @@
 \affil[2]{University of Massachusetts-Amherst; University of Washington -Seattle; and Universidad Nacional Mayor de San Marcos-Lima}
 \affil[*]{Corresponding author: jmagallanes@pucp.edu.pe}
 
-
+\usepackage{tabularx,booktabs,threeparttablex}
+\usepackage{rotating} 
 \date{\today}  %% manually: \date{March 6, 2025} 
 \usepackage[natbibapa]{apacite} %% for bibliography
 \usepackage{rotating, graphicx} %% for rotating tables
@@ -25,33 +26,118 @@ This study examines the political durability of Peru’s Prime Ministers (Presid
 
 \section*{Introduction} % * to unnumber
 
-The median tenure of a Peruvian Prime Minister (PCM) since 1980 is 254 days (around 8 months), yet variation is striking. \'{A}ntero Flores\-Ar\'{a}oz lasted only six days in November 2020, whereas Manuel Ulloa served 864 days in the early 1980s and Jorge del Castillo survived 805 days during Alan Garc\'{i}a\'s second term. Dispersion persists even within a single presidential period: three PCMs held the post during Pedro Castillo\'s first five months, while Alberto Ot\'{a}rola remained in office for 440 days under Dina Boluarte. This inconsistency under ostensibly similar institutional rules raises a central puzzle: Which political, institutional, and situational factors condition the durability of Peru\'s Prime Ministers?
+The median tenure of a Peruvian Prime Minister (PCM) since 1980 is 254 days (around 8 months), yet variation is striking. Ántero Flores\-Aráoz lasted only six days in November 2020, whereas Manuel Ulloa served 864 days in the early 1980s and Jorge del Castillo survived 805 days during Alan García\'s second term. Dispersion persists even within a single presidential period: three PCMs held the post during Pedro Castillo\'s first five months, while Alberto Otárola remained in office for 440 days under Dina Boluarte. This inconsistency under ostensibly similar institutional rules raises a central puzzle: Which political, institutional, and situational factors condition the durability of Peru\'s Prime Ministers?
 
 Although the Constitution describes the PCM merely as the president’s first minister—responsible for countersigning decrees and coordinating the cabinet—practice since 1980 indicates that the office routinely performs head-of-government functions: drafting the policy agenda, negotiating confidence votes, and representing the executive in congressional interpellations. The PCM thus acts as the president’s chief political shield. During normal times, the office facilitates legislative compromise and signals technocratic competence; in crises, it functions as a “circuit-breaker,” a high-visibility scapegoat whose dismissal absorbs congressional anger and preserves presidential tenure. Analysing the determinants of PCM survival therefore illuminates how Peru’s hyper-presidential system manages accountability, blame assignment, and policy coordination in the absence of strong parties.
 
 
 
+
 \section{Background}\label{backg-tables} % label for crossref
 
-Legal foundations (Art.124, 1993 Constitution): The PCM is named by the President but becomes fully operative only after the Council of Ministers receives a congressional vote of confidence (Art.130). Article 124 establishes five formal powers that lift the office above an ordinary minister: (1) countersigning every presidential decree and law, thereby granting legal validity; (2) convening and presiding over the Council of Ministers when the President is absent; (3) coordinating sectoral policies and monitoring implementation across ministries; (4) presenting the government’s general policy and annual budget bill to Congress; and (5) proposing—on behalf of the Council—votes of confidence or requesting the President to dissolve Congress after two denials. Taken together, these clauses make the PCM the linchpin between executive decree authority and legislative oversight, subject to individual censure (Art.132) and collective cabinet responsibility. This constitutional design explains why dismissing the PCM can defuse political crises without toppling the President.
-Informal evolution: From symbolic coordinator to key political operator. In the early 1980s the PCM was largely a symbolic co‑signatory—Manuel Ulloa chaired cabinet meetings but real bargaining occurred directly between President Belaúnde and party caucuses. Two changes transformed the post:
-Fujimori’s executive re‑engineering (1990‑2000): frequent decree lawmaking and the 1992 Constitution concentrated agenda control in the Palace. The PCM became the de facto gatekeeper of emergency decrees, crisis communication, and IMF negotiations. Guillermo Larco Cox’s 1989 and Hurtado Miller’s 1990 tenures were early signs; by 1995 Dante Córdova was publicly branded “Premier”, marking a rhetorical shift from coordinator to operator.
-
-Confidence‑vote politics after 2000: Article 130 requires each new Council to obtain a congressional vote of confidence, but presidents have repeatedly weaponised the PCM to reset relations with an antagonistic Congress—e.g., Salomón Lerner (2011), César Villanueva (2013, 2018), Pedro Cateriano(2020). The PCM now drafts policy speeches, counts votes, and negotiates floor time, acting as a quasi‑prime minister in a party‑fragmented legislature.
-
-Consequently, career technocrats and seasoned politicians alike view the PCM as the highest non‑presidential prize—yet also the first political “fuse” to blow when scandals erupt. Our duration data confirm this duality: the office’s power has grown, but so has its volatility, illustrating the gap between formal rules and informal political practice.
-
-Role during key periods (see Table \ref{durationPerEra}):
-
-\begin{enumerate}
-    \item Democratic transition (1980–1989): Under Belaúnde and García I, the PCM was chiefly a coalition‑balancing broker: Manuel Ulloa, Fernando Schwalb, and Luis Alva Castro used the office to mediate between the president and newly elected party caucuses, but limited decree use kept the post largely symbolic. Average tenure was around 400 days.
-    \item Fujimori era (1990–2000): Executive decree authority and the 1992 Constitution turned the PCM into the president’s operational shield. PMs like Hurtado Miller (199 days) and Pandolfi (792 days across two spells) managed IMF talks and emergency legislation, yet were dismissed when inflation, corruption, or congressional frictions peaked, thus underscoring the role as sacrificial buffer. Average tenure was around 790 days, and presented the smallest variability in these periods.
-    \item Post‑2000 democratic turbulence: With weak parties and fragmented congresses, the PCM became the pivot for confidence‑vote politics. Thirty‑four different PMs have served since 2001, median tenure just 232 days. Presidents Toledo, Humala, Vizcarra, Castillo, and Boluarte each used rapid PCM turnover to re‑negotiate legislative support—e.g., Cateriano’s 22‑day tenure (2020) followed by Martos’s 96 days as the executive searched for votes of confidence. Average tenure was around 805 days, and presented the highest variability in these periods.
-\end{enumerate}
+\subsection{Evolution of the Prime Minister’s formal mandate} Peru’s Prime Minister (PCM) has migrated from a cabinet chair of convenience in the 1979 Constitution to a multisector policy coordinator and modernisation czar under the post‑2000 statutory framework.  Four legal milestones define that trajectory:
 
 
+\begin{itemize}
+\item 1979 Constitution (arts.215–218). The PCM presides over the Council of Ministers only when the President is absent; all appointments and dismissals rest with the President, who may chair the Council at will.  The PCM’s core duty is to secure majority support inside the cabinet for bills, decree‑laws, and matters of public interest. (Constitution 1979.)
 
-<<results=tex, echo=TRUE>>=
+\item 1993 Constitution (arts. 122–127). Retains presidential discretion over appointments but upgrades the PCM: he/she convenes the Council, signs legislative decrees, and must present the government programme and request a vote of confidence from Congress. (Democratic Constituent Congress 1993.)
+\item Organic Law of the Executive Branch – LOPE 2007 (ch. II). Charges the PCM with proposing the government’s general objectives, coordinating multisectoral national policies—especially economic and social development—and supervising entities attached to the Presidency of the Council of Ministers. (Congress of the Republic 2007, LOPE.)
+\item Law 29158 (2007) on Modernisation of the State (art.19). Designates the PCM the President’s highest‑trust agent, responsible for steering public‑sector modernisation and decentralisation across all tiers of government.  (Congress of the Republic 2007, Law 29158.)
+\end{itemize}
+
+Together these reforms turned the PCM from symbolic countersignatory into the President’s principal political shield and agenda gate‑keeper. See Table \ref{tab:pcm-mandate} for details on this evolution.
+
+\begin{sidewaystable}[p]   % ‘p’ = put on its own float page
+\centering
+\caption{Evolution of the PCM’s formal mandate since 1979}
+\label{tab:pcm-mandate}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textheight}{@{}l X X X X l@{}}  % \textheight fits the rotated width
+\toprule
+\textbf{Legal framework} &
+\textbf{Cabinet-chair role} &
+\textbf{Policy-coordination powers} &
+\textbf{Appointment \& dismissal} &
+\textbf{Additional statutory duties} &
+\textbf{Citation}\\
+\midrule
+1979 Constitution &
+Chairs Council only when President absent; President may chair at will &
+Secures majority consent for bills and decree-laws within the cabinet &
+Exclusive presidential prerogative &
+None specified beyond cabinet deliberations &
+Const.\ 1979, arts.\ 215–218\\[4pt]
+
+1993 Constitution &
+Convenes Council; President may still chair &
+Countersigns decrees; presents programme and confidence motion to Congress &
+Exclusive presidential prerogative &
+Must seek confidence votes &
+Const.\ 1993, arts.\ 122–127\\[4pt]
+
+LOPE 2007 &
+PCM regularly chairs Council (President rarely attends) &
+Proposes government objectives; coordinates multisector policies; supervises PCM-attached entities &
+Unchanged &
+Broad multisector supervision &
+LOPE 2007, ch.\ II\\[4pt]
+
+Law 29158 (2007) &
+As per LOPE &
+Leads State modernisation and decentralisation agenda &
+Unchanged &
+Strategic planning; inter-governmental coordination &
+Law 29158, art.\ 19\\
+\bottomrule
+\end{tabularx}
+\end{sidewaystable}
+
+\subsection{Informal evolution: from symbolic coordinator to political operator}
+
+The Prime Minister’s day‑to‑day leverage has always depended less on parchment rules than on shifting presidential strategies and congressional configurations.  Three sequential informal models can be distinguished:
+
+\begin{itemize}
+
+\item Symbolic coordinator (1980–1990).Under Belaunde and the first García administration the PCM remained a low‑profile chair; party‑fragmented congresses preferred dealing directly with sector ministers, and premiers changed whenever coalition arithmetic shifted.  Average tenure was 405 days, but the post was still viewed as an honorific stepping‑stone rather than a power centre.
+
+\item Gate‑keeper in an autocratic presidency (1990 – 2000). Fujimori’s autogolpe (1992) sidelined Congress and broadened decree‑law rule.  The PCM became the sole bureaucratic filter for emergency economic decrees and IMF‑negotiated reforms; loyalty trumped expertise (e.g., Hurtado Miller, Pandolfi).  Although the decade’s mean tenure fell to $\approx 302$ days, variance shrank because Fujimori kept loyalists long until a policy pivot required a full cabinet refresh.
+
+\item Floor‑manager and lightning rod (2001 – present). With the 1993 Constitution’s confidence‑vote mechanism now routinised, the PCM took on vote counting and crisis‑absorption roles.
+
+\begin{itemize}
+
+\item Coalition minority years (Toledo 2001‑06): premiers (e.g., Carlos Ferrero) traded ministerial posts for legislative backing.  
+
+\item Party‑government years (García II 2006‑11): Jorge del Castillo doubled as APRA whip, illustrating the PCM’s partisan link function.  
+\item Confrontational years (PPK, Vizcarra, Castillo): Congress weaponised interpellations; presidents sacrificed PCMs (Zavala 2017; Villanueva 2018; Bellido→Vásquez→Torres 2021‑22) to defuse censure threats or reset talks before the 28 July speech.  
+
+\item Post‑2022 caretaker presidency: Dina Boluarte retained Alberto Otárola for 440 days to project continuity amid unrest, showing the PCM as stability signal.
+\end{itemize}
+\end{itemize}
+
+
+Across these phases, two informal prerogatives emerged:
+
+\begin{itemize}
+\item Negotiator‑in‑chief. Modern PCMs draft the annual Mensaje a la Nación, map votes for confidence motions, and lobby party spokespeople—tasks never spelled out in LOPE.
+
+\item High‑visibility “circuit‑breaker.” Presidents now time reshuffles to absorb blame for corruption scandals (e.g., Saavedra 2016 education dispute; Chávarry 2019 judicial scandal) or economic shocks, banking on a short‑term boost in approval.
+
+\end{itemize}
+
+These unwritten practices explain why Prime‑Ministerial exits cluster around scandals, protests, and the July speech window—patterns the survival analysis in Section 4 explicitly models.
+
+
+\subsection{Prime‑Ministerial tenure across political periods}
+
+Peru’s Prime‑Ministerial tenure remains volatile, but volatility itself is not uniform across eras.  Using the verified dataset of 57 spells (1980–2025), Table \ref{tab:durationPerEra} summarises the distribution by political period.  The Fujimori decade exhibits the shortest average tenure (302 days) yet also the narrowest spread, reflecting the concentration of presidential power; the immediate post‑transition years average roughly 405 days, while the post‑2000 era shows the shortest median (232 days) and the widest range as presidents cycle through PCMs to manage fragmented congresses and serial crises.
+
+
+
+<<results=tex, echo=FALSE>>=
+options(kableExtra.latex.load_packages = FALSE)
+library(kableExtra)
 library(dplyr)
 library(kableExtra)
 library(knitr)
@@ -68,57 +154,48 @@ summary_data <- data %>%
     Min = min(days_duration),
     Max = max(days_duration),
     Range=max(days_duration)-min(days_duration)
-  ) %>%
-     kable(format = "latex", 
+  ) %>%kbl(format='latex',
+           booktabs = T,
            digits = 2,                #label cross-ref!!
-           caption = "Duration in Days by era\\label{durationPerEra}",
+           caption = "Duration in Days by era\\label{tab:durationPerEra}",
            col.names = namesHeaders)%>%
-    kable_styling(full_width = F,latex_options = "h")
+    kable_classic_2(latex_options = "h") %>%footnote(general = "author calculations from official appointment resolutions and El Peruano archives.",footnote_as_chunk = T,
+general_title = "Source: ",title_format = c("italic"),threeparttable = T
+)
 summary_data
 @
 
 
-\section{Literature Review}\label{letrev}
+\section{Literature Review}\label{sec:letrev}
 
-How is the  survival of Prime ministers in semi-presidential or similar regimes? Empirical work shows that the strategic logic of coalition maintenance and partisan bargaining strongly shapes how long a prime‑minister‑type appointee lasts. \citet{amorim_neto_presidential_2006}, analysing more than 1,000 minister spells in ten semi‑presidential countries (1972–1999), finds that (i) prime ministers who belong to the president’s party or to pivotal coalition partners face significantly lower hazards of exit, and (ii) periods of cohabitation sharply increase replacement risk because presidents have incentives to reshuffle PMs allied with the rival camp. \citet{cheibub_government_2004} compare cabinet durability across regime types and show that survival is shortest under pure presidentialism, longest under parliamentarism, with semi‑presidential systems in between; within the latter, minority presidents and higher party fragmentation elevate the hazard of PM turnover. These results highlight three mechanisms—partisan alignment, coalition breadth, and executive – legislative congruence—that our Peruvian PCM analysis will explicitly test.
+The formal mandate outlined in Table \ref{tab:pcm-mandate} establishes the PCM as the president’s chief policy coordinator and political shield. The subsections that follow review comparative findings on the political, institutional, and situational determinants of ministerial tenure, providing the theoretical backdrop for our hypotheses.
 
-Is there Cabinet instability in Peru? Research converges on three reinforcing explanations. 
-\citet{levitsky_latin_1999} shows that the collapse of the party system during the 1990s replaced partisan accountability with presidential patronage, turning ministers into expendable crisis‑management tools. Successive presidents have alternated between appointing party heavyweights and high-profile technocrats as Prime Minister in hopes of stabilising cabinet politics, yet neither strategy has reliably eased the post-Fujimori deadlock created by Peru’s fragmented Congress and wary executive—a pattern documented by Tanaka’s diagnosis of a “democracia sin partidos,” Valladares’s account of benign but paralysing legislative oversight, and Dargent’s portrait of technocrats who operate with limited political backing \citep{tanaka_democracia_2005,valladares_horror_2012, dargent_technocracy_2014}. Collectively, these studies depict cabinet instability as a product of weak party institutionalization, contentious executive–legislative relations, and recurrent political crises—mechanisms our survival analysis of PCM tenure will test.
-
-Is there a role from Informal institutions and the elite in Peru?\citet{helmke_informal_2004} define informal institutions as socially shared, unwritten rules that structure political behaviour and interact with formal rules in four distinct ways—complementary, accommodating, competing, and substitutive. In much of Latin America, competing and substitutive informal institutions are common and often undermine formal cabinet‑appointment procedures. Presidents rely on personalised patron‑client networks, strategic scapegoating norms, and informal blame‑shifting rituals to manage crises, which accelerates elite turnover. In Peru, where party institutionalisation is weak, an unwritten convention has emerged: when legislative censure or scandal threatens presidential standing, the Prime Minister is sacrificed as a cost‑containing signal of accountability, enabling the president to reset relations with Congress without relinquishing core power. This suggests that PCM survival hinges not only on formal constitutional design but also on the strength and interaction of informal institutions—a mechanism we incorporate by modelling the hazard of exit during periods of heightened informal bargaining (e.g., minority governments, non‑programmatic coalitions, corruption scandals). 
-
-Has survival analyses been used in contexts like these? 
-
-Previous applications of survival analysis to political elites reveal several patterns relevant to Peru. \citet{huber_replacing_2008} cross-national study of parliamentary democracies shows that ministerial stability depends on coalition bargaining rules rather than cabinet duration per se . In Latin America, \citet{gonzalez-bustamante_cambios_2016} find that critical events and individual traits shape minister survival during Chile’s Concertación era , while \citet{camerlo_minister_2015-1} demonstrate that cabinet reshuffles in presidential systems respond to mass protests, scandals, and the electoral calendar . Cabinet turnover also varies with executive style: \citet{carreras_presidentes_2013} shows that outsider presidents rely on inexperienced ministers, shortening tenures across Latin America . Within Chile, \citet{avendano_rotacion_2012} link high rotation to coalition bargaining costs , whereas \citet{martinez-gallardo_out_2012} identifies partisan incentives and agency risks that prompt ministers themselves to defect from presidential coalitions . Comparative surveys confirm structural drivers: \citet{fischer_duration_2012}  show that portfolio salience and regime type systematically affect ministerial durability across thirty countries. \citet{jara_iniguez_rotacion_2019} argue that high-level turnover in Ecuador stems less from managerial failures than from trust-based appointments , and \citet{mejia_es_2021} document how Colombia’s shift to coalition presidentialism lengthened cabinet survival over six decades . Together, these works highlight how institutional arrangements, critical events, and presidential strategies condition ministerial tenure—insights directly applicable to explaining Prime-Ministerial durability in Peru.
-
-
-%%%%
-
-\section{Literature Review}
-
-\subsection{Legal and Institutional Role of the PCM}
-
-The Organic Law of the Executive Branch (Ley Orgánica del Poder Ejecutivo, LOPE) assigns the Prime Minister (PCM) far‑reaching responsibilities that go well beyond countersigning presidential decrees.  According to LOPE, the PCM “proposes the government’s general objectives … coordinates multisectoral national policies—especially those concerning economic and social development … [and] supervises the entities attached to the Presidency of the Council of Ministers” (Congress of the Republic 2007, ch.II, para.5).  In addition, Law 29158 designates the PCM as the President’s most trusted political agent, charged with steering public‑sector modernisation and decentralisation across all tiers of government (Congress of the Republic 2007, art.19).  Constitutionally, both appointment and removal rest solely with the President (Democratic Constituent Congress 1993, art.122).  In practice, then, the PCM is both the government’s chief policy coordinator and the president’s foremost political shield—an office that absorbs blame when scandals erupt and signals competence when policy succeeds.
 
 \subsection{Cabinet Volatility in Peru}
 
-Early comparative work portrays Peru as an extreme case of ministerial churn.  Martínez‑Gallardo (2012) reports an average cabinet duration of just 13 months (1980–2000), less than half the Latin‑American mean and exceeded only by Brazil.  Sector‑specific studies corroborate the pattern: in the health ministry, average tenure was 13.7 months between 1935 and 2021 (Gozzeret al.2021).  Frequent reshuffles reset reform agendas—“policies are often returned to square one” (Gozzeret al.2021,335)—and cascade through lower administrative layers.  Yet the causes of this volatility remain under‑specified.
+Early comparative work portrays Peru as an extreme case of ministerial churn.  \citet{martinez-gallardo_out_2012} reports an average cabinet duration of just 13 months (1980–2000), less than half the Latin‑American mean and exceeded only by Brazil.  Sector‑specific studies corroborate the pattern: in the health ministry, average tenure was 13.7 months between 1935 and 2021 \citep{gozzer_duracion_2021}.  Frequent reshuffles reset reform agendas—“policies are often returned to square one” \citealp[335]{gozzer_duracion_2021} —and cascade through lower administrative layers.  Yet the causes of this volatility remain under‑specified.
 
 \subsection{Critical Events and Shocks}
 
-Extant research highlights critical events as proximate triggers of turnover.  Dewan and Dowding (2005) show that UK prime ministers reshuffle after scandals to restore popularity; Camerlo and Pérez‑Liñán (2015) find media scandals and social protests heighten rotation in twelve Latin‑American democracies, with effects conditioned by the electoral calendar and re‑election rules.  Because Peruvian presidents cannot be re‑elected, the country fits Camerlo and Pérez‑Liñán’s scenario in which protests spike hazard early in the term, while scandals matter later (2015,616).  Economic crises operate similarly: González‑Bustamante and Olivares (2015) incorporate downturns into Chilean survival models, and Fischeret al.(2012,515) argue that a minister’s post‑shock fate hinges on formal removal rules, political weight, and net benefit to the government.
+Extant research highlights critical events as proximate triggers of turnover.  \citet{dewan_corrective_2005} show that UK prime ministers reshuffle after scandals to restore popularity; \citet{camerlo_minister_2015-1} find media scandals and social protests heighten rotation in twelve Latin‑American democracies, with effects conditioned by the electoral calendar and re‑election rules.  Because Peruvian presidents cannot be re‑elected, the country fits Camerlo and Pérez‑Liñán’s scenario in which protests spike hazard early in the term, while scandals matter later \citet[616]{camerlo_minister_2015-1}. Economic crises operate similarly: \citet{gonzalez-bustamante_cambios_2016} incorporate downturns into Chilean survival models, and \citet[515]{fischer_duration_2012} argue that a minister’s post‑shock fate hinges on formal removal rules, political weight, and net benefit to the government.
+
 
 \subsection{Institutional Determinants}
 
-Turning to institutional factors, the presidential–parliamentary divide looms large.  Ministerial spells are shorter in presidential than in parliamentary regimes (Blondel1985; Fischeret al.2012).  Within presidential systems, unilateral dismissal powers shorten tenure (Fischeret al.2012,511).  Party‑system configuration further shapes outcomes.  A sixty‑year study of Colombia shows that multiparty coalition presidentialism lengthens tenure, whereas two‑party periods display higher churn (Mejía et al.2021).  Uruguay’s above‑average stability likewise hinges on durable coalitions; crises coincide with coalition breakdowns (Chasquetti et al.2013).
+Turning to institutional factors, the presidential–parliamentary divide looms large.
+From \citet{fischer_duration_2012} we learned that Single-party cabinets generally stay in power longer than coalitions; within coalitions, minimum-winning cabinets outlive surplus (oversized) coalitions; Cabinets endure markedly longer in parliamentary systems\footnote{Blondel’s cross-national data show presidential cabinets are the shorter-lived side of the divide \citep{blondel_government_1985}}. If the regime were authoritarian, cabinets in communist regimes lived longer than the ones from military dictatorships; and finally, Cabinets with more veto-player parties are less durable.
+
+Some of those findings complement the ones above.  A sixty‑year study of Colombia shows that multiparty coalition presidentialism lengthens tenure, whereas two‑party periods display higher churn \citep{mejia_es_2021}.  Uruguay’s above‑average stability likewise hinges on durable coalitions; crises coincide with coalition breakdowns \citep{chasquetti_designacion_2013}.
+
 
 \subsection{Ministerial Profiles}
 
-Personal attributes cannot be ignored.  Age effects are U‑shaped, with the youngest and oldest ministers more likely to exit (Fischeret al.2012).  Escobar‑Lemmon and Taylor‑Robinson (2010) find that being in the inaugural cabinet and holding the finance portfolio increase hazard, whereas constituency links reduce it.  Prior political experience, however, has only marginal impact (Escobar‑Lemmon & Taylor‑Robinson2012).  In Peru, outsider presidents such as Alberto Fujimori and Pedro PabloKuczynski have consistently favoured technocrats with scant partisan capital (Carreras2013; Nercesian & Cassaglia2019).  Whether such technocratic cabinets enjoy longer—or shorter—survival remains an open empirical question.
+Personal attributes cannot be ignored.  Age effects are U‑shaped, with the youngest and oldest ministers more likely to exit \citet{fischer_duration_2012}.  \citet{escobar-lemmon_coming_2010} find that being in the inaugural cabinet and holding the finance portfolio increase hazard, whereas constituency links reduce it.  Prior political experience, however, has only marginal impact \citep{escobar-lemmon_coming_2010}.  In Peru, outsider presidents such as Alberto Fujimori and Pedro Pablo Kuczynski have consistently favoured technocrats with scant partisan capital \citep{carreras_presidentes_2013,nercesian_radiografigabinetes_2019}.  Whether such technocratic cabinets enjoy longer—or shorter—survival remains an open empirical question.
+% 
 
 \subsection{Gaps in the Literature and Relevance to Peru}
 
-Existing studies converge on three explanatory families—critical events, institutional arrangements, and individual profiles—but seldom test them jointly inside a single presidential system.  Moreover, most Latin‑American research pools multiple countries, obscuring Peru’s idiosyncrasies: (i) constitutional hyper‑presidentialism without the stabilising force of strong parties; (ii) the annual Mensaje a la Nación on 28July, a focal point for reshuffles; and (iii) recurrent economic volatility.  By integrating LOPE’s formal mandates with comparative findings on shocks, institutions, and minister profiles, the present study builds a tailored framework for explaining why some Peruvian PCMs become expendable “circuit‑breakers” while others endure.
+Existing studies converge on three explanatory families—critical events, institutional arrangements, and individual profiles—but seldom test them jointly inside a single presidential system.  Moreover, most Latin‑American research pools multiple countries, obscuring Peru’s idiosyncrasies: (i) constitutional hyper‑presidentialism without the stabilising force of strong parties; (ii) the annual Mensaje a la Nación on 28 July, a focal point for reshuffles; and (iii) recurrent economic volatility.  By integrating LOPE’s formal mandates with comparative findings on shocks, institutions, and minister profiles, the present study builds a tailored framework for explaining why some Peruvian PCMs become expendable “circuit‑breakers” while others endure.
 
 
 
