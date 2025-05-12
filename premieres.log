@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.20)  12 MAY 2025 02:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.20)  12 MAY 2025 09:08
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -131,7 +131,23 @@ Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 \rotFPbot=\skip58
 \rot@float@box=\box54
 \rot@mess@toks=\toks21
-) (./apacite.sty
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.st
+y
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PD
+F (HO)
+ (/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+)
+(/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+))
+(./apacite.sty
 Package: apacite 2012/02/25 v6.01 APA citation
 \c@BibCnt=\count272
 \bibleftmargin=\skip59
@@ -146,9 +162,8 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count273
 )
-LaTeX Info: Redefining \BBA on input line 14.
-
-(./adjustbox.sty
+LaTeX Info: Redefining \BBA on input line 15.
+ (./adjustbox.sty
 Package: adjustbox 2099/01/01 develop Adjusting TeX boxes (trim, clip, ...)
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
@@ -222,9 +237,6 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Sweave.sty
 Package: Sweave 
 
-(/usr/local/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
-)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
 \FV@CodeLineNo=\count277
@@ -248,20 +260,20 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 (./premieres.aux)
 \openout1 = `premieres.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -322,13 +334,13 @@ LaTeX Info: Redefining \BPBI on input line 129.
 LaTeX Info: Redefining \BHBI on input line 130.
 )
 (./premieres-concordance.tex)
-LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 23.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -338,244 +350,244 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local
 /texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\T1/cmr/bx/n/12 Cabinet-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\T1/cmr/bx/n/12 Policy-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/bx/n/12 coordination
  []
 
 
-Overfull \hbox (3.7249pt too wide) in paragraph at lines 94--94
+Overfull \hbox (3.7249pt too wide) in paragraph at lines 95--95
 []|\T1/cmr/bx/n/12 Appointment
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\T1/cmr/bx/n/12 Additional
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/bx/n/12 statu-tory
  []
 
 
-Underfull \hbox (badness 2726) in paragraph at lines 94--94
+Underfull \hbox (badness 2726) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 Chairs Coun-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 Pres-i-dent
  []
 
 
-Underfull \hbox (badness 1983) in paragraph at lines 94--94
+Underfull \hbox (badness 1983) in paragraph at lines 95--95
 \T1/cmr/m/n/12 ab-sent; Pres-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 i-dent may
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 Secures ma-
  []
 
 
-Underfull \hbox (badness 1286) in paragraph at lines 94--94
+Underfull \hbox (badness 1286) in paragraph at lines 95--95
 \T1/cmr/m/n/12 jor-ity con-sent
  []
 
 
-Underfull \hbox (badness 3439) in paragraph at lines 94--94
+Underfull \hbox (badness 3439) in paragraph at lines 95--95
 \T1/cmr/m/n/12 for bills and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 decree-laws
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 within the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 Exclusive
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 pres-i-den-tial
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 None spec-i-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 fied be-yond
  []
 
 
-Underfull \hbox (badness 1342) in paragraph at lines 94--94
+Underfull \hbox (badness 1342) in paragraph at lines 95--95
 \T1/cmr/m/n/12 cab-i-net de-lib-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 Convenes
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 Countersigns
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 de-crees;
  []
 
 
-Underfull \hbox (badness 7099) in paragraph at lines 94--94
+Underfull \hbox (badness 7099) in paragraph at lines 95--95
 \T1/cmr/m/n/12 presents pro-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 gramme and
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 con-fi-dence
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 mo-tion to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 Exclusive
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 pres-i-den-tial
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 Must seek
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 con-fi-dence
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 PCM reg-u-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 larly chairs
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 i-dent rarely
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 Proposes
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 gov-ern-ment
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 ob-jec-tives;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 co-or-di-nates
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 mul-ti-sec-tor
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 poli-cies; su-
  []
 
 
-Underfull \hbox (badness 7907) in paragraph at lines 94--94
+Underfull \hbox (badness 7907) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 Broad mul-ti-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 []|\T1/cmr/m/n/12 Leads State
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 mod-erni-sa-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 ning; inter-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 94--94
+Underfull \hbox (badness 10000) in paragraph at lines 95--95
 \T1/cmr/m/n/12 governmental
  []
 
 [3] [4]
-Overfull \hbox (20.82349pt too wide) in paragraph at lines 114--115
+Overfull \hbox (20.82349pt too wide) in paragraph at lines 115--116
 []\T1/cmr/m/n/12 Confrontational years (PPK, Viz-carra, Castillo): Congress wea
 ponised
  []
 
 
-Overfull \hbox (6.91388pt too wide) in paragraph at lines 114--115
+Overfull \hbox (6.91388pt too wide) in paragraph at lines 115--116
 \T1/cmr/m/n/12 in-ter-pel-la-tions; pres-i-dents sac-ri-ficed PCMs (Zavala 2017
 ; Vil-lanueva
  []
 
 
-Overfull \hbox (1.91487pt too wide) in paragraph at lines 114--115
+Overfull \hbox (1.91487pt too wide) in paragraph at lines 115--116
 \T1/cmr/m/n/12 2018; Bel-lido\TS1/cmr/m/n/12 ^^Y\T1/cmr/m/n/12 Vásquez\TS1/cmr/
 m/n/12 ^^Y\T1/cmr/m/n/12 Torres 2021[]22) to defuse cen-sure threats
  []
@@ -584,65 +596,74 @@ m/n/12 ^^Y\T1/cmr/m/n/12 Torres 2021[]22) to defuse cen-sure threats
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [5] [6]
-Overfull \hbox (5.7653pt too wide) in paragraph at lines 184--186
+Overfull \hbox (5.7653pt too wide) in paragraph at lines 185--187
 \T1/cmr/m/n/12 youngest and old-est min-is-ters more likely to exit Fis-cher et
  al.[] (2012). Escobar-
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 257--257
+Underfull \hbox (badness 10000) in paragraph at lines 258--258
 []|\T1/cmr/m/n/12 Huber & Martínez-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--257
+Underfull \hbox (badness 10000) in paragraph at lines 258--258
 \T1/cmr/m/n/12 Gallardo (2008);
  []
 
 
-Underfull \hbox (badness 5064) in paragraph at lines 257--257
+Underfull \hbox (badness 5064) in paragraph at lines 258--258
 []|\T1/cmr/m/n/12 Camerlo & Pérez-Liñán
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--257
+Underfull \hbox (badness 10000) in paragraph at lines 258--258
 []|\T1/cmr/m/n/12 González-Bustamante &
  []
 
 
-Underfull \hbox (badness 1237) in paragraph at lines 257--257
+Underfull \hbox (badness 1237) in paragraph at lines 258--258
 []|\T1/cmr/m/n/12 Pérez-Liñán (2007); Fis-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--257
+Underfull \hbox (badness 10000) in paragraph at lines 258--258
 \T1/cmr/m/n/12 Lemmon & Taylor-
  []
 
 [8] [9]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 3
-01.
+02.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
-<minmodelSurv.png, id=53, 850.17625pt x 682.55pt>
+) [10]
+[11]
+<minmodelSurv.png, id=60, 850.17625pt x 682.55pt>
 File: minmodelSurv.png Graphic file (type png)
 <use minmodelSurv.png>
-Package pdftex.def Info: minmodelSurv.png  used on input line 340.
+Package pdftex.def Info: minmodelSurv.png  used on input line 342.
 (pdftex.def)             Requested size: 390.0pt x 313.10196pt.
- [10]
-[11 <./minmodelSurv.png>] (./premieres.bbl [12] [13]) [14] (./premieres.aux)
+
+Underfull \hbox (badness 4429) in paragraph at lines 343--343
+[]\T1/cmr/m/n/12 Figure 4.1: Es-ti-mated PCM sur-vival curves un-der four sce-n
+ar-ios: out-side/in speech win-dow and
+ []
+
+[12 <./minmodelSurv.png>] [13
+
+
+] (./premieres.bbl [14]) [15] (./premieres.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 5744 strings out of 474116
- 92209 string characters out of 5743682
+ 5815 strings out of 474116
+ 94286 string characters out of 5743682
  1938187 words of memory out of 5000000
- 27955 multiletter control sequences out of 15000+600000
- 578120 words of font info for 88 fonts, out of 8000000 for 9000
+ 28017 multiletter control sequences out of 15000+600000
+ 577785 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,12n,79p,1027b,374s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
@@ -665,7 +686,7 @@ f-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2024/texmf-
 dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2024/texmf-di
 st/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2024/texmf-dist
 /fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on premieres.pdf (14 pages, 403291 bytes).
+Output written on premieres.pdf (15 pages, 402398 bytes).
 PDF statistics:
  166 PDF objects out of 1000 (max. 8388607)
  102 compressed objects within 2 object streams

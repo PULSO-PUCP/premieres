@@ -2,13 +2,14 @@
 \usepackage{authblk}
 \renewcommand{\Affilfont}{\footnotesize}
 \title{Cabinet under Pressure: Survival Analysis of Peru’s Prime Ministers Since 1980}
-\author[1,2]{ Jose Manuel Magallanes \thanks{The author would like to thank the research assistants from PULSO-PUCP: Alexandra Porras, Alfredo Aro, Romina Loayza, and Ivana Delgado, for their support  and dedication to this work.}}
-\affil[1]{PULSO -Institute of Social Analytics and Strategic Intelligence and Department of Social Sciences, Pontificia Universidad Catolica del Peru, San Miguel 15088, Lima, Peru}
+\author[1,2]{ Jose Manuel Magallanes}
+\affil[1]{PULSO -Institute of Social Analytics and Strategic Intelligence\thanks{The author would like to thank the research assistants from PULSO-PUCP: Alexandra Porras, Alfredo Aro, Romina Loayza, and Ivana Delgado, for their support  and dedication to this work.} and Department of Social Sciences, Pontificia Universidad Catolica del Peru, San Miguel 15088, Lima, Peru}
 \affil[2]{University of Massachusetts-Amherst; University of Washington -Seattle; and Universidad Nacional Mayor de San Marcos-Lima}
 \affil[*]{Corresponding author: jmagallanes@pucp.edu.pe}
 
 \usepackage{tabularx,booktabs,threeparttablex,multirow}
-\usepackage{rotating} 
+\usepackage{rotating,pdflscape}
+
 \date{\today}  %% manually: \date{March 6, 2025} 
 \usepackage[natbibapa]{apacite} %% for bibliography
 \usepackage{rotating, graphicx} %% for rotating tables
@@ -141,19 +142,19 @@ library(kableExtra)
 library(dplyr)
 library(kableExtra)
 library(knitr)
-linkGit1='https://github.com/PULSO-PUCP/premieres'
-linkGit2='/raw/refs/heads/main/primesmodel.xlsx'
-linkPrimes=paste0(linkGit1,linkGit2)
-data=rio::import(linkPrimes)
+# linkGit1='https://github.com/PULSO-PUCP/premieres'
+# linkGit2='/raw/refs/heads/main/primesmodel.parquet'
+# linkPrimes=paste0(linkGit1,linkGit2)
+data=arrow::read_parquet('primesmodel.parquet')
 namesHeaders=c("Era","count","mean","min",'max','range')
 summary_data <- data %>%
   group_by(era) %>%
   summarise(
     N = n(),
-    Mean_Var1 = mean(days_duration),
-    Min = min(days_duration),
-    Max = max(days_duration),
-    Range=max(days_duration)-min(days_duration)
+    Mean_Var1 = mean(spell_duration),
+    Min = min(spell_duration),
+    Max = max(spell_duration),
+    Range=max(spell_duration)-min(spell_duration)
   ) %>%kbl(format='latex',
            booktabs = T,
            digits = 2,                #label cross-ref!!
@@ -376,12 +377,14 @@ ggsave("minimalSurv.png",limitsize = T)
 
 
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=\textwidth]{minmodelSurv.png}
-  \caption{Estimated PCM survival curves under four scenarios: outside/in speech window and non‑Fujimori/Fujimori periods.}
-  \label{fig:survival_curves}
-\end{figure}
+\begin{landscape}
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{minmodelSurv.png}
+    \caption{Estimated PCM survival curves under four scenarios: outside/in speech window and non‑Fujimori/Fujimori periods.}
+    \label{fig:survival_curves}
+  \end{figure}
+\end{landscape}
 
 This plot shows four estimated survival curves—each with 95 \% confidence bands—derived from the simplified Cox model (no frailty) for combinations of the Fujimori regime dummy and the $\pm$ 45-day speech window:
 

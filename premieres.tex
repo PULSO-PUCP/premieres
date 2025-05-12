@@ -2,13 +2,14 @@
 \usepackage{authblk}
 \renewcommand{\Affilfont}{\footnotesize}
 \title{Cabinet under Pressure: Survival Analysis of Peru’s Prime Ministers Since 1980}
-\author[1,2]{ Jose Manuel Magallanes \thanks{The author would like to thank the research assistants from PULSO-PUCP: Alexandra Porras, Alfredo Aro, Romina Loayza, and Ivana Delgado, for their support  and dedication to this work.}}
-\affil[1]{PULSO -Institute of Social Analytics and Strategic Intelligence and Department of Social Sciences, Pontificia Universidad Catolica del Peru, San Miguel 15088, Lima, Peru}
+\author[1,2]{ Jose Manuel Magallanes}
+\affil[1]{PULSO -Institute of Social Analytics and Strategic Intelligence\thanks{The author would like to thank the research assistants from PULSO-PUCP: Alexandra Porras, Alfredo Aro, Romina Loayza, and Ivana Delgado, for their support  and dedication to this work.} and Department of Social Sciences, Pontificia Universidad Catolica del Peru, San Miguel 15088, Lima, Peru}
 \affil[2]{University of Massachusetts-Amherst; University of Washington -Seattle; and Universidad Nacional Mayor de San Marcos-Lima}
 \affil[*]{Corresponding author: jmagallanes@pucp.edu.pe}
 
 \usepackage{tabularx,booktabs,threeparttablex,multirow}
-\usepackage{rotating} 
+\usepackage{rotating,pdflscape}
+
 \date{\today}  %% manually: \date{March 6, 2025} 
 \usepackage[natbibapa]{apacite} %% for bibliography
 \usepackage{rotating, graphicx} %% for rotating tables
@@ -145,9 +146,9 @@ Peru’s Prime‑Ministerial tenure remains volatile, but volatility itself is n
 \toprule
 Era & count & mean & min & max & range\\
 \midrule
-A.PreFujimori & 9 & 405.44 & 138 & 864 & 726\\
+A.Belaunde\_Garcia & 9 & 405.44 & 138 & 864 & 726\\
 B.Fujimori & 13 & 302.08 & 78 & 792 & 714\\
-C.PostFujimori & 35 & 256.77 & 6 & 805 & 799\\
+C.Paniagua\_Boluarte & 36 & 249.64 & 6 & 805 & 799\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}[para]
@@ -335,12 +336,14 @@ Neither regime membership nor proximity to the July 28 speech window is statisti
 
 
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=\textwidth]{minmodelSurv.png}
-  \caption{Estimated PCM survival curves under four scenarios: outside/in speech window and non‑Fujimori/Fujimori periods.}
-  \label{fig:survival_curves}
-\end{figure}
+\begin{landscape}
+  \begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{minmodelSurv.png}
+    \caption{Estimated PCM survival curves under four scenarios: outside/in speech window and non‑Fujimori/Fujimori periods.}
+    \label{fig:survival_curves}
+  \end{figure}
+\end{landscape}
 
 This plot shows four estimated survival curves—each with 95 \% confidence bands—derived from the simplified Cox model (no frailty) for combinations of the Fujimori regime dummy and the $\pm$ 45-day speech window:
 
