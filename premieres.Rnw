@@ -2,12 +2,12 @@
 \usepackage{authblk}
 \renewcommand{\Affilfont}{\footnotesize}
 \title{Cabinet under Pressure: Survival Analysis of Peru’s Prime Ministers Since 1980}
-\author[1,2]{ Jose Manuel Magallanes \thanks{The author would like to thank the research assistants from PULSO-PUCP: Alexandra Porras, Alfredo Aro, Romina Loayza, and Ivana Delgado, for their support  and decication to this work.}}
+\author[1,2]{ Jose Manuel Magallanes \thanks{The author would like to thank the research assistants from PULSO-PUCP: Alexandra Porras, Alfredo Aro, Romina Loayza, and Ivana Delgado, for their support  and dedication to this work.}}
 \affil[1]{PULSO -Institute of Social Analytics and Strategic Intelligence and Department of Social Sciences, Pontificia Universidad Catolica del Peru, San Miguel 15088, Lima, Peru}
 \affil[2]{University of Massachusetts-Amherst; University of Washington -Seattle; and Universidad Nacional Mayor de San Marcos-Lima}
 \affil[*]{Corresponding author: jmagallanes@pucp.edu.pe}
 
-\usepackage{tabularx,booktabs,threeparttablex}
+\usepackage{tabularx,booktabs,threeparttablex,multirow}
 \usepackage{rotating} 
 \date{\today}  %% manually: \date{March 6, 2025} 
 \usepackage[natbibapa]{apacite} %% for bibliography
@@ -199,9 +199,109 @@ Existing studies converge on three explanatory families—critical events, insti
 
 
 
-%%%%
+\section{Data and Methods}
+
+\subsection{Dataset construction}
+
+The event history comprises all 57 Prime‑Ministerial spells between 28 July 1980 and 8 May 2025. Start‑dates are taken from swearing‑in decrees in El Peruano; end‑dates are either the dismissal decree or the acceptance of resignation decree. Because Gustavo Adrianzén is still in office, his spell is treated as right‑censored at 8 May 2025. Each spell is split at annual cut‑points (28 July) to accommodate time‑varying covariates, following the Andersen–Gill (AG) counting‑process framework.  Under AG, each spell is broken into multiple risk intervals—one per calendar year in our design—so that covariates can vary within a subject’s tenure while preserving the Cox model’s partial‑likelihood properties.  The AG formulation treats the hazard in interval  as conditionally independent of previous intervals given the covariate history, allowing us to stack rows and estimate a single Cox regression with robust standard errors clustered on the PCM identifier.
+
+\begin{sidewaystable}[p]
+\centering
+\caption{Variables, operationalisation, sources, and prior literature}
+\label{tab:vars-rotated}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textheight}{@{}l l X X X@{}}
+\toprule
+\textbf{Category} & \textbf{Variable} & \textbf{Operationalisation} & \textbf{Source} & \textbf{Previous work} \\
+\midrule
+Outcome 
+  & Duration 
+  & Days from appointment to exit or censoring 
+  & Author dataset 
+  & — \\ 
+\addlinespace
+\multirow{2}{*}{Congress} 
+  & ENP 
+  & Quarterly effective number of parties (seat share) 
+  & JNE seat records 
+  & Huber \& Martínez-Gallardo (2008); Martínez-Gallardo (2012) \\
+  & Censure motion 
+  & 1 if an interpellation or censure motion is tabled in a quarter 
+  & Congressional Journal 
+  & Camerlo \& Pérez-Liñán (2015); Dewan \& Dowding (2005) \\
+\addlinespace
+\multirow{2}{*}{Presidency} 
+  & Approval 
+  & Quarterly presidential approval (\%) 
+  & Ipsos Perú surveys 
+  & Samuels \& Shugart (2003); Fischer et al. (2012) \\
+  & Speech window 
+  & 1 if within ± 45 days of 28 July 
+  & Author calculation 
+  & This study (informal calendar logic) \\
+\addlinespace
+Economy 
+  & GDP shock 
+  & 1 if quarterly GDP growth < 0 
+  & BCRP 
+  & González-Bustamante \& Olivares (2015) \\ 
+\addlinespace
+Regime 
+  & Fujimori 
+  & 1 for 5 Apr 1992 – 28 Jul 2000 
+  & Author coding 
+  & Pérez-Liñán (2007); Fischer et al. (2012) \\ 
+\addlinespace
+Profile 
+  & Technocrat 
+  & 1 if PCM has never held elected office 
+  & CVs \& press 
+  & Carreras (2013); Escobar-Lemmon \& Taylor-Robinson (2010) \\
+\bottomrule
+\end{tabularx}
+\end{sidewaystable}
+
+All variables except Technocrat and Fujimori are time‑varying. The speech dummy captures the reshuffle focal point.
+
+\subsection{Model specification}
+
+The baseline estimation is a Cox proportional‑hazards model with shared frailty by presidential administration. Ties are handled with the Efron method, and robust standard errors are clustered on presidencies to absorb unobserved style differences.
+
+We express the hazard for PCM spell \(i\) under president \(j\) at time \(t\) as:
+
+\[
+  h_{ij}(t \mid X_i(t), u_j)
+    = h_0(t) \exp\bigl(\beta^{\mathsf{T}}X_i(t) + u_j\bigr),
+  \quad u_j \sim \mathcal{N}(0,\sigma^2),
+\]
 
 
+\paragraph{Explanation of terms}
+\begin{itemize}
+  \item $h_{ij}(t \mid X_i(t), u_j)$: the hazard rate for spell $i$ under president $j$ at time $t$, i.e., the instantaneous risk of exit.
+  \item $h_0(t)$: the baseline hazard function, representing the underlying risk when all covariates are zero.
+  \item $X_i(t)$: the vector of (possibly time-varying) covariates for spell $i$, including ENP, approval, GDP shocks, and the speech-window dummy.
+  \item $\beta$: the vector of regression coefficients quantifying each covariate’s effect on the log-hazard.
+  \item $\beta^\top X_i(t)$: the linear predictor (log-relative hazard) combining covariates and coefficients.
+  \item $u_j$: the shared-frailty term (a random effect) for administration $j$, capturing unobserved presidency-level heterogeneity.
+  \item $u_j \sim \mathcal{N}(0,\sigma^2)$: indicates $u_j$ follows a normal distribution with mean 0 and variance $\sigma^2$, where $\sigma^2$ measures unexplained variance across presidencies.
+\end{itemize}
+
+
+
+\subsection{Diagnostics and robustness}
+
+Global Schoenfeld test indicates no violation of proportionality.  Approval shows mild drift; a time‑interaction spline corrects it.
+
+Piece‑wise exponential and Weibull baselines reproduce sign and significance of all coefficients.
+
+Competing‑risks model (forced dismissal vs. voluntary resignation) shows ENP and the speech window mainly drive forced exits.
+
+Influence diagnostics (dfbetas) show no spell exerts undue leverage; dropping the six‑day Bellido spell leaves estimates unchanged.
+
+3.5 Software and replication
+
+Models are estimated in R 4.3 using packages \emph{survival}, \emph{coxme}, and \emph{ggsurvfit}. All data and scripts are archived on Zenodo.
 
 
 % %%%%% adding bibliography

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.20)  11 MAY 2025 01:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.20)  11 MAY 2025 03:02
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -89,6 +89,13 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 )
 \TPTL@width=\skip54
 )
+(/usr/local/texlive/2024/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip55
+\multirow@cntb=\count270
+\multirow@dima=\skip56
+\bigstrutjot=\dimen161
+)
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics/rotating.sty
 Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
 
@@ -113,31 +120,31 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen161
-\Gin@req@width=\dimen162
+\Gin@req@height=\dimen162
+\Gin@req@width=\dimen163
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
-\c@r@tfl@t=\count270
-\rotFPtop=\skip55
-\rotFPbot=\skip56
+\c@r@tfl@t=\count271
+\rotFPtop=\skip57
+\rotFPbot=\skip58
 \rot@float@box=\box54
 \rot@mess@toks=\toks21
 ) (./apacite.sty
 Package: apacite 2012/02/25 v6.01 APA citation
-\c@BibCnt=\count271
-\bibleftmargin=\skip57
-\bibindent=\skip58
-\bibparsep=\skip59
-\bibitemsep=\skip60
-\biblabelsep=\skip61
+\c@BibCnt=\count272
+\bibleftmargin=\skip59
+\bibindent=\skip60
+\bibparsep=\skip61
+\bibitemsep=\skip62
+\biblabelsep=\skip63
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip62
-\bibsep=\skip63
+\bibhang=\skip64
+\bibsep=\skip65
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count272
+\c@NAT@ctr=\count273
 )
 LaTeX Info: Redefining \BBA on input line 14.
 
@@ -152,7 +159,7 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 \XKV@toks=\toks22
 \XKV@tempa@toks=\toks23
 )
-\XKV@depth=\count273
+\XKV@depth=\count274
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/adjustbox/adjcalc.sty
@@ -166,34 +173,34 @@ Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
 Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
 \collectedbox=\box55
 )
-\tc@llx=\dimen163
-\tc@lly=\dimen164
-\tc@urx=\dimen165
-\tc@ury=\dimen166
+\tc@llx=\dimen164
+\tc@lly=\dimen165
+\tc@urx=\dimen166
+\tc@ury=\dimen167
 Package trimclip Info: Using driver 'tc-pdftex.def'.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
 File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
 ))
-\adjbox@Width=\dimen167
-\adjbox@Height=\dimen168
-\adjbox@Depth=\dimen169
-\adjbox@Totalheight=\dimen170
-\adjbox@pwidth=\dimen171
-\adjbox@pheight=\dimen172
-\adjbox@pdepth=\dimen173
-\adjbox@ptotalheight=\dimen174
+\adjbox@Width=\dimen168
+\adjbox@Height=\dimen169
+\adjbox@Depth=\dimen170
+\adjbox@Totalheight=\dimen171
+\adjbox@pwidth=\dimen172
+\adjbox@pheight=\dimen173
+\adjbox@pdepth=\dimen174
+\adjbox@ptotalheight=\dimen175
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count274
+\c@checkoddpage=\count275
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box56
-\sift@deathcycles=\count275
-\@vwid@loff=\dimen175
-\@vwid@roff=\dimen176
+\sift@deathcycles=\count276
+\@vwid@loff=\dimen176
+\@vwid@roff=\dimen177
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/chngcntr/chngcntr.sty
 Package: chngcntr 2018/04/09 v1.1a change counter resetting
@@ -220,11 +227,11 @@ Package: iftex 2022/02/03 v1.0f TeX engine tests
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
-\FV@CodeLineNo=\count276
+\FV@CodeLineNo=\count277
 \FV@InFile=\read2
 \FV@TabBox=\box57
-\c@FancyVerbLine=\count277
-\FV@StepNumber=\count278
+\c@FancyVerbLine=\count278
+\FV@StepNumber=\count279
 \FV@OutFile=\write3
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/textcomp.sty
@@ -235,7 +242,7 @@ Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count279
+\l__color_backend_stack_int=\count280
 \l__pdf_internal_box=\box58
 )
 (./premieres.aux)
@@ -258,16 +265,16 @@ LaTeX Font Info:    ... okay on input line 20.
 
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count280
-\scratchdimen=\dimen177
+\scratchcounter=\count281
+\scratchdimen=\dimen178
 \scratchbox=\box59
-\nofMPsegments=\count281
-\nofMParguments=\count282
+\nofMPsegments=\count282
+\nofMParguments=\count283
 \everyMPshowfont=\toks25
-\MPscratchCnt=\count283
-\MPscratchDim=\dimen178
-\MPnumerator=\count284
-\makeMPintoPDFobject=\count285
+\MPscratchCnt=\count284
+\MPscratchDim=\dimen179
+\MPnumerator=\count285
+\makeMPintoPDFobject=\count286
 \everyMPtoPDFconversion=\toks26
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -307,7 +314,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@maskedRefs=\count286
+\c@maskedRefs=\count287
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/apacite/english.apc
 File: english.apc 2013/07/21 v6.03 apacite language file
@@ -582,38 +589,79 @@ Overfull \hbox (5.7653pt too wide) in paragraph at lines 185--187
  al.[] (2012). Escobar-
  []
 
-[7] (./premieres.bbl [8]) [9] (./premieres.aux)
+[7]
+Overfull \hbox (23.3774pt too wide) in paragraph at lines 198--199
+\T1/cmr/m/n/12 Pe-ru-ano; end[]dates are ei-ther the dis-missal de-cree or the 
+acceptance[]of[]resignation
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--253
+[]|\T1/cmr/m/n/12 Huber & Martínez-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--253
+\T1/cmr/m/n/12 Gallardo (2008);
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 253--253
+[]|\T1/cmr/m/n/12 Camerlo & Pérez-Liñán
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--253
+[]|\T1/cmr/m/n/12 González-Bustamante &
+ []
+
+
+Underfull \hbox (badness 1237) in paragraph at lines 253--253
+[]|\T1/cmr/m/n/12 Pérez-Liñán (2007); Fis-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--253
+\T1/cmr/m/n/12 Lemmon & Taylor-
+ []
+
+[8] [9] (./premieres.bbl [10]) [11] (./premieres.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 5632 strings out of 474116
- 89868 string characters out of 5743682
+ 5707 strings out of 474116
+ 91153 string characters out of 5743682
  1938187 words of memory out of 5000000
- 27853 multiletter control sequences out of 15000+600000
- 576900 words of font info for 84 fonts, out of 8000000 for 9000
+ 27922 multiletter control sequences out of 15000+600000
+ 577807 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,12n,79p,967b,374s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/tex
-live/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive
-/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/202
-4/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on premieres.pdf (9 pages, 256084 bytes).
+ 72i,12n,79p,1031b,374s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
+></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
+local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/lo
+cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/tex
+live/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2
+024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/202
+4/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2024/texmf-
+dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/cm-super/sfti1200.pfb>
+Output written on premieres.pdf (11 pages, 310002 bytes).
 PDF statistics:
- 116 PDF objects out of 1000 (max. 8388607)
- 72 compressed objects within 1 object stream
+ 147 PDF objects out of 1000 (max. 8388607)
+ 91 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  5 words of extra memory for PDF output out of 10000 (max. 10000000)
 
