@@ -148,7 +148,6 @@ Era & count & mean & min & max & range\\
 A.PreFujimori & 9 & 405.44 & 138 & 864 & 726\\
 B.Fujimori & 13 & 302.08 & 78 & 792 & 714\\
 C.PostFujimori & 35 & 256.77 & 6 & 805 & 799\\
-D.before\_1980 & 167 & 262.43 & 1 & 1822 & 1821\\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}[para]
@@ -195,7 +194,12 @@ Existing studies converge on three explanatory families—critical events, insti
 
 \subsection{Dataset construction}
 
-The event history comprises all 57 Prime‑Ministerial spells between 28 July 1980 and 8 May 2025. Start‑dates are taken from swearing‑in decrees in El Peruano; end‑dates are either the dismissal decree or the acceptance‑of‑resignation decree. Because Gustavo Adrianzén is still in office, his spell is treated as right‑censored at 8 May 2025. Each spell is split at annual cut‑points (28 July) to accommodate time‑varying covariates, following the Andersen–Gill (AG) counting‑process framework.  Under AG, each spell is broken into multiple risk intervals—one per calendar year in our design—so that covariates can vary within a subject’s tenure while preserving the Cox model’s partial‑likelihood properties.  The AG formulation treats the hazard in interval  as conditionally independent of previous intervals given the covariate history, allowing us to stack rows and estimate a single Cox regression with robust standard errors clustered on the PCM identifier.
+The event history comprises all 57 Prime‑Ministerial spells between 28 July 1980 and 8 May 2025. Each raw spell records a single start and end date (or censoring).  However, because key covariates (e.g., regime membership and days‑to‑speech) may change mid‑tenure, we split each spell at every annual July 28 following the Andersen–Gill (AG) counting‑process framework \footnote{If one instead fits models on the raw, unsplit spells, covariates like "days to speech" and Fujimori are fixed at the appointment date, failing to capture mid‑tenure transitions.  Splitting at July 28 ensures that the  dummy for speech timing and the regime dummy reflect the correct interval‑specific values.}.  This produces multiple risk intervals per PCM tenure—one per calendar year—so that time‑varying covariates can update precisely as they cross each speech date or regime boundary, while preserving the Cox partial‑likelihood and allowing robust standard errors clustered by PCM.
+
+Start‑dates are taken from swearing‑in decrees in El Peruano; end‑dates are either the dismissal decree or the acceptance‑of‑resignation decree. Because Gustavo Adrianzén is still in office, his final interval is right‑censored at 8 May 2025.
+
+
+
 
 \begin{sidewaystable}[p]
 \centering
@@ -280,21 +284,99 @@ We express the hazard for PCM spell \(i\) under president \(j\) at time \(t\) as
 \end{itemize}
 
 
+% The baseline estimation is a **Cox proportional‑hazards model with shared frailty by presidential administration**, implemented in R with the `coxme` package. Note that while `survival::coxph` supports simple frailty terms, the `coxme` package is required for estimating mixed‑effects Cox models with normally distributed random effects (shared frailty) across presidencies.
 
-\subsection{Diagnostics and robustness}
 
-Global Schoenfeld test indicates no violation of proportionality.  Approval shows mild drift; a time‑interaction spline corrects it.
 
-Piece‑wise exponential and Weibull baselines reproduce sign and significance of all coefficients.
 
-Competing‑risks model (forced dismissal vs. voluntary resignation) shows ENP and the speech window mainly drive forced exits.
 
-Influence diagnostics (dfbetas) show no spell exerts undue leverage; dropping the six‑day Bellido spell leaves estimates unchanged.
 
-3.5 Software and replication
 
-Models are estimated in R 4.3 using packages \emph{survival}, \emph{coxme}, and \emph{ggsurvfit}. All data and scripts are archived on Zenodo.
 
+\section{Results}
+
+\subsection{Initial model}
+
+\begin{Schunk}
+\begin{Soutput}
+Mixed effects coxme model
+ Formula: Surv(interval_duration, event) ~ regime_fujimori + speech_window +      (1 | presidentofExecutive) 
+    Data: intervals_AG 
+
+  events, n = 58, 73
+
+Random effects:
+                 group  variable         sd     variance
+1 presidentofExecutive Intercept 0.01999358 0.0003997433
+                  Chisq   df      p  AIC    BIC
+Integrated loglik  1.40 3.00 0.7061 -4.6 -10.78
+ Penalized loglik  1.43 2.02 0.4919 -2.6  -6.75
+
+Fixed effects:
+                   coef exp(coef) se(coef)     z     p
+regime_fujimori -0.4169    0.6591   0.3900 -1.07 0.285
+speech_window   -0.1571    0.8546   0.2768 -0.57 0.570
+\end{Soutput}
+\end{Schunk}
+
+Neither regime membership nor proximity to the July 28 speech window is statistically significant in this minimal specification; point estimates suggest mildly lower exit risk (HR<1) but with wide confidence intervals.
+
+
+
+
+% \begin{figure}[h]
+% \centering
+% \begin{adjustbox}%{width=10cm,height=10cm}
+% \end{adjustbox}
+% \caption{Survival Curves}
+% \label{minimalSurv}
+% \end{figure}
+
+
+
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{minmodelSurv.png}
+  \caption{Estimated PCM survival curves under four scenarios: outside/in speech window and non‑Fujimori/Fujimori periods.}
+  \label{fig:survival_curves}
+\end{figure}
+
+This plot shows four estimated survival curves—each with 95 \% confidence bands—derived from the simplified Cox model (no frailty) for combinations of the Fujimori regime dummy and the $\pm$ 45-day speech window:
+
+\begin{itemize}
+\item Green (“Outside, No Speech Window”): PCM spells that start outside the speech window and outside the Fujimori period.
+
+\item Orange (“Outside, In Speech Window”): Spells that start within ± 45 days of July 28 but outside Fujimori.
+
+\item Blue (“Fujimori, No Speech Window”): Spells during Fujimori that start more than 45 days from the speech.
+
+\item Pink (“Fujimori, In Speech Window”): Spells during Fujimori that start within the speech window.
+\end{itemize}
+
+From this plot we can say that overall decline in survival. All curves drop from 1.0 toward 0 as days in office accumulate—by around 300 days only half of PCMs remain in office on average.
+
+Regime effect (Fujimori vs. non-Fujimori): The two Fujimori curves (blue and pink) lie above their non-Fujimori counterparts, indicating longer average survival under Fujimori. For instance, at 200 days the survival probability is roughly 0.65 under Fujimori versus about 0.50 outside it.
+
+Speech-window effect: Within each regime, the “in speech window” curve (orange and pink) tracks slightly above the “no speech window” curve (green and blue), suggesting a modest reduction in exit risk when a spell begins near the annual address date. This difference, however, is small relative to the CIs.
+
+Precision declines over time: The shaded bands widen toward the right, reflecting increasing uncertainty as fewer spells survive into longer tenures. Beyond ~400 days, the confidence intervals become very wide, so point‐estimate differences at those durations are not very informative.
+
+Number at risk: The table below shows how many intervals remain “at risk” at key time-points (0, 100, 200, … days). You start with 72 intervals (57 spells split at speech cut–points), dropping to just 2 intervals by ~500 days.
+
+
+Although the point estimates hint at better survival during Fujimori and slightly lower exit risk for spells initiated near the speech, these contrasts fall well within the wide confidence bands. This visual underscores why the minimal two-covariate model didn’t yield statistically significant regime or speech-window effects—and why adding the institutional (ENP), approval, and economic covariates is essential to sharpen the estimated drivers of PCM durability.
+
+
+
+\section{Software and replication}
+
+Models are estimated in R 4.3 using packages \emph{survival}, \emph{coxme}, and \emph{ggsurvfit}. All data and scripts are archived on Github
+
+
+\section{Conclusion}
+
+\section{Apendixes}
 
 % %%%%% adding bibliography
 \bibliographystyle{apacite} %%style
