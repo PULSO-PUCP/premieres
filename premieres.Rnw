@@ -27,96 +27,17 @@ This study examines the political durability of Peru’s Prime Ministers (Presid
 \end{abstract}
 
 
-\section*{Introduction} % * to unnumber
+\section{Introduction} % * to unnumber
 
 The median tenure of a Peruvian Prime Minister (PCM) since 1980 is 254 days (around 8 months), yet variation is striking. Ántero Flores\-Aráoz lasted only six days in November 2020, whereas Manuel Ulloa served 864 days in the early 1980s and Jorge del Castillo survived 805 days during Alan García’s second term. Dispersion persists even within a single presidential period: three PCMs held the post during Pedro Castillo’s first five months, while Alberto Otárola remained in office for 440 days under Dina Boluarte. This inconsistency under ostensibly similar institutional rules raises a central puzzle: Which political, institutional, and situational factors condition the durability of Peru’s Prime Ministers?
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
-\begin{adjustbox}{clip,trim=0cm 0.5cm 0cm 0cm} 
-<<lolliDURpcm, echo=FALSE, fig=TRUE>>=
-# Load required libraries
-library(readxl)
-library(ggplot2)
-library(dplyr)
-
-
-# Load data
-
-df <- arrow::read_parquet("spellsModel.parquet") %>%
-  arrange(start) %>%
-  mutate(
-    internal_label = make.unique(as.character(PCM)),
-    spell_label = factor(internal_label, levels = internal_label),
-    display_label = PCM
-  )
-
-q1 <- quantile(df$spell_duration, 0.25)
-med <- median(df$spell_duration)
-q3 <- quantile(df$spell_duration, 0.75)
-iqr <- IQR(df$spell_duration)
-# Define "max" whisker (upper bound for typical values)
-max_whisker <- q3 + 1.5 * iqr
-
-
-
-# Map y-axis positions
-df$y_pos <- as.numeric(df$spell_label)
-
-# Identify president segments (start and end y positions)
-pres_blocks <- df %>%
-  mutate(block = cumsum(PresidentOfExecutive != lag(PresidentOfExecutive, default = first(PresidentOfExecutive)))) %>%
-  group_by(block, PresidentOfExecutive) %>%
-  summarise(ymin = min(y_pos) - 0.5, ymax = max(y_pos) + 0.5, .groups = "drop")
-
-pres_blocks <- pres_blocks %>%
-  mutate(
-    ymid = (ymin + ymax) / 2  # vertical midpoint for label
-  )
-
-# Begin plot
-ggplot(df, aes(x = spell_duration, y = spell_label)) +
-
-geom_rect(data = pres_blocks, aes(xmin = 0, xmax = max(df$spell_duration) + 100,
-                                  ymin = ymin, ymax = ymax,
-                                  fill = as.factor(block)),
-          color = NA, alpha = 1, inherit.aes = FALSE) +
-    geom_text(
-  data = pres_blocks,
-  aes(x = max_whisker+150, y = ymid, label = PresidentOfExecutive),  # x=10 keeps labels on the left
-  inherit.aes = FALSE,
-  hjust = 0.5,  # left-align
-  size = 2.5,  # adjust for readability
-  fontface = "italic",color='grey50'
-)+
-scale_fill_manual(values = rep(c("white", "grey95"), length.out = nrow(pres_blocks))) +
-guides(fill = "none")+
-  # Lollipop stems and heads
-  geom_segment(aes(x = 0, xend = spell_duration, yend = spell_label), color = "black") +
-  geom_point(color = "black") +
-  scale_y_discrete(labels = df$display_label) +
-    # Use only those as x-axis ticks
-scale_x_continuous(
-  expand = c(0, 0),
-    breaks = round(c(q1, med, q3, max_whisker)),
-  labels = round(c(q1, med, q3, max_whisker))
-)+
-    geom_vline(xintercept = c(q1, med, q3), linetype = "dotted", color = "grey40") +
-geom_vline(xintercept = max_whisker, linetype = "dotted", color = "red")+
-  labs(
-    title = "Duration of Prime Ministers in Office (Peru, 1980–2025)",
-    x = "Days in Office",
-    y = NULL
-  ) +
-  theme_minimal() +
-  theme(axis.text.y = element_text(margin = margin(r = 0)) 
-)
-
-
-@
-\end{adjustbox}
-\caption{Duration of Prime Ministers from 1980 until 2025}  
-\label{lolliDURpcm} 
+% \begin{adjustbox}%{width=0.9\textwidth,height=12cm,clip,trim=0cm 0cm 0cm 0cm} 
+\includegraphics[width=0.95\textwidth]{durationLolli.pdf}
+% \end{adjustbox}
+\caption{Variability and Statistics Duration of PCMs in Perú from 1980 until 2025}  
+\label{durationLolli} 
 \end{figure}
 
 Although the Constitution describes the PCM merely as the president’s first minister—responsible for countersigning decrees and coordinating the cabinet—practice since 1980 indicates that the office routinely performs head-of-government functions: drafting the policy agenda, negotiating confidence votes, and representing the executive in congressional interpellations. The PCM thus acts as the president’s chief political shield. During normal times, the office facilitates legislative compromise and signals technocratic competence; in crises, it functions as a “circuit-breaker,” a high-visibility scapegoat whose dismissal absorbs congressional anger and preserves presidential tenure. Analysing the determinants of PCM survival therefore illuminates how Peru’s hyper-presidential system manages accountability, blame assignment, and policy coordination in the absence of strong parties.
@@ -226,11 +147,10 @@ Peru’s Prime‑Ministerial tenure remains volatile, but volatility itself is n
 
 
 
-<<results=tex, echo=FALSE>>=
+<<results=tex, echo=FALSE, eval=FALSE>>=
 options(kableExtra.latex.load_packages = FALSE)
 library(kableExtra)
 library(dplyr)
-library(kableExtra)
 library(knitr)
 # linkGit1='https://github.com/PULSO-PUCP/premieres'
 # linkGit2='/raw/refs/heads/main/primesmodel.parquet'
@@ -394,266 +314,266 @@ We express the hazard for PCM spell \(i\) under president \(j\) at time \(t\) as
 
 
 \section{Results}
-
-\subsection{Initial model}
-
-<<echo=FALSE,results=tex>>=
-
-library(survival)
-library(coxme)
-library(stargazer)
-# library(arrow)
-
-
-# 1. Load the AG intervals
-intervals_AG=arrow::read_parquet(file = "AG_intervals.parquet")
-
-# 2. Fit the minimal “base” model: regime + speech, frailty by president
-fit_base_AG <- coxme(
-  Surv(interval_duration, event) ~ regime_fujimori + speech_window + (1 | presidentofExecutive),
-  data = intervals_AG,
-  ties = "efron"
-)
-fit=fit_base_AG
-s=summary(fit_base_AG)
-
-
-# --- Random effect ---
-# --- Random Effects ---
-re_sd <- round(s$random[["sd"]][1], 5)
-re_var <- round(re_sd^2, 8)
-
-# --- Random Effects Model Fit (from s$chi) ---
-chi_df <- round(as.data.frame(s$chi), 4)
-
-# chi_df rows: "Integrated", "Penalized"; columns: Chisq, df, p, AIC
-
-# --- Full Model Fit ---
-loglik_val <- round(logLik(fit)[1], 2)
-df_val     <- attr(logLik(fit), "df")
-aic_val    <- round(AIC(fit), 2)
-
-# --- Fixed Effects ---
-fe <- s$coefficients
-fe_out <- apply(fe, 1, function(row) {
-  coef <- round(row["coef"], 4)
-  hr   <- round(exp(row["coef"]), 4)
-  se   <- round(row["se(coef)"], 4)
-  z    <- round(row["z"], 2)
-  pval <- round(2 * (1 - pnorm(abs(z))), 3)
-  sprintf("%s & %.4f & %.4f & %.4f & %.2f \\quad %.3f \\\\", 
-          rownames(fe)[which(fe[, "coef"] == row["coef"])],
-          coef, hr, se, z, pval)
-})
-
-# --- Output LaTeX file ---
-out_file <- "coxme_summary.tex"
-
-cat(
-"\\begin{table}[ht]
-\\centering
-\\begin{threeparttable}
-\\caption{Cox Mixed-Effects Model Summary}
-\\label{tab:coxme_auto}
-\\begin{tabular}{lllll}
-\\toprule
-\\multicolumn{5}{l}{\\textbf{Random Effects}} \\\\
-\\midrule
-Group & Variable & SD & Variance & \\\\
-presidentofExecutive & Intercept & ", re_sd, " & ", re_var, " & \\\\
-\\\\
-\\multicolumn{5}{l}{\\textbf{Random Effects Model Fit (LRT)}} \\\\
-\\midrule
-Method & Chisq & df & p & AIC \\\\
-Integrated loglik & ", chi_df[1, "Chisq"], " & ", chi_df[1, "df"], " & ", chi_df[1, "p"], " & ", chi_df[1, "AIC"], " \\\\
-Penalized loglik & ", chi_df[2, "Chisq"], " & ", chi_df[2, "df"], " & ", chi_df[2, "p"], " & ", chi_df[2, "AIC"], " \\\\
-\\\\
-\\multicolumn{5}{l}{\\textbf{Full Model Fit}} \\\\
-\\midrule
-Statistic & & & & \\\\
-Penalized log-likelihood & & & & ", loglik_val, " \\\\
-Degrees of freedom & & & & ", df_val, " \\\\
-AIC & & & & ", aic_val, " \\\\
-\\\\
-\\multicolumn{5}{l}{\\textbf{Fixed Effects}} \\\\
-\\midrule
-Variable & Coef & exp(Coef) & SE(Coef) & z \\quad p \\\\
-", paste(fe_out, collapse = "\n"), "
-\\bottomrule
-\\end{tabular}
-\\begin{tablenotes}
-\\footnotesize
-\\item \\textit{Note}: Coefficients are from a Cox proportional hazards mixed-effects model with a random intercept. SD = standard deviation of random effect. Variance = SD\\textsuperscript{2}.
-\\item \\textit{exp(Coef)} is the hazard ratio. p-values are based on z-tests.
-\\item Significance: * p<0.1; ** p<0.05; *** p<0.01
-\\end{tablenotes}
-\\end{threeparttable}
-\\end{table}
-", file = out_file)
-
-@
-
-\input{coxme_summary2.tex}
-
-Neither regime membership nor proximity to the July 28 speech window is statistically significant in this minimal specification; point estimates suggest mildly lower exit risk (HR<1) but with wide confidence intervals.
-
-
-
-
-% \begin{figure}[h]
-% \centering
-% \begin{adjustbox}%{width=10cm,height=10cm}
-<<minimalSurv, echo=FALSE, fig=F,eval=FALSE>>=
-# library(survminer)
-# fit_plot <- coxph(
-#   Surv(interval_duration, event) ~ regime_fujimori + speech_window,
-#   data = intervals_AG,
-#   ties = "efron"
-# )
-# 
-# # Create combinations of covariates
-# newdata <- expand.grid(
-#   regime_fujimori = c(0,1),
-#   speech_window   = c(0,1)
-# )
-# 
-# # Generate survival curves
-# surv_fit <- survfit(fit_plot, newdata=newdata)
-# 
-# # Plot using survminer
-# ggsurvplot(
-#   surv_fit,
-#   data        = newdata,
-#   legend.title= "Scenario",
-#   legend.labs = c("Outside, No Speech Window",
-#                   "Outside, In Speech Window",
-#                   "Fujimori, No Speech Window",
-#                   "Fujimori, In Speech Window"),
-#   xlab        = "Days in Office",
-#   ylab        = "Survival Probability",
-#   palette     = "Dark2",
-#   risk.table  = T
-# )
-# ggsave("minimalSurv.png",limitsize = T)
-@
-% \end{adjustbox}
-% \caption{Survival Curves}
-% \label{minimalSurv}
-% \end{figure}
-
-
-
-
-<<echo=FALSE>>=
-library(survival)
-library(survminer)
-
-# Fit model
-fit_plot <- coxph(
-  Surv(interval_duration, event) ~ regime_fujimori + speech_window,
-  data = intervals_AG,
-  ties = "efron"
-)
-
-# Prediction grid
-newdata <- expand.grid(
-  regime_fujimori = c(0,1),
-  speech_window   = c(0,1)
-)
-
-surv_fit <- survfit(fit_plot, newdata = newdata)
-
-
-ggsurv_combined <- ggsurvplot(
-  surv_fit,
-  data        = newdata,
-  legend.title= "Scenario",
-  legend.labs = c("Outside, No Speech Window",
-                  "Outside, In Speech Window",
-                  "Fujimori, No Speech Window",
-                  "Fujimori, In Speech Window"),
-  xlab        = "Days in Office",
-  ylab        = "Survival Probability",
-  palette     = "Dark2",
-  risk.table  = TRUE,
-  combine     = TRUE,        # <-- THIS IS THE KEY
-  ggtheme     = theme_minimal()
-)
-
-# library(gridExtra)
-# pdf("combined_survival_plot.pdf",width = 1198,height = 680)
-# grid.arrange(
-#   ggsurv_combined$plot,
-#   ggsurv_combined$table,
-#   heights = c(2, 1)  # adjust vertical proportions
-# )
-# dev.off()
-
-library(cowplot)
-
-# Combine without trimming
-p_combined <- plot_grid(
-  ggsurv_combined$plot,
-  ggsurv_combined$table,
-  ncol = 1,
-  rel_heights = c(2, 1)
-)
-
-ggsave("combined_survival_plot.pdf", p_combined, width = 10, height = 6.5)
-@
-
-
-% \begin{figure}[ht]
-% \centering
-% \includegraphics[width=0.85\textwidth]{combined_survival_plot.pdf}
-% \caption{Survival curves by scenario (Fujimori vs. Outside)}
-% \label{fig:survcurve}
-% \end{figure}
-
-% \begin{sidewaysfigure}
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[width=\textwidth]{combined_survival_plot.pdf}
-    \caption{Estimated PCM survival curves under four scenarios: outside/in speech window and non‑Fujimori/Fujimori periods.}
-    \label{fig:survival_curves}
-  \end{figure}
-% \end{sidewaysfigure}
-
-This plot shows four estimated survival curves—each with 95 \% confidence bands—derived from the simplified Cox model (no frailty) for combinations of the Fujimori regime dummy and the $\pm$ 45-day speech window:
-
-\begin{itemize}
-\item Green (“Outside, No Speech Window”): PCM spells that start outside the speech window and outside the Fujimori period.
-
-\item Orange (“Outside, In Speech Window”): Spells that start within ± 45 days of July 28 but outside Fujimori.
-
-\item Blue (“Fujimori, No Speech Window”): Spells during Fujimori that start more than 45 days from the speech.
-
-\item Pink (“Fujimori, In Speech Window”): Spells during Fujimori that start within the speech window.
-\end{itemize}
-
-From this plot we can say that overall decline in survival. All curves drop from 1.0 toward 0 as days in office accumulate—by around 300 days only half of PCMs remain in office on average.
-
-Regime effect (Fujimori vs. non-Fujimori): The two Fujimori curves (blue and pink) lie above their non-Fujimori counterparts, indicating longer average survival under Fujimori. For instance, at 200 days the survival probability is roughly 0.65 under Fujimori versus about 0.50 outside it.
-
-Speech-window effect: Within each regime, the “in speech window” curve (orange and pink) tracks slightly above the “no speech window” curve (green and blue), suggesting a modest reduction in exit risk when a spell begins near the annual address date. This difference, however, is small relative to the CIs.
-
-Precision declines over time: The shaded bands widen toward the right, reflecting increasing uncertainty as fewer spells survive into longer tenures. Beyond ~400 days, the confidence intervals become very wide, so point‐estimate differences at those durations are not very informative.
-
-Number at risk: The table below shows how many intervals remain “at risk” at key time-points (0, 100, 200, … days). You start with 72 intervals (57 spells split at speech cut–points), dropping to just 2 intervals by ~500 days.
-
-
-Although the point estimates hint at better survival during Fujimori and slightly lower exit risk for spells initiated near the speech, these contrasts fall well within the wide confidence bands. This visual underscores why the minimal two-covariate model didn’t yield statistically significant regime or speech-window effects—and why adding the institutional (ENP), approval, and economic covariates is essential to sharpen the estimated drivers of PCM durability.
-
-
-
-\section{Software and replication}
-
-Models are estimated in R 4.3 using packages \emph{survival}, \emph{coxme}, and \emph{ggsurvfit}. All data and scripts are archived on Github
-
-
-\section{Conclusion}
-
-\section{Apendixes}
+% 
+% \subsection{Initial model}
+% 
+% <<echo=FALSE,results=tex>>=
+% 
+% library(survival)
+% library(coxme)
+% library(stargazer)
+% # library(arrow)
+% 
+% 
+% # 1. Load the AG intervals
+% intervals_AG=arrow::read_parquet(file = "AG_intervals.parquet")
+% 
+% # 2. Fit the minimal “base” model: regime + speech, frailty by president
+% fit_base_AG <- coxme(
+%   Surv(interval_duration, event) ~ regime_fujimori + speech_window + (1 | presidentofExecutive),
+%   data = intervals_AG,
+%   ties = "efron"
+% )
+% fit=fit_base_AG
+% s=summary(fit_base_AG)
+% 
+% 
+% # --- Random effect ---
+% # --- Random Effects ---
+% re_sd <- round(s$random[["sd"]][1], 5)
+% re_var <- round(re_sd^2, 8)
+% 
+% # --- Random Effects Model Fit (from s$chi) ---
+% chi_df <- round(as.data.frame(s$chi), 4)
+% 
+% # chi_df rows: "Integrated", "Penalized"; columns: Chisq, df, p, AIC
+% 
+% # --- Full Model Fit ---
+% loglik_val <- round(logLik(fit)[1], 2)
+% df_val     <- attr(logLik(fit), "df")
+% aic_val    <- round(AIC(fit), 2)
+% 
+% # --- Fixed Effects ---
+% fe <- s$coefficients
+% fe_out <- apply(fe, 1, function(row) {
+%   coef <- round(row["coef"], 4)
+%   hr   <- round(exp(row["coef"]), 4)
+%   se   <- round(row["se(coef)"], 4)
+%   z    <- round(row["z"], 2)
+%   pval <- round(2 * (1 - pnorm(abs(z))), 3)
+%   sprintf("%s & %.4f & %.4f & %.4f & %.2f \\quad %.3f \\\\", 
+%           rownames(fe)[which(fe[, "coef"] == row["coef"])],
+%           coef, hr, se, z, pval)
+% })
+% 
+% # --- Output LaTeX file ---
+% out_file <- "coxme_summary.tex"
+% 
+% cat(
+% "\\begin{table}[ht]
+% \\centering
+% \\begin{threeparttable}
+% \\caption{Cox Mixed-Effects Model Summary}
+% \\label{tab:coxme_auto}
+% \\begin{tabular}{lllll}
+% \\toprule
+% \\multicolumn{5}{l}{\\textbf{Random Effects}} \\\\
+% \\midrule
+% Group & Variable & SD & Variance & \\\\
+% presidentofExecutive & Intercept & ", re_sd, " & ", re_var, " & \\\\
+% \\\\
+% \\multicolumn{5}{l}{\\textbf{Random Effects Model Fit (LRT)}} \\\\
+% \\midrule
+% Method & Chisq & df & p & AIC \\\\
+% Integrated loglik & ", chi_df[1, "Chisq"], " & ", chi_df[1, "df"], " & ", chi_df[1, "p"], " & ", chi_df[1, "AIC"], " \\\\
+% Penalized loglik & ", chi_df[2, "Chisq"], " & ", chi_df[2, "df"], " & ", chi_df[2, "p"], " & ", chi_df[2, "AIC"], " \\\\
+% \\\\
+% \\multicolumn{5}{l}{\\textbf{Full Model Fit}} \\\\
+% \\midrule
+% Statistic & & & & \\\\
+% Penalized log-likelihood & & & & ", loglik_val, " \\\\
+% Degrees of freedom & & & & ", df_val, " \\\\
+% AIC & & & & ", aic_val, " \\\\
+% \\\\
+% \\multicolumn{5}{l}{\\textbf{Fixed Effects}} \\\\
+% \\midrule
+% Variable & Coef & exp(Coef) & SE(Coef) & z \\quad p \\\\
+% ", paste(fe_out, collapse = "\n"), "
+% \\bottomrule
+% \\end{tabular}
+% \\begin{tablenotes}
+% \\footnotesize
+% \\item \\textit{Note}: Coefficients are from a Cox proportional hazards mixed-effects model with a random intercept. SD = standard deviation of random effect. Variance = SD\\textsuperscript{2}.
+% \\item \\textit{exp(Coef)} is the hazard ratio. p-values are based on z-tests.
+% \\item Significance: * p<0.1; ** p<0.05; *** p<0.01
+% \\end{tablenotes}
+% \\end{threeparttable}
+% \\end{table}
+% ", file = out_file)
+% 
+% @
+% 
+% \input{coxme_summary2.tex}
+% 
+% Neither regime membership nor proximity to the July 28 speech window is statistically significant in this minimal specification; point estimates suggest mildly lower exit risk (HR<1) but with wide confidence intervals.
+% 
+% 
+% 
+% 
+% % \begin{figure}[h]
+% % \centering
+% % \begin{adjustbox}%{width=10cm,height=10cm}
+% <<minimalSurv, echo=FALSE, fig=F,eval=FALSE>>=
+% # library(survminer)
+% # fit_plot <- coxph(
+% #   Surv(interval_duration, event) ~ regime_fujimori + speech_window,
+% #   data = intervals_AG,
+% #   ties = "efron"
+% # )
+% # 
+% # # Create combinations of covariates
+% # newdata <- expand.grid(
+% #   regime_fujimori = c(0,1),
+% #   speech_window   = c(0,1)
+% # )
+% # 
+% # # Generate survival curves
+% # surv_fit <- survfit(fit_plot, newdata=newdata)
+% # 
+% # # Plot using survminer
+% # ggsurvplot(
+% #   surv_fit,
+% #   data        = newdata,
+% #   legend.title= "Scenario",
+% #   legend.labs = c("Outside, No Speech Window",
+% #                   "Outside, In Speech Window",
+% #                   "Fujimori, No Speech Window",
+% #                   "Fujimori, In Speech Window"),
+% #   xlab        = "Days in Office",
+% #   ylab        = "Survival Probability",
+% #   palette     = "Dark2",
+% #   risk.table  = T
+% # )
+% # ggsave("minimalSurv.png",limitsize = T)
+% @
+% % \end{adjustbox}
+% % \caption{Survival Curves}
+% % \label{minimalSurv}
+% % \end{figure}
+% 
+% 
+% 
+% 
+% <<echo=FALSE>>=
+% library(survival)
+% library(survminer)
+% 
+% # Fit model
+% fit_plot <- coxph(
+%   Surv(interval_duration, event) ~ regime_fujimori + speech_window,
+%   data = intervals_AG,
+%   ties = "efron"
+% )
+% 
+% # Prediction grid
+% newdata <- expand.grid(
+%   regime_fujimori = c(0,1),
+%   speech_window   = c(0,1)
+% )
+% 
+% surv_fit <- survfit(fit_plot, newdata = newdata)
+% 
+% 
+% ggsurv_combined <- ggsurvplot(
+%   surv_fit,
+%   data        = newdata,
+%   legend.title= "Scenario",
+%   legend.labs = c("Outside, No Speech Window",
+%                   "Outside, In Speech Window",
+%                   "Fujimori, No Speech Window",
+%                   "Fujimori, In Speech Window"),
+%   xlab        = "Days in Office",
+%   ylab        = "Survival Probability",
+%   palette     = "Dark2",
+%   risk.table  = TRUE,
+%   combine     = TRUE,        # <-- THIS IS THE KEY
+%   ggtheme     = theme_minimal()
+% )
+% 
+% # library(gridExtra)
+% # pdf("combined_survival_plot.pdf",width = 1198,height = 680)
+% # grid.arrange(
+% #   ggsurv_combined$plot,
+% #   ggsurv_combined$table,
+% #   heights = c(2, 1)  # adjust vertical proportions
+% # )
+% # dev.off()
+% 
+% library(cowplot)
+% 
+% # Combine without trimming
+% p_combined <- plot_grid(
+%   ggsurv_combined$plot,
+%   ggsurv_combined$table,
+%   ncol = 1,
+%   rel_heights = c(2, 1)
+% )
+% 
+% ggsave("combined_survival_plot.pdf", p_combined, width = 10, height = 6.5)
+% @
+% 
+% 
+% % \begin{figure}[ht]
+% % \centering
+% % \includegraphics[width=0.85\textwidth]{combined_survival_plot.pdf}
+% % \caption{Survival curves by scenario (Fujimori vs. Outside)}
+% % \label{fig:survcurve}
+% % \end{figure}
+% 
+% % \begin{sidewaysfigure}
+%   \begin{figure}[ht]
+%     \centering
+%     \includegraphics[width=\textwidth]{combined_survival_plot.pdf}
+%     \caption{Estimated PCM survival curves under four scenarios: outside/in speech window and non‑Fujimori/Fujimori periods.}
+%     \label{fig:survival_curves}
+%   \end{figure}
+% % \end{sidewaysfigure}
+% 
+% This plot shows four estimated survival curves—each with 95 \% confidence bands—derived from the simplified Cox model (no frailty) for combinations of the Fujimori regime dummy and the $\pm$ 45-day speech window:
+% 
+% \begin{itemize}
+% \item Green (“Outside, No Speech Window”): PCM spells that start outside the speech window and outside the Fujimori period.
+% 
+% \item Orange (“Outside, In Speech Window”): Spells that start within ± 45 days of July 28 but outside Fujimori.
+% 
+% \item Blue (“Fujimori, No Speech Window”): Spells during Fujimori that start more than 45 days from the speech.
+% 
+% \item Pink (“Fujimori, In Speech Window”): Spells during Fujimori that start within the speech window.
+% \end{itemize}
+% 
+% From this plot we can say that overall decline in survival. All curves drop from 1.0 toward 0 as days in office accumulate—by around 300 days only half of PCMs remain in office on average.
+% 
+% Regime effect (Fujimori vs. non-Fujimori): The two Fujimori curves (blue and pink) lie above their non-Fujimori counterparts, indicating longer average survival under Fujimori. For instance, at 200 days the survival probability is roughly 0.65 under Fujimori versus about 0.50 outside it.
+% 
+% Speech-window effect: Within each regime, the “in speech window” curve (orange and pink) tracks slightly above the “no speech window” curve (green and blue), suggesting a modest reduction in exit risk when a spell begins near the annual address date. This difference, however, is small relative to the CIs.
+% 
+% Precision declines over time: The shaded bands widen toward the right, reflecting increasing uncertainty as fewer spells survive into longer tenures. Beyond ~400 days, the confidence intervals become very wide, so point‐estimate differences at those durations are not very informative.
+% 
+% Number at risk: The table below shows how many intervals remain “at risk” at key time-points (0, 100, 200, … days). You start with 72 intervals (57 spells split at speech cut–points), dropping to just 2 intervals by ~500 days.
+% 
+% 
+% Although the point estimates hint at better survival during Fujimori and slightly lower exit risk for spells initiated near the speech, these contrasts fall well within the wide confidence bands. This visual underscores why the minimal two-covariate model didn’t yield statistically significant regime or speech-window effects—and why adding the institutional (ENP), approval, and economic covariates is essential to sharpen the estimated drivers of PCM durability.
+% 
+% 
+% 
+% \section{Software and replication}
+% 
+% Models are estimated in R 4.3 using packages \emph{survival}, \emph{coxme}, and \emph{ggsurvfit}. All data and scripts are archived on Github
+% 
+% 
+% \section{Conclusion}
+% 
+% \section{Apendixes}
 
 % %%%%% adding bibliography
 \bibliographystyle{apacite} %%style
