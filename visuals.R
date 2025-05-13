@@ -5,7 +5,7 @@ library(rio)
 
 
 link='https://github.com/PULSO-PUCP/premieres/raw/refs/heads/main/spellsModel.xlsx'
-df <- rio::import(link) %>%
+df <- rio::import('spellsModel.xlsx') %>%
     arrange(start) %>%
     mutate(
         internal_label = make.unique(as.character(PCM)),
@@ -44,7 +44,7 @@ durationLolli=ggplot(df, aes(x = spell_duration, y = spell_label)) +
               color = NA, alpha = 1, inherit.aes = FALSE) +
     geom_text(
         data = pres_blocks,
-        aes(x = max_whisker+100, y = ymid, label = PresidentOfExecutive),  # x=10 keeps labels on the left
+        aes(x = max_whisker+150, y = ymid, label = PresidentOfExecutive),  # x=10 keeps labels on the left
         inherit.aes = FALSE,
         hjust = 0.5,  # left-align
         size = 2.5,  # adjust for readability
@@ -77,3 +77,56 @@ durationLolli=ggplot(df, aes(x = spell_duration, y = spell_label)) +
 
 ggsave("durationLolli.pdf", durationLolli)
 
+
+
+# kaplanDuration ----------------------------------------------------------
+
+
+# Load data
+rm(list = ls())
+df <- read_excel("spellsModel.xlsx")
+
+# Create survival object
+surv_obj <- Surv(time = df$spell_duration, event = df$status)
+
+# Fit Kaplan-Meier model
+km_fit <- survfit(surv_obj ~ 1)  # no stratification, just baseline survival
+
+
+# Define time points where you want annotations
+time_points <- c(0, 180, 365, 730, 1000)  # Adjust as needed
+
+# Extract survival values and number at risk at those times
+summary_km <- summary(km_fit, times = time_points)
+risk_df <- data.frame(
+    time   = summary_km$time,
+    n_risk = summary_km$n.risk,
+    surv   = summary_km$surv
+)
+
+# Create the survival plot
+kaplan_plot <- ggsurvplot(
+    km_fit,
+    data = df,
+    conf.int = TRUE,
+    risk.table = FALSE,
+    legend = "none",
+    xlab = "Days in Office",
+    ylab = "Survival Probability",
+    title = "Survival of Peruvian Prime Ministers, 1980–2025",
+    palette = "black",
+    censor.shape = "|",
+    censor.size = 2
+)
+
+# Add the number-at-risk annotations at curve height
+kaplanDuration=kaplan_plot$plot +
+    geom_label(
+        data = risk_df,
+        aes(x = time, y = surv, label = paste0("n=", n_risk)),
+        size = 3,
+        vjust = -0.5,
+        color = "black"
+    )
+
+ggsave("kaplanDuration.pdf", kaplanDuration)

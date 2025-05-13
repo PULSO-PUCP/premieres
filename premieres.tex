@@ -28,21 +28,32 @@ This study examines the political durability of Peru’s Prime Ministers (Presid
 \end{abstract}
 
 
+
+
 \section{Introduction} % * to unnumber
 
-The median tenure of a Peruvian Prime Minister (PCM) since 1980 is 254 days (around 8 months), yet variation is striking. Ántero Flores\-Aráoz lasted only six days in November 2020, whereas Manuel Ulloa served 864 days in the early 1980s and Jorge del Castillo survived 805 days during Alan García’s second term. Dispersion persists even within a single presidential period: three PCMs held the post during Pedro Castillo’s first five months, while Alberto Otárola remained in office for 440 days under Dina Boluarte. This inconsistency under ostensibly similar institutional rules raises a central puzzle: Which political, institutional, and situational factors condition the durability of Peru’s Prime Ministers?
-
+Although the 1979 Constitution of Peru defined the Prime Minister (PCM) merely as the president’s first minister—responsible for countersigning decrees and coordinating cabinet activity—subsequent legal and political developments have elevated the office to one that routinely performs head-of-government functions. These include drafting the policy agenda, negotiating confidence votes, and representing the executive in congressional interpellations. The PCM has thus come to serve as the president’s chief political shield. In periods of stable governance, the office facilitates legislative compromise and projects technocratic competence; in times of crisis, it functions as a “circuit-breaker”—a high-visibility scapegoat whose dismissal absorbs congressional discontent and helps preserve presidential tenure. Analyzing the determinants of PCM survival therefore sheds light on how Peru’s hyper-presidential system manages accountability, blame attribution, and policy coordination in the absence of strong political parties.
 \begin{figure}[ht]
 \centering
 % \begin{adjustbox}%{width=0.9\textwidth,height=12cm,clip,trim=0cm 0cm 0cm 0cm} 
-\includegraphics[width=0.95\textwidth]{durationLolli.pdf}
+\includegraphics[width=0.85\textwidth]{durationLolli.pdf}
 % \end{adjustbox}
 \caption{Variability and Statistics Duration of PCMs in Perú from 1980 until 2025}  
 \label{durationLolli} 
 \end{figure}
 
-Although the Constitution describes the PCM merely as the president’s first minister—responsible for countersigning decrees and coordinating the cabinet—practice since 1980 indicates that the office routinely performs head-of-government functions: drafting the policy agenda, negotiating confidence votes, and representing the executive in congressional interpellations. The PCM thus acts as the president’s chief political shield. During normal times, the office facilitates legislative compromise and signals technocratic competence; in crises, it functions as a “circuit-breaker,” a high-visibility scapegoat whose dismissal absorbs congressional anger and preserves presidential tenure. Analysing the determinants of PCM survival therefore illuminates how Peru’s hyper-presidential system manages accountability, blame assignment, and policy coordination in the absence of strong parties.
+The significance of this institutional role is underscored by the striking variation in PCM tenures. The median tenure since 1980 is just 254 days (approximately eight months), but durations vary widely (see Figure~\ref{durationLolli}). Ántero Flores-Aráoz lasted only six days in November 2020, whereas Manuel Ulloa served 864 days in the early 1980s, and Jorge del Castillo remained in office for 805 days during Alan García’s second term. This volatility persists even within single presidential administrations: three PCMs held the post during Pedro Castillo’s first five months, while Alberto Otárola remained in office for 440 days under Dina Boluarte. 
 
+\begin{figure}[ht]
+\centering
+% \begin{adjustbox}%{width=0.9\textwidth,height=12cm,clip,trim=0cm 0cm 0cm 0cm} 
+\includegraphics[width=0.85\textwidth]{kaplanDuration.pdf}
+% \end{adjustbox}
+\caption[Survival of Prime Ministers in Peru]{Kaplan-Meier survival estimate for Peruvian Prime Ministers, 1980--2025.}
+\label{kaplanDuration} 
+\end{figure}
+
+The Kaplan-Meier survival estimate (Figure \ref{kaplanDuration}) illustrates this volatility. At the outset, all 58 PCMs are at risk. Within six months, only 40 remain; by one year, just 30 are still in office, and by the two-year mark, this number falls to 17. The survival probability drops below 50\% well before the one-year point and declines to around 20\% by year two. This pattern highlights how short-lived PCM tenures have become a structural feature of Peru’s political system rather than a sign of exceptional disruption. Understanding the forces behind such high turnover thus requires systematic analysis of the political, institutional, and situational factors that shape PCM survival—an inquiry taken up in the remainder of this study. Such inconsistency—despite ostensibly stable institutional rules—raises a central puzzle: which political, institutional, and situational factors shape the durability of Peru’s Prime Ministers?
 
 
 
@@ -148,7 +159,26 @@ Peru’s Prime‑Ministerial tenure remains volatile, but volatility itself is n
 
 
 
-
+\begin{table}[!h]
+\centering
+\caption{Duration in Days by era\label{tab:durationPerEra}}
+\centering
+\begin{threeparttable}
+\begin{tabular}[t]{lrrrrr}
+\toprule
+Era & count & mean & min & max & range\\
+\midrule
+A. Belaunde to Garcia & 9 & 405.44 & 138 & 864 & 726\\
+B. Fujimori & 13 & 302.08 & 78 & 792 & 714\\
+C. Paniagua to Boluarte & 36 & 247.56 & 6 & 805 & 799\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[para]
+\item \textit{Source: } 
+\item author calculations from official appointment resolutions and El Peruano archives.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
 
 \section{Literature Review}\label{sec:letrev}
 
