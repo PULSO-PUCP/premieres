@@ -1,0 +1,40 @@
+\begin{table}[ht]
+\centering
+\begin{threeparttable}
+\caption{Cox Mixed-Effects Model Summary}
+\label{tab:coxme_auto}
+\begin{tabular}{lllll}
+\toprule
+\multicolumn{5}{l}{\textbf{Random Effects}} \\
+\midrule
+Group & Variable & SD & Variance & \\
+presidentofExecutive & Intercept &  0.01999  &  0.0003996  & \\
+\\
+\multicolumn{5}{l}{\textbf{Random Effects Model Fit (LRT)}} \\
+\midrule
+Method & Chisq & df & p & AIC \\
+Integrated loglik &  1.4  &  3  &  0.7061  &  -4.6  \\
+Penalized loglik &  1.43  &  2.02  &  0.4919  &  -2.6  \\
+\\
+\multicolumn{5}{l}{\textbf{Full Model Fit}} \\
+\midrule
+Statistic & & & & \\
+Penalized log-likelihood & & & &  -204.38  \\
+Degrees of freedom & & & &  2.015795  \\
+AIC & & & &  412.8  \\
+\\
+\multicolumn{5}{l}{\textbf{Fixed Effects}} \\
+\midrule
+Variable & Coef & exp(Coef) & SE(Coef) & z \quad p \\
+ regime_fujimori & -0.4169 & 0.6591 & 0.3900 & -1.07 \quad 0.285 \\
+speech_window & -0.1571 & 0.8546 & 0.2768 & -0.57 \quad 0.569 \\ 
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\footnotesize
+\item \textit{Note}: Coefficients are from a Cox proportional hazards mixed-effects model with a random intercept. SD = standard deviation of random effect. Variance = SD\textsuperscript{2}.
+\item \textit{exp(Coef)} is the hazard ratio. p-values are based on z-tests.
+\item Significance: * p<0.1; ** p<0.05; *** p<0.01
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

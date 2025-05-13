@@ -7,15 +7,17 @@
 \affil[2]{University of Massachusetts-Amherst; University of Washington -Seattle; and Universidad Nacional Mayor de San Marcos-Lima}
 \affil[*]{Corresponding author: jmagallanes@pucp.edu.pe}
 
-\usepackage{tabularx,booktabs,threeparttablex,multirow}
-\usepackage{rotating,pdflscape}
-
+\usepackage{tabularx,booktabs,threeparttablex,multirow,float}
 \date{\today}  %% manually: \date{March 6, 2025} 
 \usepackage[natbibapa]{apacite} %% for bibliography
 \usepackage{rotating, graphicx} %% for rotating tables
 \usepackage{adjustbox} % size of plots and tables
 \usepackage{chngcntr}% section numbering
 \usepackage{amssymb}
+\usepackage{threeparttable}
+\usepackage[table]{xcolor}
+\usepackage{longtable}
+
 \counterwithin{table}{section}\counterwithin{figure}{section}
 \usepackage{Sweave}
 \begin{document} % every "begin: needs and "end"
@@ -298,27 +300,8 @@ We express the hazard for PCM spell \(i\) under president \(j\) at time \(t\) as
 
 \subsection{Initial model}
 
-\begin{Schunk}
-\begin{Soutput}
-Mixed effects coxme model
- Formula: Surv(interval_duration, event) ~ regime_fujimori + speech_window +      (1 | presidentofExecutive) 
-    Data: intervals_AG 
 
-  events, n = 58, 73
-
-Random effects:
-                 group  variable         sd     variance
-1 presidentofExecutive Intercept 0.01999358 0.0003997433
-                  Chisq   df      p  AIC    BIC
-Integrated loglik  1.40 3.00 0.7061 -4.6 -10.78
- Penalized loglik  1.43 2.02 0.4919 -2.6  -6.75
-
-Fixed effects:
-                   coef exp(coef) se(coef)     z     p
-regime_fujimori -0.4169    0.6591   0.3900 -1.07 0.285
-speech_window   -0.1571    0.8546   0.2768 -0.57 0.570
-\end{Soutput}
-\end{Schunk}
+\input{coxme_summary2.tex}
 
 Neither regime membership nor proximity to the July 28 speech window is statistically significant in this minimal specification; point estimates suggest mildly lower exit risk (HR<1) but with wide confidence intervals.
 
@@ -336,14 +319,23 @@ Neither regime membership nor proximity to the July 28 speech window is statisti
 
 
 
-\begin{landscape}
+
+
+% \begin{figure}[ht]
+% \centering
+% \includegraphics[width=0.85\textwidth]{combined_survival_plot.pdf}
+% \caption{Survival curves by scenario (Fujimori vs. Outside)}
+% \label{fig:survcurve}
+% \end{figure}
+
+% \begin{sidewaysfigure}
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{minmodelSurv.png}
+    \includegraphics[width=\textwidth]{combined_survival_plot.pdf}
     \caption{Estimated PCM survival curves under four scenarios: outside/in speech window and non‑Fujimori/Fujimori periods.}
     \label{fig:survival_curves}
   \end{figure}
-\end{landscape}
+% \end{sidewaysfigure}
 
 This plot shows four estimated survival curves—each with 95 \% confidence bands—derived from the simplified Cox model (no frailty) for combinations of the Fujimori regime dummy and the $\pm$ 45-day speech window:
 

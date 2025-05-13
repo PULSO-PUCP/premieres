@@ -7,15 +7,17 @@
 \affil[2]{University of Massachusetts-Amherst; University of Washington -Seattle; and Universidad Nacional Mayor de San Marcos-Lima}
 \affil[*]{Corresponding author: jmagallanes@pucp.edu.pe}
 
-\usepackage{tabularx,booktabs,threeparttablex,multirow}
-\usepackage{rotating,pdflscape}
-
+\usepackage{tabularx,booktabs,threeparttablex,multirow,float}
 \date{\today}  %% manually: \date{March 6, 2025} 
 \usepackage[natbibapa]{apacite} %% for bibliography
 \usepackage{rotating, graphicx} %% for rotating tables
 \usepackage{adjustbox} % size of plots and tables
 \usepackage{chngcntr}% section numbering
 \usepackage{amssymb}
+\usepackage{threeparttable}
+\usepackage[table]{xcolor}
+\usepackage{longtable}
+
 \counterwithin{table}{section}\counterwithin{figure}{section}
 \begin{document} % every "begin: needs and "end"
 \SweaveOpts{concordance=TRUE}
@@ -307,10 +309,11 @@ We express the hazard for PCM spell \(i\) under president \(j\) at time \(t\) as
 
 \subsection{Initial model}
 
-<<echo=FALSE>>=
+<<echo=FALSE,results=tex>>=
 
 library(survival)
 library(coxme)
+library(stargazer)
 # library(arrow)
 
 
@@ -323,10 +326,86 @@ fit_base_AG <- coxme(
   data = intervals_AG,
   ties = "efron"
 )
+fit=fit_base_AG
+s=summary(fit_base_AG)
 
-# 3. Inspect the results
-summary(fit_base_AG)
+
+# --- Random effect ---
+# --- Random Effects ---
+re_sd <- round(s$random[["sd"]][1], 5)
+re_var <- round(re_sd^2, 8)
+
+# --- Random Effects Model Fit (from s$chi) ---
+chi_df <- round(as.data.frame(s$chi), 4)
+
+# chi_df rows: "Integrated", "Penalized"; columns: Chisq, df, p, AIC
+
+# --- Full Model Fit ---
+loglik_val <- round(logLik(fit)[1], 2)
+df_val     <- attr(logLik(fit), "df")
+aic_val    <- round(AIC(fit), 2)
+
+# --- Fixed Effects ---
+fe <- s$coefficients
+fe_out <- apply(fe, 1, function(row) {
+  coef <- round(row["coef"], 4)
+  hr   <- round(exp(row["coef"]), 4)
+  se   <- round(row["se(coef)"], 4)
+  z    <- round(row["z"], 2)
+  pval <- round(2 * (1 - pnorm(abs(z))), 3)
+  sprintf("%s & %.4f & %.4f & %.4f & %.2f \\quad %.3f \\\\", 
+          rownames(fe)[which(fe[, "coef"] == row["coef"])],
+          coef, hr, se, z, pval)
+})
+
+# --- Output LaTeX file ---
+out_file <- "coxme_summary.tex"
+
+cat(
+"\\begin{table}[ht]
+\\centering
+\\begin{threeparttable}
+\\caption{Cox Mixed-Effects Model Summary}
+\\label{tab:coxme_auto}
+\\begin{tabular}{lllll}
+\\toprule
+\\multicolumn{5}{l}{\\textbf{Random Effects}} \\\\
+\\midrule
+Group & Variable & SD & Variance & \\\\
+presidentofExecutive & Intercept & ", re_sd, " & ", re_var, " & \\\\
+\\\\
+\\multicolumn{5}{l}{\\textbf{Random Effects Model Fit (LRT)}} \\\\
+\\midrule
+Method & Chisq & df & p & AIC \\\\
+Integrated loglik & ", chi_df[1, "Chisq"], " & ", chi_df[1, "df"], " & ", chi_df[1, "p"], " & ", chi_df[1, "AIC"], " \\\\
+Penalized loglik & ", chi_df[2, "Chisq"], " & ", chi_df[2, "df"], " & ", chi_df[2, "p"], " & ", chi_df[2, "AIC"], " \\\\
+\\\\
+\\multicolumn{5}{l}{\\textbf{Full Model Fit}} \\\\
+\\midrule
+Statistic & & & & \\\\
+Penalized log-likelihood & & & & ", loglik_val, " \\\\
+Degrees of freedom & & & & ", df_val, " \\\\
+AIC & & & & ", aic_val, " \\\\
+\\\\
+\\multicolumn{5}{l}{\\textbf{Fixed Effects}} \\\\
+\\midrule
+Variable & Coef & exp(Coef) & SE(Coef) & z \\quad p \\\\
+", paste(fe_out, collapse = "\n"), "
+\\bottomrule
+\\end{tabular}
+\\begin{tablenotes}
+\\footnotesize
+\\item \\textit{Note}: Coefficients are from a Cox proportional hazards mixed-effects model with a random intercept. SD = standard deviation of random effect. Variance = SD\\textsuperscript{2}.
+\\item \\textit{exp(Coef)} is the hazard ratio. p-values are based on z-tests.
+\\item Significance: * p<0.1; ** p<0.05; *** p<0.01
+\\end{tablenotes}
+\\end{threeparttable}
+\\end{table}
+", file = out_file)
+
 @
+
+\input{coxme_summary2.tex}
 
 Neither regime membership nor proximity to the July 28 speech window is statistically significant in this minimal specification; point estimates suggest mildly lower exit risk (HR<1) but with wide confidence intervals.
 
@@ -336,25 +415,68 @@ Neither regime membership nor proximity to the July 28 speech window is statisti
 % \begin{figure}[h]
 % \centering
 % \begin{adjustbox}%{width=10cm,height=10cm}
-<<minimalSurv, echo=FALSE, fig=F>>=
+<<minimalSurv, echo=FALSE, fig=F,eval=FALSE>>=
+# library(survminer)
+# fit_plot <- coxph(
+#   Surv(interval_duration, event) ~ regime_fujimori + speech_window,
+#   data = intervals_AG,
+#   ties = "efron"
+# )
+# 
+# # Create combinations of covariates
+# newdata <- expand.grid(
+#   regime_fujimori = c(0,1),
+#   speech_window   = c(0,1)
+# )
+# 
+# # Generate survival curves
+# surv_fit <- survfit(fit_plot, newdata=newdata)
+# 
+# # Plot using survminer
+# ggsurvplot(
+#   surv_fit,
+#   data        = newdata,
+#   legend.title= "Scenario",
+#   legend.labs = c("Outside, No Speech Window",
+#                   "Outside, In Speech Window",
+#                   "Fujimori, No Speech Window",
+#                   "Fujimori, In Speech Window"),
+#   xlab        = "Days in Office",
+#   ylab        = "Survival Probability",
+#   palette     = "Dark2",
+#   risk.table  = T
+# )
+# ggsave("minimalSurv.png",limitsize = T)
+@
+% \end{adjustbox}
+% \caption{Survival Curves}
+% \label{minimalSurv}
+% \end{figure}
+
+
+
+
+<<echo=FALSE>>=
+library(survival)
 library(survminer)
+
+# Fit model
 fit_plot <- coxph(
   Surv(interval_duration, event) ~ regime_fujimori + speech_window,
   data = intervals_AG,
   ties = "efron"
 )
 
-# Create combinations of covariates
+# Prediction grid
 newdata <- expand.grid(
   regime_fujimori = c(0,1),
   speech_window   = c(0,1)
 )
 
-# Generate survival curves
-surv_fit <- survfit(fit_plot, newdata=newdata)
+surv_fit <- survfit(fit_plot, newdata = newdata)
 
-# Plot using survminer
-ggsurvplot(
+
+ggsurv_combined <- ggsurvplot(
   surv_fit,
   data        = newdata,
   legend.title= "Scenario",
@@ -365,26 +487,49 @@ ggsurvplot(
   xlab        = "Days in Office",
   ylab        = "Survival Probability",
   palette     = "Dark2",
-  risk.table  = F
+  risk.table  = TRUE,
+  combine     = TRUE,        # <-- THIS IS THE KEY
+  ggtheme     = theme_minimal()
 )
-ggsave("minimalSurv.png",limitsize = T)
+
+# library(gridExtra)
+# pdf("combined_survival_plot.pdf",width = 1198,height = 680)
+# grid.arrange(
+#   ggsurv_combined$plot,
+#   ggsurv_combined$table,
+#   heights = c(2, 1)  # adjust vertical proportions
+# )
+# dev.off()
+
+library(cowplot)
+
+# Combine without trimming
+p_combined <- plot_grid(
+  ggsurv_combined$plot,
+  ggsurv_combined$table,
+  ncol = 1,
+  rel_heights = c(2, 1)
+)
+
+ggsave("combined_survival_plot.pdf", p_combined, width = 10, height = 6.5)
 @
-% \end{adjustbox}
-% \caption{Survival Curves}
-% \label{minimalSurv}
+
+
+% \begin{figure}[ht]
+% \centering
+% \includegraphics[width=0.85\textwidth]{combined_survival_plot.pdf}
+% \caption{Survival curves by scenario (Fujimori vs. Outside)}
+% \label{fig:survcurve}
 % \end{figure}
 
-
-
-
-\begin{landscape}
+% \begin{sidewaysfigure}
   \begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{minmodelSurv.png}
+    \includegraphics[width=\textwidth]{combined_survival_plot.pdf}
     \caption{Estimated PCM survival curves under four scenarios: outside/in speech window and non‑Fujimori/Fujimori periods.}
     \label{fig:survival_curves}
   \end{figure}
-\end{landscape}
+% \end{sidewaysfigure}
 
 This plot shows four estimated survival curves—each with 95 \% confidence bands—derived from the simplified Cox model (no frailty) for combinations of the Fujimori regime dummy and the $\pm$ 45-day speech window:
 
