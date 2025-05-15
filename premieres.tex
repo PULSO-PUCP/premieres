@@ -17,7 +17,7 @@
 \usepackage{threeparttable}
 \usepackage[table]{xcolor}
 \usepackage{longtable}
-
+\usepackage{array}        % For raggedright column specifier
 \counterwithin{table}{section}\counterwithin{figure}{section}
 \usepackage{Sweave}
 \begin{document} % every "begin: needs and "end"
@@ -205,6 +205,10 @@ Some of those findings complement the ones above.  A sixty‑year study of Colom
 \subsection{Ministerial Profiles}
 
 Personal attributes cannot be ignored.  Age effects are U‑shaped, with the youngest and oldest ministers more likely to exit \citet{fischer_duration_2012}.  \citet{escobar-lemmon_coming_2010} find that being in the inaugural cabinet and holding the finance portfolio increase hazard, whereas constituency links reduce it.  Prior political experience, however, has only marginal impact \citep{escobar-lemmon_coming_2010}.  In Peru, outsider presidents such as Alberto Fujimori and Pedro Pablo Kuczynski have consistently favoured technocrats with scant partisan capital \citep{carreras_presidentes_2013,nercesian_radiografigabinetes_2019}.  Whether such technocratic cabinets enjoy longer—or shorter—survival remains an open empirical question.
+
+To empirically assess whether technocratic traits influence PCM survival, we model the technocratic profile as a latent trait composed of five binary indicators drawn from comparative literature: absence of prior electoral participation, foreign graduate education, private sector experience, academic engagement, and having a degree other than law. These attributes are commonly cited as markers of technocratic identity 
+\citep{carreras_presidentes_2013,alexiadou_commitment_2019,alexiadou_ideologues_2015,escobar-lemmon_coming_2010}. Rather than selecting a single proxy, we construct a latent index using latent trait modeling (LTM), which estimates each PCM’s position on the technocratic dimension. This method aligns with recent work on ministerial professionalism \citep{bersch_state_2017} and allows us to capture degrees of technocratic orientation rather than impose a binary categorization. We validate this index using exploratory factor analysis and principal components, both of which confirm a consistent underlying dimension.
+
 % 
 
 \subsection{Gaps in the Literature and Relevance to Peru}
@@ -217,70 +221,106 @@ Existing studies converge on three explanatory families—critical events, insti
 
 \subsection{Dataset construction}
 
-The event history comprises all 57 Prime‑Ministerial spells between 28 July 1980 and 8 May 2025. Each raw spell records a single start and end date (or censoring).  However, because key covariates (e.g., regime membership and days‑to‑speech) may change mid‑tenure, we split each spell at every annual July 28 following the Andersen–Gill (AG) counting‑process framework \footnote{If one instead fits models on the raw, unsplit spells, covariates like "days to speech" and Fujimori are fixed at the appointment date, failing to capture mid‑tenure transitions.  Splitting at July 28 ensures that the  dummy for speech timing and the regime dummy reflect the correct interval‑specific values.}.  This produces multiple risk intervals per PCM tenure—one per calendar year—so that time‑varying covariates can update precisely as they cross each speech date or regime boundary, while preserving the Cox partial‑likelihood and allowing robust standard errors clustered by PCM.
 
-Start‑dates are taken from swearing‑in decrees in El Peruano; end‑dates are either the dismissal decree or the acceptance‑of‑resignation decree. Because Gustavo Adrianzén is still in office, his final interval is right‑censored at 8 May 2025.
+This study draws on an event-history dataset covering all 57 Prime-Ministerial spells between 28 July 1980 and 8 May 2025. Each spell corresponds to a continuous period during which a single individual served as Prime Minister (PCM), from their swearing-in to dismissal or resignation. Gustavo Adrianzén’s ongoing tenure is treated as right-censored as of 8 May 2025.
 
+The explanatory variables are grouped into two categories:
 
+\textbf{(a) Non–time-varying variables}, which remain constant throughout a PCM’s spell. These include:
 
+\begin{itemize}
+    \item \textit{Technocratic profile}: A latent trait index derived from five binary indicators: (i) absence of previous electoral participation, (ii) graduate degree obtained abroad, (iii) relevant private sector experience, (iv) academic background, and (v) having a degree other than law. These variables reflect the literature on technocratic appointments (Carreras, 2013; Alexiadou, 2016; Escobar-Lemmon \& Taylor-Robinson, 2010). We estimate a continuous score using Latent Trait Modeling (LTM), validated through PCA and EFA. The continuous index is used in all Cox regressions; a binary split at the median is used for descriptive survival plots.
+    
+    \item \textit{Fujimori regime dummy}: A fixed indicator for spells that occurred during the presidency of Alberto Fujimori (April 1990 to July 2000), capturing the autocratic institutional context of that period.
+\end{itemize}
+
+\textbf{(b) Time–varying variables}, which may change within a PCM’s tenure and thus require finer temporal resolution. These include:
+
+\begin{itemize}
+    \item \textit{Presidential approval}: Quarterly approval ratings from Ipsos Perú;
+    \item \textit{Legislative fragmentation}: Measured via the effective number of parties (ENP), calculated from congressional seat shares;
+    \item \textit{Censure motions}: A binary indicator coded 1 if a motion for interpellation or censure was active during the interval;
+    \item \textit{Economic shock}: Equals 1 if quarterly GDP growth is negative;
+    \item \textit{Speech window}: Equals 1 if the interval includes ±45 days around the annual \textit{Mensaje a la Nación} on 28 July.
+\end{itemize}
+
+To correctly update these time-varying covariates mid-tenure, we adopt the Andersen–Gill (AG) counting-process framework, splitting each PCM spell into annual intervals anchored on 28 July. This allows each time-varying covariate to update in a temporally valid way while preserving the structure of the Cox partial likelihood. Robust standard errors are clustered by PCM to account for repeated observations.
 
 \begin{sidewaystable}[p]
+\scriptsize
 \centering
-\caption{Variables, operationalisation, sources, and prior literature}
-\label{tab:vars-rotated}
-\renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{\textheight}{@{}l l X X X@{}}
+\caption{Variables, Operationalization, Sources, and Literature}
+\label{tab:variables}
+\begin{tabular}{
+  >{\raggedright\arraybackslash}p{3cm} 
+  >{\raggedright\arraybackslash}p{3.5cm} 
+  >{\raggedright\arraybackslash}p{6cm} 
+  >{\raggedright\arraybackslash}p{2.5cm} 
+  >{\raggedright\arraybackslash}p{4cm}
+}
 \toprule
-\textbf{Category} & \textbf{Variable} & \textbf{Operationalisation} & \textbf{Source} & \textbf{Previous work} \\
+\textbf{Category} & \textbf{Variable} & \textbf{Operationalization} & \textbf{Source} & \textbf{Literature} \\
 \midrule
-Outcome 
-  & Duration 
-  & Days from appointment to exit or censoring 
-  & Author dataset 
-  & — \\ 
-\addlinespace
-\multirow{2}{*}{Congress} 
-  & ENP 
-  & Quarterly effective number of parties (seat share) 
-  & JNE seat records 
-  & Huber \& Martínez-Gallardo (2008); Martínez-Gallardo (2012) \\
-  & Censure motion 
-  & 1 if an interpellation or censure motion is tabled in a quarter 
-  & Congressional Journal 
-  & Camerlo \& Pérez-Liñán (2015); Dewan \& Dowding (2005) \\
-\addlinespace
-\multirow{2}{*}{Presidency} 
-  & Approval 
-  & Quarterly presidential approval (\%) 
-  & Ipsos Perú surveys 
-  & Samuels \& Shugart (2003); Fischer et al. (2012) \\
-  & Speech window 
-  & 1 if within ± 45 days of 28 July 
-  & Author calculation 
-  & This study (informal calendar logic) \\
-\addlinespace
-Economy 
-  & GDP shock 
-  & 1 if quarterly GDP growth < 0 
-  & BCRP 
-  & González-Bustamante \& Olivares (2015) \\ 
-\addlinespace
-Regime 
-  & Fujimori 
-  & 1 for 5 Apr 1992 – 28 Jul 2000 
-  & Author coding 
-  & Pérez-Liñán (2007); Fischer et al. (2012) \\ 
-\addlinespace
-Profile 
-  & Technocrat 
-  & 1 if PCM has never held elected office 
-  & CVs \& press 
-  & Carreras (2013); Escobar-Lemmon \& Taylor-Robinson (2010) \\
+
+\multicolumn{5}{l}{\textit{Non–Time-Varying Covariates}} \\
+\midrule
+
+Profile & Technocrat Index & Latent trait score from five binary indicators: no electoral experience, foreign graduate education, private sector or academic background, and non-law degree. Estimated via LTM and validated via PCA and EFA. & CVs and secondary sources & Carreras (2013); Alexiadou (2016); Escobar-Lemmon \& Taylor-Robinson (2010); Bersch et al. (2017) \\
+
+Regime & Fujimori & 1 if PCM served between 5 April 1990 and 28 July 2000 & Author coding & Pérez-Liñán (2007); Fischer et al. (2012) \\
+
+\midrule
+\multicolumn{5}{l}{\textit{Time–Varying Covariates}} \\
+\midrule
+
+Congress & ENP & Quarterly effective number of parties (seat share) & JNE seat records & Huber \& Martínez-Gallardo (2008); Martínez-Gallardo (2012) \\
+
+Congress & Censure motion & 1 if interpellation or censure motion was tabled during interval & Congressional Journal & Camerlo \& Pérez-Liñán (2015); Dewan \& Dowding (2005) \\
+
+Presidency & Approval & Quarterly presidential approval (\%) & Ipsos Perú & Samuels \& Shugart (2003); Fischer et al. (2012) \\
+
+Calendar & Speech window & 1 if within ±45 days of 28 July & Author calculation & This study (informal calendar logic) \\
+
+Economy & GDP shock & 1 if quarterly GDP growth is negative & BCRP & González-Bustamante \& Olivares (2016) \\
+
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{sidewaystable}
 
-All variables except Technocrat and Fujimori are time‑varying. The speech dummy captures the reshuffle focal point.
+
+
+%%%
+
+\subsection{Computing Time Invariant Covariates}
+
+\subsubsection{The regime epoch}
+
+\subsubsection{Latent Trait Modeling of Technocratic Profile}
+
+To operationalize the technocratic orientation of Prime Ministers (PCMs), we estimate a latent trait model using three binary indicators grounded in the literature on technocratic appointments in Latin America and beyond: (i) absence of prior electoral participation, (ii) possession of a graduate degree from a foreign university, and (iii) relevant private sector experience. Each trait captures a distinct aspect of the technocratic profile.
+
+The absence of electoral participation reflects political independence, a hallmark of technocratic appointments, particularly under outsider presidencies and in contexts of weak party institutionalization \citep{escobar-lemmon_coming_2010, carreras_presidentes_2013}. A foreign graduate degree signals technical training and elite socialization, often aligned with global policy norms \citep{alexiadou_ideologues_2016, camp_mexicos_2002}. Private sector experience, particularly in consulting, banking, or corporate management, signals not only managerial competence but also autonomy from state careers. Technocrats often derive their legitimacy from reputational capital earned outside the public sector. As Alexiadou and Günaydin \citep{alexiadou_commitment_2019} argue, technocrats are professionals motivated by expertise and external reputation, who “typically aim at better employment prospects by building a positive reputation in their professional field.” This complements Dargent’s \citep{dargent_technocracy_2014} observation that many Latin American technocrats enter the state from positions of market-based credibility rather than political dependence. Similar arguments are found in earlier studies linking private sector expertise to technocratic authority in reform-oriented administrations \citep{centeno_democracy_1997, weyland_politics_2021}.
+
+We model these three traits as manifestations of a continuous latent technocratic dimension using a two-parameter logistic latent trait model (2PL), estimated with the \texttt{ltm} package in R. The model allows for item-specific variation in difficulty and discrimination, and assumes that the probability of endorsing each trait increases with the unobserved technocratic score.
+
+As you can see in Table \ref{tab:ltm_parameters}, estimation results show that “no prior electoral experience” and “foreign graduate degree” are strong discriminators (discrimination parameters > 2.1), while “private sector experience” has lower discrimination (1.17) but higher difficulty (0.91), suggesting it marks the upper end of the technocratic scale. Figure \ref{fig:iccplot} presents item characteristic curves (ICCs) for the three indicators.
+
+Individual-level scores are computed using expected a posteriori (EAP) estimation and assigned to PCMs by matching response patterns to model-derived scores. The resulting technocratic index ranges from approximately --1.5 to +2.6, with higher scores reflecting stronger technocratic profiles. The index is strongly correlated with PCA- and EFA-based indices ($r > 0.95$), and tracks well with clusters identified via unsupervised classification.
+
+The continuous LTM-based index is used in Cox proportional hazards models to assess its effect on PCM survival. For descriptive Kaplan–Meier analysis, we also construct a binary version based on the median split.
+
+\input{ltm_parameters_table.tex}
+
+\begin{figure}[ht]
+\centering
+% \begin{adjustbox}%{width=0.9\textwidth,height=12cm,clip,trim=0cm 0cm 0cm 0cm} 
+\includegraphics[width=\textwidth]{iccplot.pdf}
+% \end{adjustbox}
+\caption{Variability and Statistics Duration of PCMs in Perú from 1980 until 2025}  
+\label{fig:iccplot} 
+\end{figure}
+
+
 
 \subsection{Model specification}
 
@@ -317,6 +357,22 @@ We express the hazard for PCM spell \(i\) under president \(j\) at time \(t\) as
 
 
 \section{Results}
+
+% latex table generated in R 4.4.0 by xtable 1.8-4 package
+% Wed May 14 23:30:33 2025
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrr}
+  \hline
+ & coef & exp(coef) & se(coef) & z & p \\ 
+  \hline
+regimeFujimori & 0.02 & 1.02 & 0.37 & 0.05 & 0.96 \\ 
+  technocrat\_trait\_ltm & -0.02 & 0.98 & 0.20 & -0.11 & 0.91 \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+
 % 
 % \subsection{Initial model}
 % 
