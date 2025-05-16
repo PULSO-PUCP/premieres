@@ -7,7 +7,8 @@ library(lavaan)
 
 # Load data
 rm(list = ls())
-df <- read_excel("perfil_technoAll.xlsx")
+linkGit='https://github.com/PULSO-PUCP/pcm_history/raw/refs/heads/main/spellsModel.xlsx'
+df <- rio::import(linkGit)
 
 model <- '
   Technocrat =~ NeverElectoralParticipation +

@@ -1,6 +1,7 @@
 # Load data
 rm(list = ls())
-df <- read_excel("spellsModel.xlsx")
+linkGit='https://github.com/PULSO-PUCP/pcm_history/raw/refs/heads/main/spellsModel.xlsx'
+df <- rio::import(linkGit)
 
 # Create survival object
 surv_obj <- Surv(time = df$spell_duration, event = df$status)

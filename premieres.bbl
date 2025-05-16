@@ -361,6 +361,29 @@ escobar-lemmon_coming_2010}%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+{Federal Republic of Germany}%
+}{%
+{Federal Republic of Germany}%
+}{%
+{\protect \APACyear {1949}}%
+}]{%
+federal_republic_of_germany_grundgesetz_1949}
+\APACinsertmetastar {%
+federal_republic_of_germany_grundgesetz_1949}%
+\begin{APACrefauthors}%
+{Federal Republic of Germany}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1949}{}{}.
+\newblock
+\APACrefbtitle {Grundgesetz F{\"u}r Die {{Bundesrepublik Deutschland}} ({{Basic
+  Law}} for the {{Federal Republic}} of {{Germany}}).} {Grundgesetz f{\"u}r die
+  {{Bundesrepublik Deutschland}} ({{Basic Law}} for the {{Federal Republic}} of
+  {{Germany}}).}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 Fischer%
 , Dowding%
 \BCBL {}\ \BBA {} Dumont%
@@ -454,6 +477,27 @@ Gozzer, E.%
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%
+{House of Commons}%
+}{%
+{House of Commons}%
+}{%
+{\protect \APACyear {2024}}%
+}]{%
+house_of_commons_standing_2024}
+\APACinsertmetastar {%
+house_of_commons_standing_2024}%
+\begin{APACrefauthors}%
+{House of Commons}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2024}{}{}.
+\newblock
+\APACrefbtitle {Standing {{Orders}} of the {{House}} of {{Commons}}.} {Standing
+  {{Orders}} of the {{House}} of {{Commons}}.}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
 {Mart{\'i}nez-Gallardo}%
 }{%
 {Mart{\'i}nez-Gallardo}%
@@ -539,6 +583,111 @@ Nercesian, I.%
 \newblock
 \APACjournalVolNumPages{Telos: Revista de Estudios Interdisciplinarios en
   Ciencias Sociales}{21}{2}{372--400}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{Rep{\'u}blica del Per{\'u}}%
+}{%
+{Rep{\'u}blica del Per{\'u}}%
+}{%
+{\protect \APACyear {1993}}%
+}]{%
+republica_del_peru_constitucion_1993}
+\APACinsertmetastar {%
+republica_del_peru_constitucion_1993}%
+\begin{APACrefauthors}%
+{Rep{\'u}blica del Per{\'u}}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1993}{}{}.
+\newblock
+\APACrefbtitle {Constituci{\'o}n {{Pol{\'i}tica}} Del {{Per{\'u}}}.}
+  {Constituci{\'o}n {{Pol{\'i}tica}} del {{Per{\'u}}}.}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{United Kingdom Parliament}%
+}{%
+{United Kingdom Parliament}%
+}{%
+{\protect \APACyear {1975}}%
+}]{%
+united_kingdom_parliament_ministerial_1975}
+\APACinsertmetastar {%
+united_kingdom_parliament_ministerial_1975}%
+\begin{APACrefauthors}%
+{United Kingdom Parliament}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1975}{}{}.
+\newblock
+\APACrefbtitle {Ministerial and {{Other Salaries Act}} 1975.} {Ministerial and
+  {{Other Salaries Act}} 1975.}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{United States of America}%
+}{%
+{United States of America}%
+}{%
+{\protect \APACyear {1787}}%
+}]{%
+united_states_of_america_constitution_1787}
+\APACinsertmetastar {%
+united_states_of_america_constitution_1787}%
+\begin{APACrefauthors}%
+{United States of America}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1787}{}{}.
+\newblock
+\APACrefbtitle {Constitution of the {{United States}}.} {Constitution of the
+  {{United States}}.}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{U.S. House of Representatives}%
+}{%
+{U.S. House of Representatives}%
+}{%
+{\protect \APACyear {2023}}%
+}]{%
+us_house_of_representatives_rules_2023}
+\APACinsertmetastar {%
+us_house_of_representatives_rules_2023}%
+\begin{APACrefauthors}%
+{U.S. House of Representatives}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2023}{}{}.
+\newblock
+\APACrefbtitle {Rules of the {{House}} of {{Representatives}}.} {Rules of the
+  {{House}} of {{Representatives}}.}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+{U.S. Senate}%
+}{%
+{U.S. Senate}%
+}{%
+{\protect \APACyear {2023}}%
+}]{%
+us_senate_standing_2023}
+\APACinsertmetastar {%
+us_senate_standing_2023}%
+\begin{APACrefauthors}%
+{U.S. Senate}.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2023}{}{}.
+\newblock
+\APACrefbtitle {Standing {{Rules}} of the {{Senate}}.} {Standing {{Rules}} of
+  the {{Senate}}.}
 \PrintBackRefs{\CurrentBib}
 
 \bibitem [\protect \citeauthoryear {%

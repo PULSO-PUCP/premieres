@@ -2,10 +2,9 @@
 library(ggplot2)
 library(dplyr)
 library(rio)
+linkGit='https://github.com/PULSO-PUCP/pcm_history/raw/refs/heads/main/spellsModel.xlsx'
 
-
-link='https://github.com/PULSO-PUCP/premieres/raw/refs/heads/main/spellsModel.xlsx'
-df <- rio::import('spellsModel.xlsx') %>%
+df <- rio::import(linkGit) %>%
     arrange(start) %>%
     mutate(
         internal_label = make.unique(as.character(PCM)),
@@ -84,7 +83,8 @@ ggsave("durationLolli.pdf", durationLolli)
 
 # Load data
 rm(list = ls())
-df <- read_excel("spellsModel.xlsx")
+
+df <- rio::import(linkGit)
 
 # Create survival object
 surv_obj <- Surv(time = df$spell_duration, event = df$status)
