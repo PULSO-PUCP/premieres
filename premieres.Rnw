@@ -86,6 +86,7 @@ Peru's PCM, uniquely, spans both domains. Though appointed and dismissed by the 
 Together these reforms turned the PCM from symbolic countersignatory into the President’s principal political shield and agenda gate‑keeper. See Table \ref{tab:pcm-mandate} for details on this evolution.
 
 \begin{sidewaystable}[p]   % ‘p’ = put on its own float page
+%\scriptsize
 \centering
 \caption{Evolution of the PCM’s formal mandate since 1979}
 \label{tab:pcm-mandate}
@@ -177,7 +178,9 @@ options(kableExtra.latex.load_packages = FALSE)
 library(kableExtra)
 library(dplyr)
 library(knitr)
-data=rio::import('spellsModel.xlsx')
+linkGit='https://github.com/PULSO-PUCP/pcm_history/raw/refs/heads/main/spellsModel.xlsx'
+data <- rio::import(linkGit)
+
 namesHeaders=c("Era","count","mean","min",'max','range')
 summary_data <- data %>%
   group_by(era) %>%
@@ -199,40 +202,101 @@ summary_data
 @
 
 
+\section{Conceptual Framework: Explaining PCM Survival}\label{concepframe}
+
+This section synthesizes insights from the preceding background analysis to identify the main mechanisms likely to drive Prime Ministerial survival in Peru's political system. As shown in Sections 2.1 to 2.4, the PCM functions in a hybrid institutional role---legally subordinate to the President but often tasked with managing congressional coordination and absorbing political blame. This structural ambiguity invites vulnerability to shifts in both formal and informal dynamics.
+
+First, the historical \textbf{informal evolution} of the PCM role (Section 2.3) reveals a pattern where the office becomes a focal point for defusing crises. From this, we derive the importance of \textbf{Political Shocks} as a key covariate: resignations or reshuffles often follow scandals or protests.
+
+Second, the PCM’s effectiveness often depends on the \textbf{President's popularity} and authority (Section 2.3 and 2.4). When approval falls, presidents are more likely to replace PCMs to reassert control or appease public dissatisfaction---justifying the inclusion of \textbf{Presidential Approval} as a time-varying covariate.
+
+Third, as Section 2.1 and 2.4 emphasize, Peru’s fragmented legislature frequently weakens coalition durability, forcing PCMs to engage in high-stakes legislative negotiation. This supports the inclusion of \textbf{Legislative Fragmentation} as a predictor of PCM risk.
+
+Fourth, the background section highlights how confidence votes and reshuffles cluster around symbolic moments, such as the July 28 address. This justifies including a \textbf{Critical Periods} variable tied to the calendar.
+
+Fifth, the informal role of PCMs as ``technocratic shields'' or outsiders suggests that the \textbf{Technocratic Profile} of the individual minister could affect their disposability, especially under outsider presidencies.
+
+Finally, Section 2.3 distinguishes the authoritarian dynamics of the Fujimori regime from other eras. Under this logic, \textbf{Regime Type} (democratic vs. autocratic) functions as a contextual variable shaping the overall hazard baseline.
+
+These six factors emerge inductively from the Peruvian institutional context and form the backbone of the survival analysis presented in later sections.
+
+% \begin{figure}[h!]
+%   \centering
+%   \includegraphics[width=0.8\textwidth]{dag_pcm_survival.png}
+%   \caption{Directed Acyclic Graph (DAG): Hypothesized Drivers of PCM Survival}
+%   \label{fig:dag_pcm_survival}
+% \end{figure}
+
+
 \section{Literature Review}\label{sec:letrev}
 
-The formal mandate outlined in Table \ref{tab:pcm-mandate} establishes the PCM as the president’s chief policy coordinator and political shield. The subsections that follow review comparative findings on the political, institutional, and situational determinants of ministerial tenure, providing the theoretical backdrop for our hypotheses.
+The formal mandate outlined in Table \ref{tab:pcm-mandate} establishes the PCM as the president’s chief policy coordinator and political shield. Building on this, Section \ref{concepframe} identified six conceptual drivers of PCM survival derived from institutional context and political practice. The subsections that follow review the empirical and theoretical literature supporting these mechanisms, contextualizing their role in shaping ministerial tenure in Peru.
 
 
 \subsection{Cabinet Volatility in Peru}
 
-Early comparative work portrays Peru as an extreme case of ministerial churn.  \citet{martinez-gallardo_out_2012} reports an average cabinet duration of just 13 months (1980–2000), less than half the Latin‑American mean and exceeded only by Brazil.  Sector‑specific studies corroborate the pattern: in the health ministry, average tenure was 13.7 months between 1935 and 2021 \citep{gozzer_duracion_2021}.  Frequent reshuffles reset reform agendas—“policies are often returned to square one” \citealp[335]{gozzer_duracion_2021} —and cascade through lower administrative layers.  Yet the causes of this volatility remain under‑specified.
 
-\subsection{Critical Events and Shocks}
-
-Extant research highlights critical events as proximate triggers of turnover.  \citet{dewan_corrective_2005} show that UK prime ministers reshuffle after scandals to restore popularity; \citet{camerlo_minister_2015-1} find media scandals and social protests heighten rotation in twelve Latin‑American democracies, with effects conditioned by the electoral calendar and re‑election rules.  Because Peruvian presidents cannot be re‑elected, the country fits Camerlo and Pérez‑Liñán’s scenario in which protests spike hazard early in the term, while scandals matter later \citet[616]{camerlo_minister_2015-1}. Economic crises operate similarly: \citet{gonzalez-bustamante_cambios_2016} incorporate downturns into Chilean survival models, and \citet[515]{fischer_duration_2012} argue that a minister’s post‑shock fate hinges on formal removal rules, political weight, and net benefit to the government.
+This literature review contextualizes the six drivers of PCM survival identified in the conceptual framework, situating them within broader comparative and regional findings. Comparative studies have consistently identified Peru as an outlier in cabinet turnover, with unusually short ministerial tenures even by regional standards \citep{martinez-gallardo_out_2012, gozzer_duracion_2021}. For instance, \citet{martinez-gallardo_out_2012} shows that Peru's cabinets exhibit among the highest turnover rates in Latin America, with \citet{gozzer_duracion_2021} confirming similar volatility at the sectoral level in health ministries. Before examining each factor, it is important to recognize that Peru's cabinet instability is not a recent development, but a structural feature of its political system. This volatility motivates the search for proximate, theoretically grounded covariates to explain PCM survival in a highly unstable institutional context.
 
 
-\subsection{Institutional Determinants}
+\subsection{Political Shocks and Crisis Events}
 
-Turning to institutional factors, the presidential–parliamentary divide looms large.
-From \citet{fischer_duration_2012} we learned that Single-party cabinets generally stay in power longer than coalitions; within coalitions, minimum-winning cabinets outlive surplus (oversized) coalitions; Cabinets endure markedly longer in parliamentary systems\footnote{Blondel’s cross-national data show presidential cabinets are the shorter-lived side of the divide \citep{blondel_government_1985}}. If the regime were authoritarian, cabinets in communist regimes lived longer than the ones from military dictatorships; and finally, Cabinets with more veto-player parties are less durable.
+Peru’s modern history is marked by repeated, acute political shocks that have profoundly shaped the stability of cabinets and the role of PCMs:
 
-Some of those findings complement the ones above.  A sixty‑year study of Colombia shows that multiparty coalition presidentialism lengthens tenure, whereas two‑party periods display higher churn \citep{mejia_es_2021}.  Uruguay’s above‑average stability likewise hinges on durable coalitions; crises coincide with coalition breakdowns \citep{chasquetti_designacion_2013}.
+\begin{itemize}
+  \item \textbf{Terrorism (1980s–1990s):} Sendero Luminoso and MRTA violence, including the 1992 Tarata bombing, created sustained insecurity and pressured presidents to centralize executive coordination.
+  \item \textbf{Hyperinflation and Economic Collapse (late 1980s):} Under García’s first term, inflation soared and protests escalated, fueling cabinet turnover amid a broader legitimacy crisis.
+  \item \textbf{Neoliberal Adjustment (1990s):} The ``Fujishock'' program implemented under Fujimori provoked social resistance and political fragmentation, prompting frequent ministerial replacements.
+  \item \textbf{Congress Dissolution (1992, 2019):} Fujimori's autogolpe and Vizcarra’s congressional shutdowns restructured political bargaining and undermined cabinet continuity.
+  \item \textbf{Presidential Impeachments and Removals (2000, 2018–2022):} Fujimori’s fall, Vizcarra’s forced exit, and Castillo’s abrupt ouster were all accompanied by PCM reshuffles and resignations.
+\end{itemize}
+
+These cases illustrate that in Peru, political shocks are not exceptional disturbances but recurrent inflection points in executive–legislative dynamics. Comparative research reinforces this pattern: scandals and protests increase ministerial turnover across presidential systems. \citet{dewan_corrective_2005} show that UK reshuffles follow legitimacy crises, while \citet{camerlo_minister_2015-1} document that censure motions and protests across Latin America often trigger cabinet exits. In Peru’s hyper-presidential context, such shocks are absorbed through cabinet reshuffles, where Prime Ministers serve as expendable buffers. As \citet[pp.~7--9]{dargent_technocracy_2014} notes, technocrats in Latin America are often appointed for their market legitimacy, but their lack of political embeddedness makes them ideal targets in moments of institutional stress.
+.
+
+\subsection{Institutional Determinants: Approval, Fragmentation, Regime Type}
+PCM risk is shaped by institutional context. Presidential approval levels matter in both parliamentary and presidential regimes \citep{fischer_duration_2012}. Legislative fragmentation, measured via ENP, reduces durability by raising coordination costs \citep{huber_replacing_2008}. Regime variation also matters: cabinets survive longer in parliamentary systems and less under autocratic concentration, as in the Fujimori period \citep{perezlinan2007}. Fujimori's decade in power reshaped executive-legislative relations by weakening Congress, ruling through decree-laws, and centralizing decision-making authority. These changes curtailed the autonomy of ministers and made cabinet stability a function of presidential discretion rather than coalition support. As \citet{levitsky_latin_1999} argues, the collapse of party mediation under Fujimori institutionalized ``post-party politics,'' further destabilizing ministerial roles. \citet[dpp. 10--12]{dargent_technocracy_2014} emphasizes that in systems with underdeveloped party structures—like Peru’s—technocrats often compensate for partisan gaps, but their lack of embedded support networks increases their turnover risk.
+
+\subsection{Ministerial Profiles and Technocratic Survival}
+Minister characteristics affect tenure. \citet{escobar-lemmon_coming_2010} find links between outsider status, technocratic profiles, and cabinet turnover. \citet{alexiadou_commitment_2019} show technocrats are more likely appointed in times of economic crisis, but may lack political embeddedness. In Peru, outsider presidents like Fujimori and Kuczynski have favored technocratic PCMs \citep{carreras_presidentes_2013}. \citet{dargent_technocracy_2014} adds that Latin American technocrats often derive their legitimacy from reputational capital and market credibility rather than partisan support, making them simultaneously valuable and vulnerable within weakly institutionalized party systems.
+
+\subsection{Critical Periods and Strategic Timing}
+Ministers are not dismissed uniformly across time. Political science recognizes the role of electoral and institutional calendars in shaping reshuffle windows (e.g., annual messages, budget votes). In Peru, the July 28 address often anchors symbolic resets, justifying the inclusion of a speech-window dummy.
+
+\subsection{Synthesis and Gaps}
+Existing work captures key risk factors but rarely integrates all six into a single model within one country. The present study does so using a Cox survival approach, tailored to Peru’s institutional idiosyncrasies, including hyper-presidentialism, technocratic turnover, and informal reshuffle rituals.
 
 
-\subsection{Ministerial Profiles}
 
-Personal attributes cannot be ignored.  Age effects are U‑shaped, with the youngest and oldest ministers more likely to exit \citet{fischer_duration_2012}.  \citet{escobar-lemmon_coming_2010} find that being in the inaugural cabinet and holding the finance portfolio increase hazard, whereas constituency links reduce it.  Prior political experience, however, has only marginal impact \citep{escobar-lemmon_coming_2010}.  In Peru, outsider presidents such as Alberto Fujimori and Pedro Pablo Kuczynski have consistently favoured technocrats with scant partisan capital \citep{carreras_presidentes_2013,nercesian_radiografigabinetes_2019}.  Whether such technocratic cabinets enjoy longer—or shorter—survival remains an open empirical question.
-
-To empirically assess whether technocratic traits influence PCM survival, we model the technocratic profile as a latent trait composed of five binary indicators drawn from comparative literature: absence of prior electoral participation, foreign graduate education, private sector experience, academic engagement, and having a degree other than law. These attributes are commonly cited as markers of technocratic identity 
-\citep{carreras_presidentes_2013,alexiadou_commitment_2019,alexiadou_ideologues_2015,escobar-lemmon_coming_2010}. Rather than selecting a single proxy, we construct a latent index using latent trait modeling (LTM), which estimates each PCM’s position on the technocratic dimension. This method aligns with recent work on ministerial professionalism \citep{bersch_state_2017} and allows us to capture degrees of technocratic orientation rather than impose a binary categorization. We validate this index using exploratory factor analysis and principal components, both of which confirm a consistent underlying dimension.
-
+% \subsection{Cabinet Volatility in Peru}
 % 
-
-\subsection{Gaps in the Literature and Relevance to Peru}
-
-Existing studies converge on three explanatory families—critical events, institutional arrangements, and individual profiles—but seldom test them jointly inside a single presidential system.  Moreover, most Latin‑American research pools multiple countries, obscuring Peru’s idiosyncrasies: (i) constitutional hyper‑presidentialism without the stabilising force of strong parties; (ii) the annual Mensaje a la Nación on 28 July, a focal point for reshuffles; and (iii) recurrent economic volatility.  By integrating LOPE’s formal mandates with comparative findings on shocks, institutions, and minister profiles, the present study builds a tailored framework for explaining why some Peruvian PCMs become expendable “circuit‑breakers” while others endure.
+% Early comparative work portrays Peru as an extreme case of ministerial churn.  \citet{martinez-gallardo_out_2012} reports an average cabinet duration of just 13 months (1980–2000), less than half the Latin‑American mean and exceeded only by Brazil.  Sector‑specific studies corroborate the pattern: in the health ministry, average tenure was 13.7 months between 1935 and 2021 \citep{gozzer_duracion_2021}.  Frequent reshuffles reset reform agendas—“policies are often returned to square one” \citealp[335]{gozzer_duracion_2021} —and cascade through lower administrative layers.  Yet the causes of this volatility remain under‑specified.
+% 
+% \subsection{Critical Events and Shocks}
+% 
+% Extant research highlights critical events as proximate triggers of turnover.  \citet{dewan_corrective_2005} show that UK prime ministers reshuffle after scandals to restore popularity; \citet{camerlo_minister_2015-1} find media scandals and social protests heighten rotation in twelve Latin‑American democracies, with effects conditioned by the electoral calendar and re‑election rules.  Because Peruvian presidents cannot be re‑elected, the country fits Camerlo and Pérez‑Liñán’s scenario in which protests spike hazard early in the term, while scandals matter later \citet[616]{camerlo_minister_2015-1}. Economic crises operate similarly: \citet{gonzalez-bustamante_cambios_2016} incorporate downturns into Chilean survival models, and \citet[515]{fischer_duration_2012} argue that a minister’s post‑shock fate hinges on formal removal rules, political weight, and net benefit to the government.
+% 
+% 
+% \subsection{Institutional Determinants}
+% 
+% Turning to institutional factors, the presidential–parliamentary divide looms large.
+% From \citet{fischer_duration_2012} we learned that Single-party cabinets generally stay in power longer than coalitions; within coalitions, minimum-winning cabinets outlive surplus (oversized) coalitions; Cabinets endure markedly longer in parliamentary systems\footnote{Blondel’s cross-national data show presidential cabinets are the shorter-lived side of the divide \citep{blondel_government_1985}}. If the regime were authoritarian, cabinets in communist regimes lived longer than the ones from military dictatorships; and finally, Cabinets with more veto-player parties are less durable.
+% 
+% Some of those findings complement the ones above.  A sixty‑year study of Colombia shows that multiparty coalition presidentialism lengthens tenure, whereas two‑party periods display higher churn \citep{mejia_es_2021}.  Uruguay’s above‑average stability likewise hinges on durable coalitions; crises coincide with coalition breakdowns \citep{chasquetti_designacion_2013}.
+% 
+% 
+% \subsection{Ministerial Profiles}
+% 
+% Personal attributes cannot be ignored.  Age effects are U‑shaped, with the youngest and oldest ministers more likely to exit \citet{fischer_duration_2012}.  \citet{escobar-lemmon_coming_2010} find that being in the inaugural cabinet and holding the finance portfolio increase hazard, whereas constituency links reduce it.  Prior political experience, however, has only marginal impact \citep{escobar-lemmon_coming_2010}.  In Peru, outsider presidents such as Alberto Fujimori and Pedro Pablo Kuczynski have consistently favoured technocrats with scant partisan capital \citep{carreras_presidentes_2013,nercesian_radiografigabinetes_2019}.  Whether such technocratic cabinets enjoy longer—or shorter—survival remains an open empirical question.
+% 
+% To empirically assess whether technocratic traits influence PCM survival, we model the technocratic profile as a latent trait composed of five binary indicators drawn from comparative literature: absence of prior electoral participation, foreign graduate education, private sector experience, academic engagement, and having a degree other than law. These attributes are commonly cited as markers of technocratic identity 
+% \citep{carreras_presidentes_2013,alexiadou_commitment_2019,alexiadou_ideologues_2015,escobar-lemmon_coming_2010}. Rather than selecting a single proxy, we construct a latent index using latent trait modeling (LTM), which estimates each PCM’s position on the technocratic dimension. This method aligns with recent work on ministerial professionalism \citep{bersch_state_2017} and allows us to capture degrees of technocratic orientation rather than impose a binary categorization. We validate this index using exploratory factor analysis and principal components, both of which confirm a consistent underlying dimension.
+% 
+% % 
+% 
+% \subsection{Gaps in the Literature and Relevance to Peru}
+% 
+% Existing studies converge on three explanatory families—critical events, institutional arrangements, and individual profiles—but seldom test them jointly inside a single presidential system.  Moreover, most Latin‑American research pools multiple countries, obscuring Peru’s idiosyncrasies: (i) constitutional hyper‑presidentialism without the stabilising force of strong parties; (ii) the annual Mensaje a la Nación on 28 July, a focal point for reshuffles; and (iii) recurrent economic volatility.  By integrating LOPE’s formal mandates with comparative findings on shocks, institutions, and minister profiles, the present study builds a tailored framework for explaining why some Peruvian PCMs become expendable “circuit‑breakers” while others endure.
 
 
 
@@ -266,7 +330,7 @@ The explanatory variables are grouped into two categories:
 To correctly update these time-varying covariates mid-tenure, we adopt the Andersen–Gill (AG) counting-process framework, splitting each PCM spell into annual intervals anchored on 28 July. This allows each time-varying covariate to update in a temporally valid way while preserving the structure of the Cox partial likelihood. Robust standard errors are clustered by PCM to account for repeated observations.
 
 \begin{sidewaystable}[p]
-\scriptsize
+%\scriptsize
 \centering
 \caption{Variables, Operationalization, Sources, and Literature}
 \label{tab:variables}

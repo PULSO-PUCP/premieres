@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.20)  15 MAY 2025 18:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.20)  15 MAY 2025 21:40
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -386,22 +386,22 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<durationLolli.pdf, id=2, 608.2725pt x 681.54625pt>
+<durationLolli.pdf, id=2, 519.9425pt x 636.3775pt>
 File: durationLolli.pdf Graphic file (type pdf)
 <use durationLolli.pdf>
 Package pdftex.def Info: durationLolli.pdf  used on input line 39.
-(pdftex.def)             Requested size: 331.50238pt x 371.44054pt.
+(pdftex.def)             Requested size: 331.50238pt x 405.73627pt.
  [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local
 /texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [2 <./dura
 tionLolli.pdf>]
-<kaplanDuration.pdf, id=26, 608.2725pt x 681.54625pt>
+<kaplanDuration.pdf, id=26, 519.9425pt x 636.3775pt>
 File: kaplanDuration.pdf Graphic file (type pdf)
 <use kaplanDuration.pdf>
 Package pdftex.def Info: kaplanDuration.pdf  used on input line 50.
-(pdftex.def)             Requested size: 331.50238pt x 371.44054pt.
+(pdftex.def)             Requested size: 331.50238pt x 405.73627pt.
  [3 <./kaplanDuration.pdf>] [4]
 Underfull \hbox (badness 10000) in paragraph at lines 132--132
 []|\T1/cmr/bx/n/12 Cabinet-
@@ -645,52 +645,62 @@ Overfull \hbox (1.91487pt too wide) in paragraph at lines 152--153
 m/n/12 ^^Y\T1/cmr/m/n/12 Torres 2021[]22) to defuse cen-sure threats
  []
 
-[7] [8] [9]
-Overfull \hbox (5.7653pt too wide) in paragraph at lines 222--223
-\T1/cmr/m/n/12 youngest and old-est min-is-ters more likely to exit Fis-cher et
- al.[] (2012). Escobar-
+[7]
+Overfull \hbox (11.44592pt too wide) in paragraph at lines 198--198
+[]\T1/cmr/bx/n/17.28 Conceptual Frame-work: Ex-plain-ing PCM Sur-
  []
 
-[10]
-Overfull \hbox (2.11945pt too wide) in paragraph at lines 240--241
+[8]
+Overfull \hbox (3.56355pt too wide) in paragraph at lines 208--209
+[]\T1/cmr/m/n/12 Fourth, the back-ground sec-tion high-lights how con-fi-dence 
+votes and reshuf-
+ []
+
+[9] [10]
+
+Package natbib Warning: Citation `perezlinan2007' on page 11 undefined on input
+ line 251.
+
+[11]
+Overfull \hbox (2.11945pt too wide) in paragraph at lines 301--302
 \T1/cmr/m/n/12 This study draws on an event-history dataset cov-er-ing all 57 P
 rime-Ministerial
  []
 
-[11]
-Overfull \hbox (8.60233pt too wide) in paragraph at lines 269--303
+[12]
+Overfull \hbox (8.60233pt too wide) in paragraph at lines 330--364
  [][] 
  []
 
+[13] [14]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 3
-19.
-(/usr/local/texlive/2024/texmf-dist/tex/latex/base/t1cmtt.fd
+80.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-) [12] [13]
+)
 (./ltm_parameters_table.tex)
-<iccplot.pdf, id=80, 578.16pt x 361.35pt>
+<iccplot.pdf, id=79, 578.16pt x 361.35pt>
 File: iccplot.pdf Graphic file (type pdf)
 <use iccplot.pdf>
-Package pdftex.def Info: iccplot.pdf  used on input line 332.
+Package pdftex.def Info: iccplot.pdf  used on input line 393.
 (pdftex.def)             Requested size: 390.0pt x 243.74634pt.
- [14] [15 <./iccplot.pdf>] (./premieres.bbl
-Underfull \hbox (badness 1365) in paragraph at lines 14--29
-\T1/cmr/m/n/12 ra-cies.  \T1/cmr/m/it/12 Com-par-a-tive Po-lit-i-cal Stud-ies\T
-1/cmr/m/n/12 , \T1/cmr/m/it/12 48\T1/cmr/m/n/12 (8), 1051--1086.  doi:
- []
+ [15] [16] (./premieres.bbl [17 <./iccplot.pdf>]
+[18])
 
-[16] [17]) [18] (./premieres.aux)
+Package natbib Warning: There were undefined citations.
+
+[19] (./premieres.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6578 strings out of 474116
- 105656 string characters out of 5743682
- 1939187 words of memory out of 5000000
- 28764 multiletter control sequences out of 15000+600000
- 580270 words of font info for 91 fonts, out of 8000000 for 9000
+ 6553 strings out of 474116
+ 104943 string characters out of 5743682
+ 1940187 words of memory out of 5000000
+ 28742 multiletter control sequences out of 15000+600000
+ 578471 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,13n,79p,1416b,397s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
@@ -700,26 +710,23 @@ sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
 local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/lo
 cal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx0800.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/tex
-live/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive
-/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/202
-4/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/
-texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/te
-xmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2024/texm
-f-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/texmf-
-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2024/texmf-di
-st/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2024/texmf-dist
-/fonts/type1/public/cm-super/sfti0800.pfb></usr/local/texlive/2024/texmf-dist/f
-onts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dist/fon
-ts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2024/texmf-dist/fonts
-/type1/public/cm-super/sftt1200.pfb>
-Output written on premieres.pdf (18 pages, 499641 bytes).
+/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/tex
+live/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2
+024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/202
+4/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2024/texmf-
+dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2024/texmf-dist
+/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on premieres.pdf (19 pages, 414063 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 137 compressed objects within 2 object streams
+ 201 PDF objects out of 1000 (max. 8388607)
+ 129 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  20 words of extra memory for PDF output out of 10000 (max. 10000000)
 
