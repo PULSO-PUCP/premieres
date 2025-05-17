@@ -289,37 +289,6 @@ This study contributes by developing a unified survival framework tailored to Pe
 
 
 
-% \subsection{Cabinet Volatility in Peru}
-% 
-% Early comparative work portrays Peru as an extreme case of ministerial churn.  \citet{martinez-gallardo_out_2012} reports an average cabinet duration of just 13 months (1980–2000), less than half the Latin‑American mean and exceeded only by Brazil.  Sector‑specific studies corroborate the pattern: in the health ministry, average tenure was 13.7 months between 1935 and 2021 \citep{gozzer_duracion_2021}.  Frequent reshuffles reset reform agendas—“policies are often returned to square one” \citealp[335]{gozzer_duracion_2021} —and cascade through lower administrative layers.  Yet the causes of this volatility remain under‑specified.
-% 
-% \subsection{Critical Events and Shocks}
-% 
-% Extant research highlights critical events as proximate triggers of turnover.  \citet{dewan_corrective_2005} show that UK prime ministers reshuffle after scandals to restore popularity; \citet{camerlo_minister_2015-1} find media scandals and social protests heighten rotation in twelve Latin‑American democracies, with effects conditioned by the electoral calendar and re‑election rules.  Because Peruvian presidents cannot be re‑elected, the country fits Camerlo and Pérez‑Liñán’s scenario in which protests spike hazard early in the term, while scandals matter later \citet[616]{camerlo_minister_2015-1}. Economic crises operate similarly: \citet{gonzalez-bustamante_cambios_2016} incorporate downturns into Chilean survival models, and \citet[515]{fischer_duration_2012} argue that a minister’s post‑shock fate hinges on formal removal rules, political weight, and net benefit to the government.
-% 
-% 
-% \subsection{Institutional Determinants}
-% 
-% Turning to institutional factors, the presidential–parliamentary divide looms large.
-% From \citet{fischer_duration_2012} we learned that Single-party cabinets generally stay in power longer than coalitions; within coalitions, minimum-winning cabinets outlive surplus (oversized) coalitions; Cabinets endure markedly longer in parliamentary systems\footnote{Blondel’s cross-national data show presidential cabinets are the shorter-lived side of the divide \citep{blondel_government_1985}}. If the regime were authoritarian, cabinets in communist regimes lived longer than the ones from military dictatorships; and finally, Cabinets with more veto-player parties are less durable.
-% 
-% Some of those findings complement the ones above.  A sixty‑year study of Colombia shows that multiparty coalition presidentialism lengthens tenure, whereas two‑party periods display higher churn \citep{mejia_es_2021}.  Uruguay’s above‑average stability likewise hinges on durable coalitions; crises coincide with coalition breakdowns \citep{chasquetti_designacion_2013}.
-% 
-% 
-% \subsection{Ministerial Profiles}
-% 
-% Personal attributes cannot be ignored.  Age effects are U‑shaped, with the youngest and oldest ministers more likely to exit \citet{fischer_duration_2012}.  \citet{escobar-lemmon_coming_2010} find that being in the inaugural cabinet and holding the finance portfolio increase hazard, whereas constituency links reduce it.  Prior political experience, however, has only marginal impact \citep{escobar-lemmon_coming_2010}.  In Peru, outsider presidents such as Alberto Fujimori and Pedro Pablo Kuczynski have consistently favoured technocrats with scant partisan capital \citep{carreras_presidentes_2013,nercesian_radiografigabinetes_2019}.  Whether such technocratic cabinets enjoy longer—or shorter—survival remains an open empirical question.
-% 
-% To empirically assess whether technocratic traits influence PCM survival, we model the technocratic profile as a latent trait composed of five binary indicators drawn from comparative literature: absence of prior electoral participation, foreign graduate education, private sector experience, academic engagement, and having a degree other than law. These attributes are commonly cited as markers of technocratic identity 
-% \citep{carreras_presidentes_2013,alexiadou_commitment_2019,alexiadou_ideologues_2015,escobar-lemmon_coming_2010}. Rather than selecting a single proxy, we construct a latent index using latent trait modeling (LTM), which estimates each PCM’s position on the technocratic dimension. This method aligns with recent work on ministerial professionalism \citep{bersch_state_2017} and allows us to capture degrees of technocratic orientation rather than impose a binary categorization. We validate this index using exploratory factor analysis and principal components, both of which confirm a consistent underlying dimension.
-% 
-% % 
-% 
-% \subsection{Gaps in the Literature and Relevance to Peru}
-% 
-% Existing studies converge on three explanatory families—critical events, institutional arrangements, and individual profiles—but seldom test them jointly inside a single presidential system.  Moreover, most Latin‑American research pools multiple countries, obscuring Peru’s idiosyncrasies: (i) constitutional hyper‑presidentialism without the stabilising force of strong parties; (ii) the annual Mensaje a la Nación on 28 July, a focal point for reshuffles; and (iii) recurrent economic volatility.  By integrating LOPE’s formal mandates with comparative findings on shocks, institutions, and minister profiles, the present study builds a tailored framework for explaining why some Peruvian PCMs become expendable “circuit‑breakers” while others endure.
-
-
 
 \section{Data and Methods}
 
@@ -462,11 +431,19 @@ We express the hazard for PCM spell \(i\) under president \(j\) at time \(t\) as
 
 \section{Results}
 
-<<echo=FALSE, results=tex>>=
-library(xtable)
-cox_invs=readRDS('cox_model_invariants.rds')
+The results for tima invariant can be seen in Table \ref{coxInvar}.
+<<coxInvar,echo=FALSE, results=tex>>=
+library(survival)
+linkGit='https://github.com/PULSO-PUCP/pcm_history/raw/refs/heads/main/spellsModel.xlsx'
+df <- rio::import(linkGit)
 
-xtable(cox_invs)
+# Create survival object
+surv_obj <- Surv(time = df$spell_duration, event = df$status)
+# Fit Cox model with regimeFujimori and technocratic trait
+cox_model <- coxph(surv_obj ~ regimeFujimori + technocrat_trait_ltm, data = df)
+
+
+stargazer::stargazer(cox_model,label = "coxInvar",dep.var.labels = "Survival in Office",font.size = "small")
 @
 
 
