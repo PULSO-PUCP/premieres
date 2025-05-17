@@ -66,7 +66,7 @@ durationLolli=ggplot(df, aes(x = spell_duration, y = spell_label)) +
     geom_vline(xintercept = max_whisker, linetype = "dotted", color = "red")+
     labs(
         title = "Variability of Prime Ministers duration by Government",
-        subtitle = "Peru, 1980–2025",
+        subtitle = "Peru, 1980 - 2025",
         x = "Days in Office (showing quartiles, and max whisker)",
         y = NULL
     ) +
@@ -83,6 +83,7 @@ ggsave("durationLolli.pdf", durationLolli)
 
 # Load data
 rm(list = ls())
+library(survminer)
 linkGit='https://github.com/PULSO-PUCP/pcm_history/raw/refs/heads/main/spellsModel.xlsx'
 df <- rio::import(linkGit)
 
@@ -94,7 +95,7 @@ km_fit <- survfit(surv_obj ~ 1)  # no stratification, just baseline survival
 
 
 # Define time points where you want annotations
-time_points <- c(0, 180, 365, 730, 1000)  # Adjust as needed
+time_points <- c(0, 180, 360, 720, 1000)  # Adjust as needed
 
 # Extract survival values and number at risk at those times
 summary_km <- summary(km_fit, times = time_points)
@@ -103,6 +104,9 @@ risk_df <- data.frame(
     n_risk = summary_km$n.risk,
     surv   = summary_km$surv
 )
+
+selected_days <- c(0, 180, 360, 720)
+label_df <- subset(risk_df, time %in% selected_days)
 
 # Create the survival plot
 kaplan_plot <- ggsurvplot(
@@ -113,20 +117,31 @@ kaplan_plot <- ggsurvplot(
     legend = "none",
     xlab = "Days in Office",
     ylab = "Survival Probability",
-    title = "Survival of Peruvian Prime Ministers, 1980–2025",
+    title = "Survival of Peruvian Prime Ministers, 1980 - 2025",
     palette = "black",
     censor.shape = "|",
-    censor.size = 2
+    censor.size = 2,
+    break.time.by = 180
 )
 
 # Add the number-at-risk annotations at curve height
-kaplanDuration=kaplan_plot$plot +
+kaplanDuration <- kaplan_plot$plot +
     geom_label(
-        data = risk_df,
-        aes(x = time, y = surv, label = paste0("n=", n_risk)),
+        data = label_df,
+        aes(
+            x = time,
+            y = surv,
+            label = paste0("n=", n_risk)
+        ),
         size = 3,
         vjust = -0.5,
         color = "black"
+    ) +
+    geom_vline(data = label_df, aes(xintercept = time), linetype = "dotted", color = "gray50") +
+    geom_hline(data = label_df, aes(yintercept = surv), linetype = "dotted", color = "gray50")+
+    scale_y_continuous(
+        breaks = label_df$surv,
+        labels = round(label_df$surv, 2)
     )
 
 ggsave("kaplanDuration.pdf", kaplanDuration)
