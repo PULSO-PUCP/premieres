@@ -17,6 +17,7 @@
 \usepackage{threeparttable}
 \usepackage[table]{xcolor}
 \usepackage{longtable}
+\usepackage{enumitem}
 \usepackage{array}        % For raggedright column specifier
 \counterwithin{table}{section}\counterwithin{figure}{section}
 \begin{document} % every "begin: needs and "end"
@@ -31,10 +32,7 @@ This study examines the political durability of Peru’s Prime Ministers (PCM) s
 
 \section{Introduction} % * to unnumber
 
-% Although the 1979 Constitution of Peru defined the Prime Minister (PCM) merely as the president’s first minister—responsible for countersigning decrees and coordinating cabinet activity—subsequent legal and political developments have elevated the office to one that routinely performs head-of-government functions. These include drafting the policy agenda, negotiating confidence votes, and representing the executive in congressional interpellations. The PCM has thus come to serve as the president’s chief political shield. In periods of stable governance, the office facilitates legislative compromise and projects technocratic competence; in times of crisis, it functions as a “circuit-breaker”—a high-visibility scapegoat whose dismissal absorbs congressional discontent and helps preserve presidential tenure. Analyzing the determinants of PCM survival therefore sheds light on how Peru’s hyper-presidential system manages accountability, blame attribution, and policy coordination in the absence of strong political parties.
-
-
-Although originally defined as the president’s coordinating minister, the PCM has evolved into a central political operator. Beyond drafting agendas and negotiating confidence votes, the PCM now functions as the president’s chief political shield—facilitating compromise in stable periods and acting as a high-profile circuit-breaker during crises. Studying PCM survival thus reveals how Peru’s hyper-presidential system distributes blame, manages accountability, and preserves executive continuity in a fragmented party landscape.
+Although originally defined as the president’s coordinating minister, the PCM has evolved into a central political operator. Beyond drafting agendas and negotiating confidence votes, the PCM now functions as the president’s chief political shield—facilitating compromise in stable periods and acting as a high-profile circuit-breaker during crises. Studying PCM survival thus reveals how Peru’s hyper-presidential system distributes blame\footnote{By “blame,” this study refers not to emotional disapproval but to the institutional logic of accountability redistribution. Following Hood \citet{hood_blame_2011}, blame is treated as an organizational phenomenon—delegated strategically to exposed positions like the PCM to shield the presidency from reputational damage.}, manages accountability, and preserves executive continuity in a fragmented party landscape. 
 
 \begin{figure}[ht]
 \centering
@@ -46,8 +44,6 @@ Although originally defined as the president’s coordinating minister, the PCM 
 \end{figure}
 
 The significance of this institutional role is underscored by the striking variation in PCM tenures. The median tenure since 1980 is just 254 days (approximately eight months), but durations vary widely (see Figure~\ref{durationLolli}). Ántero Flores-Aráoz lasted only six days in November 2020, whereas Manuel Ulloa served 864 days in the early 1980s, and Jorge del Castillo remained in office for 805 days during Alan García’s second term. This volatility persists even within single presidential administrations: three PCMs held the post during Pedro Castillo’s first five months, while Alberto Otárola remained in office for 440 days under Dina Boluarte. 
-
-
 
 Peru’s Prime‑Ministerial tenure remains volatile, but volatility itself is not uniform across eras.  Using the verified dataset of 59 spells (1980–2025), Table \ref{tab:durationPerEra} summarises the distribution by political period.  The Fujimori decade exhibits the shortest average tenure (302 days) yet also the narrowest spread, reflecting the concentration of presidential power; the immediate post‑transition years average roughly 405 days, while the post‑2000 era shows the shortest median (240 days) and the widest range as presidents cycle through PCMs to manage fragmented congresses and serial crises.
 
@@ -75,7 +71,7 @@ summary_data <- data %>%
            digits = 2,                #label cross-ref!!
            caption = "Duration in Days by era\\label{tab:durationPerEra}",
            col.names = namesHeaders)%>%
-    kable_classic_2(latex_options = "h") %>%footnote(general = "author calculations from official appointment resolutions and El Peruano archives.",footnote_as_chunk = T,
+    kable_classic_2(latex_options = "h") %>%footnote(general = "Author calculations from official appointment resolutions and El Peruano archives.",footnote_as_chunk = T,
 general_title = "Source: ",title_format = c("italic"),threeparttable = T
 )
 summary_data
@@ -93,7 +89,7 @@ The Kaplan-Meier survival estimate (Figure \ref{kaplanDuration}) illustrates thi
 \label{kaplanDuration} 
 \end{figure}
 
-This study therefore focuses on the PCM as a critical node in Peru’s presidential survival strategy. Unlike portfolio ministers, the PCM faces dismissal not due to policy failure but because of their symbolic and strategic visibility. The PCM’s exposure to both institutional pressures and informal power plays makes their tenure an ideal case for modeling political risk in hyper-presidential regimes
+This study therefore focuses on the PCM as a critical node in Peru’s presidential survival strategy. Recent history has amplified this role: since 2016, Peru has undergone at least 20 full cabinet reshuffles across six presidencies—an extraordinary frequency in comparative perspective. This pattern of near-continuous ministerial turnover underscores the need to understand what drives PCM tenure in such unstable institutional settings. Unlike portfolio ministers, the PCM is often dismissed not due to policy failure, but because of their symbolic visibility and strategic exposure. Positioned at the intersection of institutional pressures and informal power dynamics, the PCM serves as a uniquely vulnerable figure—making their tenure an ideal case for modeling political risk in hyper-presidential regimes.
 
 
 
@@ -103,7 +99,7 @@ This study therefore focuses on the PCM as a critical node in Peru’s president
 
 \subsection{Understanding the PCM comparatively}
 
-The role of the \textit{Presidente del Consejo de Ministros} (PCM) in Peru occupies a hybrid position: \textit{de jure} a minister within a presidential system, yet \textit{de facto} a coordinator of both cabinet and congressional relations—more akin to a prime minister in semi-parliamentary regimes. Article 124 of the Peruvian Constitution assigns the PCM formal responsibilities of coordinating the Council of Ministers and countersigning legislative acts \citep{republica_del_peru_constitucion_1993}. However, the role has informally expanded, particularly during crises, to absorb political blame and mediate executive-legislative conflict.
+The role of the \textit{Presidente del Consejo de Ministros} (PCM) in Peru occupies a hybrid position: \textit{de jure} a minister within a presidential system, yet \textit{de facto} a coordinator of both cabinet and congressional relations—more akin to a prime minister in semi-parliamentary regimes. Article 124 of the Peruvian Constitution assigns the PCM formal responsibilities of coordinating the Council of Ministers and countersigning legislative acts \citep[art.124]{peru_constitucion_1993}. However, the role has informally expanded, particularly during crises, to absorb political blame and mediate executive-legislative conflict.
 
 In the United Kingdom, the Prime Minister derives power from parliamentary majority and codified statutory provisions such as the \textit{Ministerial and Other Salaries Act 1975} \citep{united_kingdom_parliament_ministerial_1975} and the \textit{Standing Orders of the House of Commons} \citep{house_of_commons_standing_2024}. The Prime Minister leads both the executive and the parliamentary agenda.
 
@@ -118,60 +114,52 @@ Peru's PCM, uniquely, spans both domains. Though appointed and dismissed by the 
 
 
 \begin{itemize}
-\item 1979 Constitution (arts.215–218). The PCM presides over the Council of Ministers only when the President is absent; all appointments and dismissals rest with the President, who may chair the Council at will.  The PCM’s core duty is to secure majority support inside the cabinet for bills, decree‑laws, and matters of public interest. (Constitution 1979.)
+\item The previous Constitution of 1979. The PCM presides over the Council of Ministers only when the President is absent; all appointments and dismissals rest with the President, who may chair the Council at will.  The PCM’s core duty is to secure majority support inside the cabinet for bills, decree‑laws, and matters of public interest \citep[arts.215-218]{peru_constitucion_1979},
 
-\item 1993 Constitution (arts. 122–127). Retains presidential discretion over appointments but upgrades the PCM: he/she convenes the Council, signs legislative decrees, and must present the government programme and request a vote of confidence from Congress. (Democratic Constituent Congress 1993.)
-\item Organic Law of the Executive Branch – LOPE 2007 (ch. II). Charges the PCM with proposing the government’s general objectives, coordinating multisectoral national policies—especially economic and social development—and supervising entities attached to the Presidency of the Council of Ministers. (Congress of the Republic 2007, LOPE.)
-\item Law 29158 (2007) on Modernisation of the State (art.19). Designates the PCM the President’s highest‑trust agent, responsible for steering public‑sector modernisation and decentralisation across all tiers of government.  (Congress of the Republic 2007, Law 29158.)
+\item The current Constitution. Retains presidential discretion over appointments but upgrades the PCM: he/she convenes the Council, signs legislative decrees, and must present the government programme and request a vote of confidence from Congress \citep[arts.122-127]{peru_constitucion_1993}.
+\item Law 1958, Organic Law of the Executive Branch – \emph{LOPE}. Charges the PCM with proposing the government’s general objectives, coordinating multisectoral national policies—especially economic and social development—and supervising entities attached to the Presidency of the Council of Ministers \citep[ch. II]{peru_ley_2007}. 
+\item \emph{LOPE} on Modernisation of the State \citep[art.19]{peru_ley_2007}. Designates the PCM the President’s highest‑trust agent, responsible for steering public‑sector modernisation and decentralisation across all tiers of government . 
 \end{itemize}
 
 Together these reforms turned the PCM from symbolic countersignatory into the President’s principal political shield and agenda gate‑keeper. See Table \ref{tab:pcm-mandate} for details on this evolution.
 
-\begin{sidewaystable}[p]   % ‘p’ = put on its own float page
-%\scriptsize
-\centering
+
+\begin{table}[htbp]
 \caption{Evolution of the PCM’s formal mandate since 1979}
-\label{tab:pcm-mandate}
-\renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{\textheight}{@{}l X X X X l@{}}  % \textheight fits the rotated width
+\small % or \footnotesize
+\begin{tabularx}{\textwidth}{lXXX}
 \toprule
-\textbf{Legal framework} &
-\textbf{Cabinet-chair role} &
-\textbf{Policy-coordination powers} &
-\textbf{Appointment \& dismissal} &
-\textbf{Additional statutory duties} &
-\textbf{Citation}\\
+\textbf{Dimension} &
+\textbf{1979 Constitution} &
+\textbf{1993 Constitution} &
+\textbf{LOPE (Law 29158)} \\
 \midrule
-1979 Constitution &
-Chairs Council only when President absent; President may chair at will &
-Secures majority consent for bills and decree-laws within the cabinet &
+\textbf{Cabinet-chair role} &
+Chairs Council of Ministers when president is absent &
+Chairs Council at will of president &
+Unchanged \\
+\textbf{Policy coordination} &
+Secures Council majority consent for decrees-laws &
+Countersigns decrees, presents programme, still cabinet chair &
+Proposes objectives, coordinates multisector policies, strategic planning, and intergovernmental coordination \\
+\textbf{Appointment \& dismissal} &
 Exclusive presidential prerogative &
+Exclusive presidential prerogative; must seek confidence votes &
+Unchanged \\
+\textbf{Additional duties} &
 None specified beyond cabinet deliberations &
-Const.\ 1979, arts.\ 215–218\\[4pt]
-
-1993 Constitution &
-Convenes Council; President may still chair &
-Countersigns decrees; presents programme and confidence motion to Congress &
-Exclusive presidential prerogative &
-Must seek confidence votes &
-Const.\ 1993, arts.\ 122–127\\[4pt]
-
-LOPE 2007 &
-PCM regularly chairs Council (President rarely attends) &
-Proposes government objectives; coordinates multisector policies; supervises PCM-attached entities &
-Unchanged &
-Broad multisector supervision &
-LOPE 2007, ch.\ II\\[4pt]
-
-Law 29158 (2007) &
-As per LOPE &
-Leads State modernisation and decentralisation agenda &
-Unchanged &
-Strategic planning; inter-governmental coordination &
-Law 29158, art.\ 19\\
+Presents confidence motion to Congress &
+Supervises attached entities; leads modernization agenda and sectoral coordination \\
+\textbf{Citation} &
+A.C. Perú, 1979, arts. 215–218 &
+C.C.D. Perú, 1993, arts. 122–127 &
+C.d.l.R. Perú, 2007, ch. II \& art. 19 \\
 \bottomrule
 \end{tabularx}
-\end{sidewaystable}
+\label{tab:pcm-mandate}
+\end{table}
+
+
 
 \subsection{Informal evolution: from symbolic coordinator to political operator}
 
@@ -200,7 +188,7 @@ The Prime Minister’s day‑to‑day leverage has always depended less on parch
 Across these phases, two informal prerogatives emerged:
 
 \begin{itemize}
-\item Negotiator‑in‑chief. Modern PCMs draft the annual Mensaje a la Nación, map votes for confidence motions, and lobby party spokespeople—tasks never spelled out in LOPE.
+\item Negotiator‑in‑chief. Modern PCMs draft the annual Mensaje a la Nación, map votes for confidence motions, and lobby party spokespeople—tasks never spelled out in \emph{LOPE}.
 
 \item High‑visibility “circuit‑breaker.” Presidents now time reshuffles to absorb blame for corruption scandals (e.g., Saavedra 2016 education dispute; Chávarry 2019 judicial scandal) or economic shocks, banking on a short‑term boost in approval.
 
@@ -242,7 +230,10 @@ These six factors emerge inductively from the Peruvian institutional context and
 \section{Literature Review}\label{sec:letrev}
 
 
-This literature review contextualizes the six drivers of PCM survival identified in the conceptual framework (Section \ref{concepframe}), situating them within broader comparative and regional findings. Comparative studies have consistently identified Peru as an outlier in cabinet turnover, with unusually short ministerial tenures even by regional standards \citep{martinez-gallardo_out_2012, gozzer_duracion_2021}. For instance, \citet{martinez-gallardo_out_2012} shows that Peru's cabinets exhibit among the highest turnover rates in Latin America, with \citet{gozzer_duracion_2021} confirming similar volatility at the sectoral level in health ministries. Before examining each factor, it is important to recognize that Peru's cabinet instability is not a recent development, but a structural feature of its political system. This volatility motivates the search for proximate, theoretically grounded covariates to explain PCM survival in a highly unstable institutional context.
+
+
+This literature review contextualizes the six drivers of PCM survival identified in the conceptual framework (Section \ref{concepframe}), situating them within broader comparative and regional findings. Comparative studies have consistently identified Peru as an outlier in cabinet turnover, with unusually short ministerial tenures even by regional standards. For instance, \citet{martinez-gallardo_out_2012} shows that Peru’s cabinets exhibit among the highest turnover rates in Latin America. Sectoral evidence supports this broader pattern: \citet{gozzer_duracion_2021} find that Ministers of Health in Peru have averaged just 13.7 months in office since 1935, with high turnover routinely resetting public policy agendas. Before examining each factor, it is important to recognize that Peru’s cabinet instability is not a recent development, but a structural feature of its political system. This volatility motivates the search for proximate, theoretically grounded covariates to explain PCM survival in a highly unstable institutional context.
+
 
 
 \subsection{Political Shocks and Crisis Events}
@@ -270,7 +261,7 @@ This trend has been noted across multiple administrations. As \citet{tanaka_demo
 
 Legislative fragmentation reduces durability by raising coordination costs \citep{huber_replacing_2008}. In fragmented legislatures, prime ministers must navigate more complex negotiations to secure majority backing, which increases the probability of legislative deadlock or failed votes of confidence. This dynamic weakens the executive’s policy coherence and forces presidents to reshuffle PCMs as a political concession or to reset stalled agendas. In Peru, this fragmentation is rooted in the collapse of the party system during and after the Fujimori era. The weakening of traditional parties and the rise of personalist movements undermined partisan discipline in Congress, making legislative coordination more unstable \citep{levitsky_latin_1999, tanaka_democracia_2005, garcia_marin_fragmentacion_2024}. As \citet{garcia_marin_fragmentacion_2024} argues, this fragmentation is compounded by the proliferation of weak or regional parties and low levels of institutionalization, which encourage legislators to abandon their electoral banners and form ad hoc caucuses. These dynamics erode party cohesion and complicate executive negotiation. As a result, high legislative atomization has often coincided with short PCM spells and volatile cabinet turnover, reflecting the difficulty of sustaining governing coalitions in multiparty settings without stable partisan anchors.
 
-Regime variation also matters: cabinets survive longer in parliamentary systems and less under autocratic concentration, as in the Fujimori period \citep{perez-linan_presidential_2007, garcia_marin_fragmentacion_2024}. Fujimori marks a critical point of institutional transformation. His 1992 autogolpe suspended Congress and the Constitution, replacing party-based coordination with technocratic governance and decree-based policymaking. This shift enabled greater executive autonomy but dismantled mechanisms of horizontal accountability. The PCM became increasingly subordinated to presidential discretion, reshaping the logic of cabinet stability away from coalition management and toward intra-executive loyalty. In the context of survival analysis, this regime shift alters the baseline hazard: under democratic periods, PCM tenure risk is more responsive to approval and fragmentation, while under Fujimori's autocratic model, survival reflects internal alignment with the executive rather than legislative negotiation or public legitimacy.
+Regime variation also matters: cabinets survive longer in parliamentary systems and less under autocratic concentration, as in the Fujimori period \citep{perez-linan_presidential_2007, garcia_marin_fragmentacion_2024}. Fujimori marks a critical point of institutional transformation. His 1992 autogolpe suspended Congress and the 1979 Constitution, replacing party-based coordination with technocratic governance and decree-based policymaking. This shift enabled greater executive autonomy but dismantled mechanisms of horizontal accountability. The PCM became increasingly subordinated to presidential discretion, reshaping the logic of cabinet stability away from coalition management and toward intra-executive loyalty. In the context of survival analysis, this regime shift alters the baseline hazard: under democratic periods, PCM tenure risk is more responsive to approval and fragmentation, while under Fujimori's autocratic model, survival reflects internal alignment with the executive rather than legislative negotiation or public legitimacy.
 
 
 \subsection{Ministerial Profiles and Technocratic Survival}
@@ -297,6 +288,19 @@ While existing literature provides robust evidence on the impact of political sh
 
 This study contributes by developing a unified survival framework tailored to Peru’s distinctive institutional configuration, with a specific focus on the presidency's key operator: the PCM. It incorporates not only regime type and presidential approval but also calendar timing, fragmentation, and technocratic profile—capturing how formal and informal rules interact in a hyper-presidential, weakly institutionalized setting. By embedding these dynamics in a Cox proportional hazards model, the study extends prior findings on Latin America’s executive volatility and offers a disaggregated, temporally sensitive account of cabinet duration in Peru.
 
+The preceding review of comparative and regional literature motivates six testable hypotheses about the institutional and political determinants of PCM survival:
+
+\vspace{1em}
+Based on the six mechanisms identified above, the study formulates the following hypotheses:
+
+\begin{enumerate}[label=H\arabic*.]
+    \item \textbf{Political shocks} (e.g., protests, scandals, or censure motions) increase the hazard of PCM exit.
+    \item \textbf{Low presidential approval} is associated with higher PCM turnover risk.
+    \item \textbf{Legislative fragmentation}, as measured by the effective number of parties (ENP), increases PCM turnover by weakening coalition support.
+    \item \textbf{Critical calendar periods}, especially around the July 28 policy speech, are associated with elevated turnover due to institutional rituals and symbolic resets.
+    \item \textbf{Technocratic PCMs} have higher turnover risk, especially when they lack electoral or partisan insulation.
+    \item \textbf{Autocratic regime context} (Fujimori period) is associated with distinct baseline hazard and a different logic of dismissal.
+\end{enumerate}
 
 
 
@@ -306,70 +310,161 @@ This study contributes by developing a unified survival framework tailored to Pe
 \subsection{Dataset construction}
 
 
-This study draws on an event-history dataset covering all 57 Prime-Ministerial spells between 28 July 1980 and 8 May 2025. Each spell corresponds to a continuous period during which a single individual served as Prime Minister (PCM), from their swearing-in to dismissal or resignation. Gustavo Adrianzén’s ongoing tenure is treated as right-censored as of 8 May 2025.
+%%%%
+The analysis begins in 1980, marking the end of military rule and the onset of Peru’s democratic era during the Third Wave \citet{huntington_tercera_2002}. This study draws on an original event-history dataset covering all 59 Prime-Ministerial spells between 28 July 1980 and July 2025. Each spell represents a continuous term in office by a PCM; the final observation may be right-censored if the most recent PCM remains in office at the time of analysis. For each spell, we construct both time-invariant and time-varying covariates. The former include attributes like regime type and technocratic profile (see Table \ref{tab:timeinvariant} for details).
 
-The explanatory variables are grouped into two categories:
 
-\textbf{(a) Non–time-varying variables}, which remain constant throughout a PCM’s spell. These include:
 
-\begin{itemize}
-    \item \textit{Technocratic profile}: A latent trait index derived from five binary indicators: (i) absence of previous electoral participation, (ii) graduate degree obtained abroad, (iii) relevant private sector experience, (iv) academic background, and (v) having a degree other than law. These variables reflect the literature on technocratic appointments (Carreras, 2013; Alexiadou, 2016; Escobar-Lemmon \& Taylor-Robinson, 2010). We estimate a continuous score using Latent Trait Modeling (LTM), validated through PCA and EFA. The continuous index is used in all Cox regressions; a binary split at the median is used for descriptive survival plots.
-    
-    \item \textit{Fujimori regime dummy}: A fixed indicator for spells that occurred during the presidency of Alberto Fujimori (April 1990 to July 2000), capturing the autocratic institutional context of that period.
-\end{itemize}
-
-\textbf{(b) Time–varying variables}, which may change within a PCM’s tenure and thus require finer temporal resolution. These include:
-
-\begin{itemize}
-    \item \textit{Presidential approval}: Quarterly approval ratings from Ipsos Perú;
-    \item \textit{Legislative fragmentation}: Measured via the effective number of parties (ENP), calculated from congressional seat shares;
-    \item \textit{Censure motions}: A binary indicator coded 1 if a motion for interpellation or censure was active during the interval;
-    \item \textit{Economic shock}: Equals 1 if quarterly GDP growth is negative;
-    \item \textit{Speech window}: Equals 1 if the interval includes ±45 days around the annual \textit{Mensaje a la Nación} on 28 July.
-\end{itemize}
-
-To correctly update these time-varying covariates mid-tenure, we adopt the Andersen–Gill (AG) counting-process framework, splitting each PCM spell into annual intervals anchored on 28 July. This allows each time-varying covariate to update in a temporally valid way while preserving the structure of the Cox partial likelihood. Robust standard errors are clustered by PCM to account for repeated observations.
-
-\begin{sidewaystable}[p]
-%\scriptsize
+%%%%
+\begin{table}[htbp]
+\small
 \centering
-\caption{Variables, Operationalization, Sources, and Literature}
-\label{tab:variables}
-\begin{tabular}{
-  >{\raggedright\arraybackslash}p{3cm} 
-  >{\raggedright\arraybackslash}p{3.5cm} 
-  >{\raggedright\arraybackslash}p{6cm} 
-  >{\raggedright\arraybackslash}p{2.5cm} 
-  >{\raggedright\arraybackslash}p{4cm}
+\caption{Time-Invariant Covariates: Definitions, Sources, and Literature}
+\label{tab:timeinvariant}
+\begin{tabularx}{\textwidth}{
+  >{\raggedright\arraybackslash}p{2cm}
+  >{\raggedright\arraybackslash}p{5cm}
+  >{\raggedright\arraybackslash}p{2cm}
+  >{\raggedright\arraybackslash}p{3.5cm}
 }
 \toprule
-\textbf{Category} & \textbf{Variable} & \textbf{Operationalization} & \textbf{Source} & \textbf{Literature} \\
+\textbf{Variable} & \textbf{Operationalization} & \textbf{Source} & \textbf{Literature} \\
 \midrule
 
-\multicolumn{5}{l}{\textit{Non–Time-Varying Covariates}} \\
-\midrule
+Technocrat Index &
+Latent trait score from three binary indicators: no prior electoral experience, foreign graduate degree, and private sector origin. Estimated via IRT; validated via PCA and EFA. &
+CVs and secondary sources &
+Carreras (2013); Alexiadou (2016); Dargent (2014); Weyland (2021) \\
 
-Profile & Technocrat Index & Latent trait score from five binary indicators: no electoral experience, foreign graduate education, private sector or academic background, and non-law degree. Estimated via LTM and validated via PCA and EFA. & CVs and secondary sources & Carreras (2013); Alexiadou (2016); Escobar-Lemmon \& Taylor-Robinson (2010); Bersch et al. (2017) \\
-
-Regime & Fujimori & 1 if PCM served between 5 April 1990 and 28 July 2000 & Author coding & Pérez-Liñán (2007); Fischer et al. (2012) \\
-
-\midrule
-\multicolumn{5}{l}{\textit{Time–Varying Covariates}} \\
-\midrule
-
-Congress & ENP & Quarterly effective number of parties (seat share) & JNE seat records & Huber \& Martínez-Gallardo (2008); Martínez-Gallardo (2012) \\
-
-Congress & Censure motion & 1 if interpellation or censure motion was tabled during interval & Congressional Journal & Camerlo \& Pérez-Liñán (2015); Dewan \& Dowding (2005) \\
-
-Presidency & Approval & Quarterly presidential approval (\%) & Ipsos Perú & Samuels \& Shugart (2003); Fischer et al. (2012) \\
-
-Calendar & Speech window & 1 if within ±45 days of 28 July & Author calculation & This study (informal calendar logic) \\
-
-Economy & GDP shock & 1 if quarterly GDP growth is negative & BCRP & González-Bustamante \& Olivares (2016) \\
+Fujimori Dummy &
+1 if PCM served between April 1990 and July 2000 under the Fujimori regime. Captures autocratic institutional logic. &
+Author coding &
+Pérez-Liñán (2007); Fischer et al. (2012) \\
 
 \bottomrule
-\end{tabular}
-\end{sidewaystable}
+\end{tabularx}
+\end{table}
+
+The second set of covariates—the time-varying ones—captures annual dynamics in congressional structure, approval, economic shocks, and calendar triggers. These are detailed in Table \ref{tab:timevarying}.
+
+
+%%%%
+
+\begin{table}[htbp]
+\small
+\centering
+\caption{Time-Varying Covariates: Definitions, Sources, and Literature}
+\label{tab:timevarying}
+\begin{tabularx}{\textwidth}{
+  >{\raggedright\arraybackslash}p{2cm}
+  >{\raggedright\arraybackslash}p{5cm}
+  >{\raggedright\arraybackslash}p{2cm}
+  >{\raggedright\arraybackslash}p{3.5cm}
+}
+\toprule
+\textbf{Variable} & \textbf{Operationalization} & \textbf{Source} & \textbf{Literature} \\
+\midrule
+
+ENP &
+Effective number of parties based on quarterly seat distribution in Congress. Proxy for legislative fragmentation. &
+JNE records &
+Huber \& Martínez-Gallardo (2008); García Marín (2023) \\
+
+Censure Motion &
+1 if interpellation or censure motion was filed against any minister during the quarter. Captures legislative threat. &
+Congressional Journal &
+Camerlo \& Pérez-Liñán (2015) \\
+
+Presidential Approval &
+Quarterly average from Ipsos Perú national survey. &
+Ipsos Perú &
+Samuels \& Shugart (2003); Tanaka (2005) \\
+
+Speech Window &
+1 if spell includes ±45 days around July 28 (confidence vote and policy speech ritual). &
+Author coding &
+This study \\
+
+GDP Shock &
+1 if quarterly real GDP growth is negative. &
+BCRP &
+González-Bustamante \& Olivares (2016) \\
+
+\bottomrule
+\end{tabularx}
+\end{table}
+
+To correctly update these time-varying covariates, we adopt the Andersen–Gill (AG) counting-process framework, splitting each PCM spell into annual intervals anchored on 28 July. This allows each time-varying covariate to update in a temporally valid way while preserving the structure of the Cox partial likelihood. Robust standard errors are clustered by PCM to account for repeated observations.
+
+
+%%%%
+
+% The explanatory variables are grouped into two categories:
+% 
+% \textbf{(a) Non–time-varying variables}, which remain constant throughout a PCM’s spell. These include:
+% 
+% \begin{itemize}
+%     \item \textit{Technocratic profile}: A latent trait index derived from five binary indicators: (i) absence of previous electoral participation, (ii) graduate degree obtained abroad, (iii) relevant private sector experience, (iv) academic background, and (v) having a degree other than law. These variables reflect the literature on technocratic appointments (Carreras, 2013; Alexiadou, 2016; Escobar-Lemmon \& Taylor-Robinson, 2010). We estimate a continuous score using Latent Trait Modeling (LTM), validated through PCA and EFA. The continuous index is used in all Cox regressions; a binary split at the median is used for descriptive survival plots.
+%     
+%     \item \textit{Fujimori regime dummy}: A fixed indicator for spells that occurred during the presidency of Alberto Fujimori (April 1990 to July 2000), capturing the autocratic institutional context of that period.
+% \end{itemize}
+% 
+% \textbf{(b) Time–varying variables}, which may change within a PCM’s tenure and thus require finer temporal resolution. These include:
+% 
+% \begin{itemize}
+%     \item \textit{Presidential approval}: Quarterly approval ratings from Ipsos Perú;
+%     \item \textit{Legislative fragmentation}: Measured via the effective number of parties (ENP), calculated from congressional seat shares;
+%     \item \textit{Censure motions}: A binary indicator coded 1 if a motion for interpellation or censure was active during the interval;
+%     \item \textit{Economic shock}: Equals 1 if quarterly GDP growth is negative;
+%     \item \textit{Speech window}: Equals 1 if the interval includes ±45 days around the annual \textit{Mensaje a la Nación} on 28 July.
+% \end{itemize}
+% 
+% To correctly update these time-varying covariates mid-tenure, we adopt the Andersen–Gill (AG) counting-process framework, splitting each PCM spell into annual intervals anchored on 28 July. This allows each time-varying covariate to update in a temporally valid way while preserving the structure of the Cox partial likelihood. Robust standard errors are clustered by PCM to account for repeated observations.
+% 
+% \begin{sidewaystable}[p]
+% %\scriptsize
+% \centering
+% \caption{Variables, Operationalization, Sources, and Literature}
+% \label{tab:variables}
+% \begin{tabular}{
+%   >{\raggedright\arraybackslash}p{3cm} 
+%   >{\raggedright\arraybackslash}p{3.5cm} 
+%   >{\raggedright\arraybackslash}p{6cm} 
+%   >{\raggedright\arraybackslash}p{2.5cm} 
+%   >{\raggedright\arraybackslash}p{4cm}
+% }
+% \toprule
+% \textbf{Category} & \textbf{Variable} & \textbf{Operationalization} & \textbf{Source} & \textbf{Literature} \\
+% \midrule
+% 
+% \multicolumn{5}{l}{\textit{Non–Time-Varying Covariates}} \\
+% \midrule
+% 
+% Profile & Technocrat Index & Latent trait score from five binary indicators: no electoral experience, foreign graduate education, private sector or academic background, and non-law degree. Estimated via LTM and validated via PCA and EFA. & CVs and secondary sources & Carreras (2013); Alexiadou (2016); Escobar-Lemmon \& Taylor-Robinson (2010); Bersch et al. (2017) \\
+% 
+% Regime & Fujimori & 1 if PCM served between 5 April 1990 and 28 July 2000 & Author coding & Pérez-Liñán (2007); Fischer et al. (2012) \\
+% 
+% \midrule
+% \multicolumn{5}{l}{\textit{Time–Varying Covariates}} \\
+% \midrule
+% 
+% Congress & ENP & Quarterly effective number of parties (seat share) & JNE seat records & Huber \& Martínez-Gallardo (2008); Martínez-Gallardo (2012) \\
+% 
+% Congress & Censure motion & 1 if interpellation or censure motion was tabled during interval & Congressional Journal & Camerlo \& Pérez-Liñán (2015); Dewan \& Dowding (2005) \\
+% 
+% Presidency & Approval & Quarterly presidential approval (\%) & Ipsos Perú & Samuels \& Shugart (2003); Fischer et al. (2012) \\
+% 
+% Calendar & Speech window & 1 if within ±45 days of 28 July & Author calculation & This study (informal calendar logic) \\
+% 
+% Economy & GDP shock & 1 if quarterly GDP growth is negative & BCRP & González-Bustamante \& Olivares (2016) \\
+% 
+% \bottomrule
+% \end{tabular}
+% \end{sidewaystable}
+
+
+%%%
+
 
 
 

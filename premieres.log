@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.20)  16 MAY 2025 23:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.20)  18 MAY 2025 00:43
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -272,6 +272,15 @@ Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
 \c@LT@chunks=\count283
 \LT@p@ftn=\toks28
 )
+(/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip71
+\enit@outerparindent=\dimen179
+\enit@toks=\toks29
+\enit@inbox=\box64
+\enit@count@id=\count284
+\enitdp@description=\count285
+)
 (/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Sweave.sty
 Package: Sweave 
 
@@ -280,11 +289,11 @@ Package: iftex 2022/02/03 v1.0f TeX engine tests
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2024/01/20 4.5c verbatim text (tvz,hv)
-\FV@CodeLineNo=\count284
+\FV@CodeLineNo=\count286
 \FV@InFile=\read2
-\FV@TabBox=\box64
-\c@FancyVerbLine=\count285
-\FV@StepNumber=\count286
+\FV@TabBox=\box65
+\c@FancyVerbLine=\count287
+\FV@StepNumber=\count288
 \FV@OutFile=\write3
 )
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/textcomp.sty
@@ -295,27 +304,27 @@ Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 ))
 (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count287
-\l__pdf_internal_box=\box65
+\l__color_backend_stack_int=\count289
+\l__pdf_internal_box=\box66
 )
 (./premieres.aux)
 \openout1 = `premieres.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-\c@maskedRefs=\count288
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+\c@maskedRefs=\count290
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/apacite/english.apc
 File: english.apc 2013/07/21 v6.03 apacite language file
@@ -324,17 +333,17 @@ LaTeX Info: Redefining \BHBI on input line 130.
 )
 (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count289
-\scratchdimen=\dimen179
-\scratchbox=\box66
-\nofMPsegments=\count290
-\nofMParguments=\count291
-\everyMPshowfont=\toks29
-\MPscratchCnt=\count292
-\MPscratchDim=\dimen180
-\MPnumerator=\count293
-\makeMPintoPDFobject=\count294
-\everyMPtoPDFconversion=\toks30
+\scratchcounter=\count291
+\scratchdimen=\dimen180
+\scratchbox=\box67
+\nofMPsegments=\count292
+\nofMParguments=\count293
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count294
+\MPscratchDim=\dimen181
+\MPnumerator=\count295
+\makeMPintoPDFobject=\count296
+\everyMPtoPDFconversion=\toks31
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 
@@ -374,13 +383,13 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 (./premieres-concordance.tex)
-LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 26.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 26.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -393,318 +402,313 @@ al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local
 <durationLolli.pdf, id=16, 789.95125pt x 636.3775pt>
 File: durationLolli.pdf Graphic file (type pdf)
 <use durationLolli.pdf>
-Package pdftex.def Info: durationLolli.pdf  used on input line 43.
+Package pdftex.def Info: durationLolli.pdf  used on input line 41.
 (pdftex.def)             Requested size: 389.99648pt x 369.88574pt.
  [2 <./durationLolli.pdf>]
-<kaplanDuration.pdf, id=26, 789.95125pt x 636.3775pt>
+<kaplanDuration.pdf, id=27, 789.95125pt x 636.3775pt>
 File: kaplanDuration.pdf Graphic file (type pdf)
 <use kaplanDuration.pdf>
-Package pdftex.def Info: kaplanDuration.pdf  used on input line 83.
+Package pdftex.def Info: kaplanDuration.pdf  used on input line 79.
 (pdftex.def)             Requested size: 389.99648pt x 369.88574pt.
  [3] [4 <./kaplanDuration.pdf>] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]|\T1/cmr/bx/n/12 Cabinet-
+Underfull \hbox (badness 1077) in paragraph at lines 151--151
+[]|\T1/cmr/m/n/10.95 Chairs Coun-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]|\T1/cmr/bx/n/12 Policy-
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 cil of Min-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/bx/n/12 coordination
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 is-ters when
  []
 
 
-Overfull \hbox (3.72488pt too wide) in paragraph at lines 166--166
-[]|\T1/cmr/bx/n/12 Appointment
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 pres-i-dent is
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]|\T1/cmr/bx/n/12 Additional
+Underfull \hbox (badness 1077) in paragraph at lines 151--151
+[]|\T1/cmr/m/n/10.95 Chairs Coun-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/bx/n/12 statu-tory
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 cil ma-jor-ity
  []
 
 
-Underfull \hbox (badness 2726) in paragraph at lines 166--166
-[]|\T1/cmr/m/n/12 Chairs Coun-
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 con-sent for
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 Pres-i-dent
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+[]|\T1/cmr/m/n/10.95 Countersigns
  []
 
 
-Underfull \hbox (badness 1983) in paragraph at lines 166--166
-\T1/cmr/m/n/12 ab-sent; Pres-
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 de-crees,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 i-dent may
+Underfull \hbox (badness 3724) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 presents pro-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]|\T1/cmr/m/n/12 Secures ma-
+Underfull \hbox (badness 1215) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 gramme, still
  []
 
 
-Underfull \hbox (badness 1286) in paragraph at lines 166--166
-\T1/cmr/m/n/12 jor-ity con-sent
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+[]|\T1/cmr/m/n/10.95 Proposes
  []
 
 
-Underfull \hbox (badness 3439) in paragraph at lines 166--166
-\T1/cmr/m/n/12 for bills and
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 ob-jec-tives,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 decree-laws
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 co-or-di-nates
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 within the
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 mul-ti-sec-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]|\T1/cmr/m/n/12 Exclusive
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 tor poli-cies,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 pres-i-den-tial
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 strate-gic
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]|\T1/cmr/m/n/12 None spec-i-
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 plan-ning,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 fied be-yond
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 and in-ter-
  []
 
 
-Underfull \hbox (badness 1342) in paragraph at lines 166--166
-\T1/cmr/m/n/12 cab-i-net de-lib-
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 gov-ern-men-tal
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]|\T1/cmr/m/n/12 Convenes
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+[]|\T1/cmr/m/n/10.95 Exclusive
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]|\T1/cmr/m/n/12 Countersigns
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 pres-i-den-tial
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 de-crees;
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+[]|\T1/cmr/m/n/10.95 Exclusive
  []
 
 
-Underfull \hbox (badness 7099) in paragraph at lines 166--166
-\T1/cmr/m/n/12 presents pro-
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 pres-i-den-tial
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 gramme and
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 pre-rog-a-tive;
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 con-fi-dence
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 must seek
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 mo-tion to
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 con-fi-dence
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]|\T1/cmr/m/n/12 Exclusive
+Underfull \hbox (badness 5231) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 be-yond cab-i-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 pres-i-den-tial
+Underfull \hbox (badness 6758) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 net de-lib-er-a-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]|\T1/cmr/m/n/12 Must seek
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+[]|\T1/cmr/m/n/10.95 Presents
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 con-fi-dence
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 con-fi-dence
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]|\T1/cmr/m/n/12 PCM reg-u-
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 mo-tion to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 larly chairs
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+[]|\T1/cmr/m/n/10.95 Supervises
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 i-dent rarely
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 at-tached en-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]|\T1/cmr/m/n/12 Proposes
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 ti-ties; leads
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 gov-ern-ment
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 mod-ern-iza-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 ob-jec-tives;
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 tion agenda
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 co-or-di-nates
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 and sec-toral
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 mul-ti-sec-tor
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+[]|\T1/cmr/m/n/10.95 A.C. Perú,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 poli-cies; su-
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 1979, arts.
  []
 
 
-Underfull \hbox (badness 7907) in paragraph at lines 166--166
-[]|\T1/cmr/m/n/12 Broad mul-ti-
+Underfull \hbox (badness 2913) in paragraph at lines 151--151
+[]|\T1/cmr/m/n/10.95 C.C.D. Perú,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]|\T1/cmr/m/n/12 Leads State
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 mod-erni-sa-tion
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 ning; inter-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-\T1/cmr/m/n/12 governmental
+Underfull \hbox (badness 10000) in paragraph at lines 151--151
+\T1/cmr/m/n/10.95 1993, arts.
  []
 
 [6] [7]
-Overfull \hbox (20.82349pt too wide) in paragraph at lines 186--187
+Overfull \hbox (20.82349pt too wide) in paragraph at lines 174--175
 []\T1/cmr/m/n/12 Confrontational years (PPK, Viz-carra, Castillo): Congress wea
 ponised
  []
 
 
-Overfull \hbox (6.91388pt too wide) in paragraph at lines 186--187
+Overfull \hbox (6.91388pt too wide) in paragraph at lines 174--175
 \T1/cmr/m/n/12 in-ter-pel-la-tions; pres-i-dents sac-ri-ficed PCMs (Zavala 2017
 ; Vil-lanueva
  []
 
 
-Overfull \hbox (1.91487pt too wide) in paragraph at lines 186--187
+Overfull \hbox (1.91487pt too wide) in paragraph at lines 174--175
 \T1/cmr/m/n/12 2018; Bel-lido\TS1/cmr/m/n/12 ^^Y\T1/cmr/m/n/12 Vásquez\TS1/cmr/
 m/n/12 ^^Y\T1/cmr/m/n/12 Torres 2021[]22) to defuse cen-sure threats
  []
 
 
-Overfull \hbox (11.44592pt too wide) in paragraph at lines 209--209
+Overfull \hbox (11.44592pt too wide) in paragraph at lines 197--197
 []\T1/cmr/bx/n/17.28 Conceptual Frame-work: Ex-plain-ing PCM Sur-
  []
 
 [8]
-Overfull \hbox (3.56355pt too wide) in paragraph at lines 219--220
+Overfull \hbox (3.56355pt too wide) in paragraph at lines 207--208
 []\T1/cmr/m/n/12 Fourth, the back-ground sec-tion high-lights how con-fi-dence 
 votes and reshuf-
  []
 
 [9] [10] [11] [12]
-Overfull \hbox (1.07944pt too wide) in paragraph at lines 282--283
+Overfull \hbox (1.07944pt too wide) in paragraph at lines 273--274
 []\T1/cmr/m/n/12 Beyond in-sti-tu-tional rit-u-als, Camerlo and Pérez-Liñán (20
 15, 611) demon-
  []
 
 
-Overfull \hbox (4.52516pt too wide) in paragraph at lines 289--290
+Overfull \hbox (4.52516pt too wide) in paragraph at lines 280--281
 \T1/cmr/m/n/12 in-sti-tu-tional, and individual-level^^Vinto a sin-gle country-
 specific model. More-
  []
 
 [13]
-Overfull \hbox (2.11945pt too wide) in paragraph at lines 302--303
-\T1/cmr/m/n/12 This study draws on an event-history dataset cov-er-ing all 57 P
-rime-Ministerial
+Overfull \hbox (6.53763pt too wide) in paragraph at lines 293--294
+[]\T1/cmr/bx/n/12 Critical cal-en-dar pe-ri-ods\T1/cmr/m/n/12 , es-pe-cially ar
+ound the July 28 pol-icy speech,
  []
 
 [14]
-Overfull \hbox (8.60233pt too wide) in paragraph at lines 331--365
- [][] 
+Overfull \hbox (13.65942pt too wide) in alignment at lines 338--338
+[][][][] 
+ []
+
+
+Overfull \hbox (8.54642pt too wide) in paragraph at lines 387--387
+[]|\T1/cmr/m/n/10.95 Congressional 
+ []
+
+
+Overfull \hbox (13.65942pt too wide) in alignment at lines 387--387
+[][][][] 
  []
 
 [15] [16]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 3
-81.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
+76.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-(./ltm_parameters_table.tex)
-<iccplot.pdf, id=85, 578.16pt x 361.35pt>
+[17] (./ltm_parameters_table.tex)
+<iccplot.pdf, id=91, 578.16pt x 361.35pt>
 File: iccplot.pdf Graphic file (type pdf)
 <use iccplot.pdf>
-Package pdftex.def Info: iccplot.pdf  used on input line 394.
+Package pdftex.def Info: iccplot.pdf  used on input line 489.
 (pdftex.def)             Requested size: 390.0pt x 243.74634pt.
- [17] [18] (./premieres.bbl [19 <./iccplot.pdf>]
-[20]) [21] (./premieres.aux)
+ [18] [19 <./iccplot.pdf>] (./premieres.bbl
+[20] [21]) [22] (./premieres.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6572 strings out of 474116
- 105401 string characters out of 5743682
- 1941187 words of memory out of 5000000
- 28759 multiletter control sequences out of 15000+600000
- 581013 words of font info for 96 fonts, out of 8000000 for 9000
+ 6916 strings out of 474116
+ 111388 string characters out of 5743682
+ 1938187 words of memory out of 5000000
+ 29098 multiletter control sequences out of 15000+600000
+ 581354 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,13n,79p,1433b,397s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,79p,1433b,336s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
@@ -718,19 +722,20 @@ xlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texl
 ive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texliv
 e/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/
 2024/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/20
-24/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024
-/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2024/t
-exmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/tex
-mf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2024/texmf
--dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2024/texmf-d
-ist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dis
-t/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2024/texmf-dist/
-fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2024/texmf-dist/fo
-nts/type1/public/cm-super/sftt1200.pfb>
-Output written on premieres.pdf (21 pages, 452621 bytes).
+24/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024
+/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/t
+exmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2024/tex
+mf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/texmf
+-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2024/texmf-d
+ist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2024/texmf-dis
+t/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dist/
+fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2024/texmf-dist/font
+s/type1/public/cm-super/sftt1200.pfb>
+Output written on premieres.pdf (22 pages, 472975 bytes).
 PDF statistics:
- 217 PDF objects out of 1000 (max. 8388607)
- 139 compressed objects within 2 object streams
+ 228 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  20 words of extra memory for PDF output out of 10000 (max. 10000000)
 
